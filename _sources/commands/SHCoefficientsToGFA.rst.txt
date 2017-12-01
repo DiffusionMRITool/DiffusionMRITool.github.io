@@ -1,0 +1,76 @@
+SHCoefficientsToGFA
+===================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SHCoefficientsToGFA  [--returnparameterfile <std::string>]
+                          [--processinformationaddress <std::string>] [--xml]
+                          [--echo] [--debug] [--power <double>] [--]
+                          [--version] [-h] <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     --power <double>
+       Power argument. If the power is 2, we have closed form. For other
+       power number, we use a numerical fitting of the powered spherical
+       function. (value: 1)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input image file where each voxel contains a vector of SH
+       coefficients.
+  
+     <std::string>
+       (required)  Output image file where each voxel contains a scalar GFA.
+  
+  
+     Description: calculate GFA from SH coefficients.
+  
+     Examples: 
+  
+     SHCoefficientsToGFA eap_r0.015.nii.gz eap_r0.015_gfa.nii.gz 
+  
+     Reference: 
+  
+     Tuch, David S. 'Q‐ball imaging.' Magnetic resonance in medicine 52.6
+     (2004): 1358-1372. 
+  
+     Descoteaux, Maxime, Elaine Angelino, Shaun Fitzgibbons, and Rachid
+     Deriche. 'Regularized, fast, and robust analytical Q‐ball imaging',
+     Magnetic resonance in medicine 58, no. 3 (2007): 497-510.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

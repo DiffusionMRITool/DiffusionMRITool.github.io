@@ -1,0 +1,20 @@
+ReadDirections
+==============
+
+.. code-block:: none
+
+  % read direction file into a matrix
+  %
+  % USAGE:
+  %   grad = ReadDirections(filename) 
+  %
+  % INPUT
+  %   filename :   direction file name (.txt)
+  %
+  %
+  % OUTPUT
+  %   grad     :  Nx3 matrix, each row is a point in sphere.
+  %
+  % Copyright (c) 2014, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

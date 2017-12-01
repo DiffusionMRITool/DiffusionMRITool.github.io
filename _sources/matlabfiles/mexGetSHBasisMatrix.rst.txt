@@ -1,0 +1,21 @@
+mexGetSHBasisMatrix
+===================
+
+.. code-block:: none
+
+  % mexGetSHBasisMatrix:  get sh matrix based on given order and orientationMatrix
+  %
+  % Usage:
+  %   shMatrix = mexGetSHBasisMatrix(order, orientationMatrix, mode)
+  % 
+  % Inputs:
+  %   order:               SH order
+  %   orientationMatrix :  orientation matrix where each row is an orientation (x,y,z)
+  %   mode:                'spherical' or 'cartesian' (default), for the coordinates in orientationMatrix.
+  %
+  % Outputs:
+  %   shMatrix:            each column is a real SH basis
+  %
+  % Copyright (c) 2013, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

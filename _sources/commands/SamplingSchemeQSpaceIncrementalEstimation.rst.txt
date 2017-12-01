@@ -1,0 +1,102 @@
+SamplingSchemeQSpaceIncrementalEstimation
+=========================================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SamplingSchemeQSpaceIncrementalEstimation  [--returnparameterfile
+                                          <std::string>]
+                                          [--processinformationaddress
+                                          <std::string>] [--xml] [--echo]
+                                          [--debug] [--elecOrder <double>]
+                                          [--weight <double>] [--criteria
+                                          <DISTANCE|ELECTROSTATIC>]
+                                          [--tessOrder <int>]
+                                          [--initialOrientations
+                                          <std::string>] [--fineOrientations
+                                          <std::string>] [--numberOfSamples
+                                          <std::vector<int>>] [--]
+                                          [--version] [-h] <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     --elecOrder <double>
+       order for the calculation of Electrostatic energy. (value: 2)
+  
+     --weight <double>
+       Weight for single shell term, 1-weight for mutiple shell term. (value:
+       0.5)
+  
+     --criteria <DISTANCE|ELECTROSTATIC>
+       Criteria Type. (value: DISTANCE)
+  
+     --tessOrder <int>
+       Tessellation order for the fine orientations. (value: 7)
+  
+     --initialOrientations <std::string>
+       A given orientations for an intialization.
+  
+     --fineOrientations <std::string>
+       A given fine orientations. It overrides --tessOrder
+  
+     --numberOfSamples <std::vector<int>>
+       number of samples in single/multiple shells.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Output orientation file(s), single shell or multiple
+       shells.
+  
+  
+     Description: Incrementatl estimation for single and multiple shell
+     sampling scheme. 
+  
+     Examples: 
+  
+     SamplingSchemeQSpaceIncrementalEstimation grad_90_ISC.txt
+     --numberOfSamples 90 
+  
+     SamplingSchemeQSpaceIncrementalEstimation grad_90x3_ISC.txt
+     --numberOfSamples 90,90,90 
+  
+     Reference: 
+  
+     Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, 'Single- and
+     Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using
+     Spherical Codes', IEEE Transactions on Medical Imaging (TMI),
+     2017.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

@@ -1,0 +1,95 @@
+ImageInfo
+=========
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     ImageInfo  [--returnparameterfile <std::string>]
+                [--processinformationaddress <std::string>] [--xml] [--echo]
+                [--bvalues] [--bvalue] [--gradients] [--metadata] [--origin]
+                [--sizeinpixels] [--sizeincomponents] [--sizeinbytes]
+                [--components] [--pixeltype] [--componenttype] [--spacing
+                <int>] [--dimension <int>] [--] [--version] [-h]
+                <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --bvalues
+       Diffusion weightings (b-values). (value: 0)
+  
+     --bvalue
+       Diffusion weighting (b-value). (value: 0)
+  
+     --gradients
+       Gradient directions. (value: 0)
+  
+     --metadata
+       Meta data. (value: 0)
+  
+     --origin
+       Image origin. (value: 0)
+  
+     --sizeinpixels
+       Image size in pixels. (value: 0)
+  
+     --sizeincomponents
+       Image size in components. (value: 0)
+  
+     --sizeinbytes
+       Image size in bytes. (value: 0)
+  
+     --components
+       Number of components per voxel. (value: 0)
+  
+     --pixeltype
+       Pixel type. (value: 0)
+  
+     --componenttype
+       Component type. (value: 0)
+  
+     --spacing <int>
+       Image spacing. (value: 0)
+  
+     --dimension <int>
+       Image dimension. (value: 0)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input file.
+  
+  
+     Description: Display image information.
+  
+     Examples: 
+  
+     ImageInfo image.nii.gz
+  
+     Author(s): Pew-Thian Yap (ptyap@med.unc.edu)
+  
+  

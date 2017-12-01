@@ -1,0 +1,85 @@
+SHCoefficientsPower
+===================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SHCoefficientsPower  [--returnparameterfile <std::string>]
+                          [--processinformationaddress <std::string>] [--xml]
+                          [--echo] [--debug] [-p] [--nt <int>] [--sh <int>]
+                          [--power <double>] [--] [--version] [-h]
+                          <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --nt <int>
+       Number of threads. If it not positive, then the default number for
+       multiple threads is used. (value: -1)
+  
+     --sh <int>
+       SH Rank for output SH coefficients. It is needed for refitting if the
+       power is not 2 or 1. If not set, it is set as the rank of the input SH
+       image. (value: -1)
+  
+     --power <double>
+       Power argument. If the power is 2, we have closed form. For other
+       power number, we use a numerical fitting of the powered spherical
+       function. (value: 1)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Vector image that contains the SH coefficients.
+  
+     <std::string>
+       (required)  Vector image that will contain the rotated SH
+       coefficients.
+  
+  
+     Description: Power of a spherical function represented by SH basis.
+  
+     Examples: 
+  
+     SHCoefficientsPower odf.nii.gz odf_power.nii.gz --power 2.0  
+  
+     Reference: 
+  
+     Jian Cheng, Rachid Deriche, Tianzi Jiang, Dinggang Shen, Pew-Thian Yap,
+     'Non-Negative Spherical Deconvolution (NNSD) for estimation of fiber
+     Orientation Distribution Function in single-/multi-shell diffusion MRI',
+     NeuroImage, vol. 101, pp. 750–764, 2014.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+  

@@ -1,0 +1,25 @@
+CartesianToSpherical
+====================
+
+.. code-block:: none
+
+  % Convert x,y,z to theta, phi, r. 
+  %
+  % x = r.*sin(theta).*cos(phi)
+  % y = r.*sin(theta).*sin(phi)
+  % z = r.*cos(theta)
+  %
+  % USAGE:
+  %    [theta, phi, r] = CartesianToSpherical(x,y,z)
+  %
+  % INPUT
+  %    x       :  Nx1 vector with x coordinates.
+  %    y       :  Nx1 vector with y coordinates.
+  %    z       :  Nx1 vector with z coordinates.
+  %
+  % OUTPUT
+  %    theta, phi, r  : Nx1 vectors
+  %
+  % Copyright (c) 2014, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

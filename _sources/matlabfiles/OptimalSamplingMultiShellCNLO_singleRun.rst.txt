@@ -1,0 +1,42 @@
+OptimalSamplingMultiShellCNLO_singleRun
+=======================================
+
+.. code-block:: none
+
+  % update gradients from an initial gradient set, such that the updated gradients are evenly distributed. 
+  %
+  % USAGE:
+  %   [gradCell, xopt, fopt, retcode] = OptimalSamplingMultiShellCNLO_singleRun(gradCellInitial, param)
+  %
+  % INPUT (required)
+  %   gradCellInitial      :  N_k x 3 gradient matrices, where each row is a point in sphere. k=1,2,...,K
+  %   param.w              :  weight for single shell term. 0<w<1. 0.5 is the default value.
+  % 
+  % INPUT (optional)
+  %   param.solver         :  'nlopt' (default): use sqp solver (SLSQP) in NLOPT.
+  %                           'matlab': use fmincon (sqp solver).
+  %   param.cartesian      :  true (default): use cartesian coordinate (with unit equality constraint);
+  %                           false: use spherical coordinate (no unit equality constraint).
+  % 
+  %   param.localCon       :  0: do not use local constraint
+  %                           1 (default): use local constraint for the distance between samples in results and samples in initialization to reduce the inequality constraint. 
+  %                                        It is faster, and with an appropriate localConAngle, it can obtain the same results as it is set as false. 
+  %
+  %   param.localConAngle  :  It is the maximal angular change between samples in results and samples in initialization. 
+  %                           It is used when param.localCon is true. It is automatically set based on the upper bounds, if it is not given and param.localCon=true. 
+  %                           If localConAngle>pi/2, then the result is the same as the results without localCon.
+  %
+  % 
+  % OUTPUT
+  %   gradCell             :  Kx1 cell, each element is a gradient matrix. 
+  %
+  %
+  % Reference:
+  %   1. "Single- and Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, IEEE Transactions on Medical Imaging, 2017.  
+  %   2. "Novel single and multiple shell uniform sampling schemes for diffusion MRI using spherical codes", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, MICCAI 2015.  
+  %
+  % Copyright (c) 2014, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="tutorial on Spherical Polar Fourier Imaging" name="description" />
+<meta content="Diffusion MRI, software, tool, dmritool, diffusionmritool, dmri, Spherical Polar Fourier Imaging, Spherical Polar Fourier, Sampling scheme, Uniform sampling, sphere, HARDI, Orientation Distribution Function, ODF, Ensemble Average Propagator, EAP, Diffusion Propagator, q-space, q space, visualization, spherical function, spherical harmonics" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Spherical Polar Fourier Imaging &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DMRITool" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Sampling in Q-Space" href="tutorial_qspacesampling.html"/>
+        <link rel="prev" title="DWI data simulation" href="tutorial_dwisimulation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_dwisimulation.html">DWI data simulation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spherical Polar Fourier Imaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synthetic-data-experiment">Synthetic data Experiment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dwi-data-generation">DWI data generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dl-spfi-reconstruction">DL-SPFI reconstruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l1-spfi-reconstruction">L1-SPFI reconstruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l2-spfi-reconstruction">L2-SPFI reconstruction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytical-reconstruction-of-eap-and-odf">Analytical reconstruction of EAP and ODF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytical-reconstruction-of-scalar-maps">Analytical reconstruction of scalar maps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#real-data-experiment-for-human-connectome-project">Real data Experiment for Human Connectome Project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hcp-data">HCP data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preprocess-for-dmritool">Preprocess for DMRITool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dl-spfi-reconstruction-of-spf-coefficients">DL-SPFI Reconstruction of SPF coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reconstruction-of-eaps">Reconstruction of EAPs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reconstruction-of-scalar-maps">Reconstruction of scalar maps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qspacesampling.html">Sampling in Q-Space</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/commandlist.html">Command List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Spherical Polar Fourier Imaging</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_spfi.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spherical-polar-fourier-imaging">
+<h1>Spherical Polar Fourier Imaging<a class="headerlink" href="#spherical-polar-fourier-imaging" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#theory" id="id19">Theory</a></li>
+<li><a class="reference internal" href="#synthetic-data-experiment" id="id20">Synthetic data Experiment</a><ul>
+<li><a class="reference internal" href="#dwi-data-generation" id="id21">DWI data generation</a></li>
+<li><a class="reference internal" href="#dl-spfi-reconstruction" id="id22">DL-SPFI reconstruction</a></li>
+<li><a class="reference internal" href="#l1-spfi-reconstruction" id="id23">L1-SPFI reconstruction</a></li>
+<li><a class="reference internal" href="#l2-spfi-reconstruction" id="id24">L2-SPFI reconstruction</a></li>
+<li><a class="reference internal" href="#analytical-reconstruction-of-eap-and-odf" id="id25">Analytical reconstruction of EAP and ODF</a></li>
+<li><a class="reference internal" href="#analytical-reconstruction-of-scalar-maps" id="id26">Analytical reconstruction of scalar maps</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#real-data-experiment-for-human-connectome-project" id="id27">Real data Experiment for Human Connectome Project</a><ul>
+<li><a class="reference internal" href="#hcp-data" id="id28">HCP data</a></li>
+<li><a class="reference internal" href="#preprocess-for-dmritool" id="id29">Preprocess for DMRITool</a></li>
+<li><a class="reference internal" href="#dl-spfi-reconstruction-of-spf-coefficients" id="id30">DL-SPFI Reconstruction of SPF coefficients</a></li>
+<li><a class="reference internal" href="#reconstruction-of-eaps" id="id31">Reconstruction of EAPs</a></li>
+<li><a class="reference internal" href="#reconstruction-of-scalar-maps" id="id32">Reconstruction of scalar maps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="theory">
+<h2><a class="toc-backref" href="#id19">Theory</a><a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<p>Spherical Polar Fourier Imaging (SPFI) is a reconstruction method to estimate continuous diffusion signal,
+Ensemble Average Propagator (EAP), diffusion Orientation Distribution Function (dODF),
+some meaningful quantities (RTO, MSD, PFA) from samples of DWI signals.</p>
+<p>SPFI represents the signal using 3D SPF basis <a class="reference internal" href="#assemlal2009" id="id1">[Assemlal2009]</a>:</p>
+<div class="math">
+<p><img src="_images/math/00bc375063eaf68526455e644a4761f5e05e88c6.png" alt="E(q\uu|\zeta) = \sum_{n=0}^N\sum_{l=0}^L\sum_{m=-l}^l a_{nlm} G_n(q|\zeta) Y_l^m(\uu)
+
+G_n(q|\zeta)=\left[ \frac{2n!}{\zeta ^{3/2}\Gamma(n+3/2)}\right ]^{1/2}\exp\left(-\frac{q^2}{2\zeta}\right) L_n^{1/2}(\frac{q^2}{\zeta})"/></p>
+</div><p>where <img class="math" src="_images/math/ff35339b080003073c00951d178b021f1976c6df.png" alt="\q=q\uu, \uu\in \mathbb{S}^2"/>, <img class="math" src="_images/math/ed5732c0a59dba6fb368c3830d2193896fdc906d.png" alt="\zeta"/> is the scale parameter and <img class="math" src="_images/math/8e918e81df364447e8c1b2607f68a7f01eabea70.png" alt="Y_l^m(\uu)"/> is the real spherical harmonic basis.</p>
+<p>The reconstruction in SPFI has two steps:</p>
+<ol class="arabic simple">
+<li>Estimate the coefficients of SPF basis from measurements of diffusion signals using compressed sensing, dictionary learning, etc.</li>
+<li>Analytically reconstruct EAP, dODF, scalar maps from the SPF coefficients  <a class="reference internal" href="#cheng2010a" id="id2">[Cheng2010a]</a>  <a class="reference internal" href="#cheng2010b" id="id3">[Cheng2010b]</a>.</li>
+</ol>
+<p>SPFI can be seen as a generalization of Q-Ball Imaging <a class="reference internal" href="#tuch2004" id="id4">[Tuch2004]</a>. Compared to QBI which works only for single shell data, SPFI works for arbitrarily sampled data.
+Compared to Diffusion spectrum imaging (DSI), SPFI requires relatively less number of samples and lower b values.
+SPFI uses analytical transforms, avoiding numerical Fourier transform and numerical integral in DSI.</p>
+<p>A typical sampling scheme for SPFI has 2 or 3 b-values, maximal b value more than 3000 <img class="math" src="_images/math/b4135658c5b2507746b5e254a8217089d59841ec.png" alt="s/mm^2"/>, and each shell has more than 30 samples.
+For example, b values are 1500 and 3000, 40 samples per shell.
+The samples in different shell are better to be staggered.
+See <a class="reference internal" href="tutorial_qspacesampling.html#uniformsampling"><span class="std std-ref">the tutorial on uniform sampling scheme</span></a>.</p>
+</div>
+<div class="section" id="synthetic-data-experiment">
+<h2><a class="toc-backref" href="#id20">Synthetic data Experiment</a><a class="headerlink" href="#synthetic-data-experiment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dwi-data-generation">
+<h3><a class="toc-backref" href="#id21">DWI data generation</a><a class="headerlink" href="#dwi-data-generation" title="Permalink to this headline">¶</a></h3>
+<p>Generate DWI data in 3 shells.
+See <a class="reference internal" href="tutorial_dwisimulation.html#dwisimulator"><span class="std std-ref">the tutorial on DWI data simulation</span></a>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">DMRITOOL_SOURCE_DIR</span><span class="si">}</span>/Examples
+
+<span class="nv">b</span><span class="o">=</span><span class="m">1000</span>,2000,3000
+DWISimulator <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/dwi_circle_crossing.txt --outdwi dwi.nii.gz --outodf odfTrue.nii.gz --outeap eapTrue_r0.015.nii.gz --qorientations <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/Elec060.txt --bvalues <span class="si">${</span><span class="nv">b</span><span class="si">}</span> --rorientations <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/directions_t4.txt --rvalues <span class="m">0</span>.015 --noisesigma <span class="m">0</span>.0 --outb0 dwi_diagonal_b0.nii.gz --outputdwitype EACHSHELL
+</pre></div>
+</div>
+</div>
+<div class="section" id="dl-spfi-reconstruction">
+<h3><a class="toc-backref" href="#id22">DL-SPFI reconstruction</a><a class="headerlink" href="#dl-spfi-reconstruction" title="Permalink to this headline">¶</a></h3>
+<p id="dl-spfi">Reconstruction of SPF coefficients using DL-SPFI (with the default scale).</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SphericalPolarFourierImaging dwi.txt --sh <span class="m">8</span> --ra <span class="m">4</span> --signal signalSPF.nii.gz --radius <span class="m">0</span>.015 --estimation L1_DL --lambdaL1 1e-7
+</pre></div>
+</div>
+<ul class="simple">
+<li>The above commend is to perform DL-SPFI using SH rank 8 and radial rank 4, regularization parameter lambda 1e-7.</li>
+<li>It uses default scale <img class="math" src="_images/math/eec95afa1b5cea0380951aebf491d1de97e09083.png" alt="\zeta = 1.0 / (8 \pi^2 \tau D_0)"/>, default mean diffusivity <img class="math" src="_images/math/4a61646080ed70d14ba0aa09cbaedd256d9d22d7.png" alt="D_0=0.7\times 10^{-3} mm^2/s"/> for all voxels. You can set default mean diffusivity in <code class="docutils literal"><span class="pre">--md0</span></code></li>
+<li>You can try different regularization <code class="docutils literal"><span class="pre">lamdaL1</span></code> around <img class="math" src="_images/math/5c3cd4c7e476e953d161b895a5053e30bb403db1.png" alt="1e-6"/> in range <img class="math" src="_images/math/aef6ed8bfb27d9db23ad2aa651f338ec6ad68a88.png" alt="[1e-8, 1e-5]"/></li>
+<li>For real data or general synthetic data with unknown mean diffusivity,
+It is better to estimate mean diffusivity and adaptively set scale for each voxel.</li>
+</ul>
+<p>We use a <strong>generalized high order tensor (GHOT)</strong> model to estimate the mean diffusivity <a class="reference internal" href="#chengthesis2012" id="id5">[ChengThesis2012]</a>.
+Then use DL-SPFI with adaptive scale for adaptive dictionary <a class="reference internal" href="#cheng2013" id="id6">[Cheng2013]</a>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>MeanDiffusivityEstimator dwi.txt D_sh4_ra1.nii.gz --sh <span class="m">4</span> --ra <span class="m">1</span>
+SphericalPolarFourierImaging dwi.txt --sh <span class="m">8</span> --ra <span class="m">4</span> --signal signalSPF.nii.gz --radius <span class="m">0</span>.015 --estimation L1_DL --lambdaL1 1e-7  --mdImage D_sh4_ra1.nii.gz
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You <strong>cannot</strong> use different ranks from SH rank 8 and radial rank 4 for <strong>DL-SPFI</strong>, because the used dictionary was learned using rank <code class="docutils literal"><span class="pre">(8,4)</span></code>.</p>
+</div>
+</div>
+<div class="section" id="l1-spfi-reconstruction">
+<h3><a class="toc-backref" href="#id23">L1-SPFI reconstruction</a><a class="headerlink" href="#l1-spfi-reconstruction" title="Permalink to this headline">¶</a></h3>
+<p>Without using learned dictionary, you can try L1-SPFI which uses least squares with L1 norm regularization based on compressed sensing <a class="reference internal" href="#cheng2011" id="id7">[Cheng2011]</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SphericalPolarFourierImaging</span> <span class="n">dwi</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">sh</span> <span class="mi">8</span> <span class="o">--</span><span class="n">ra</span> <span class="mi">4</span> <span class="o">--</span><span class="n">lambdaSH</span> <span class="mf">1e-9</span> <span class="o">--</span><span class="n">lambdaRA</span> <span class="mf">1e-9</span> <span class="o">--</span><span class="n">signal</span> <span class="n">signalSPF</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">radius</span> <span class="mf">0.015</span> <span class="o">--</span><span class="n">estimation</span> <span class="n">L1_2</span> <span class="o">--</span><span class="n">mdImage</span> <span class="n">D_sh4_ra1</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Without <code class="docutils literal"><span class="pre">--mdImage</span> <span class="pre">D_sh4_ra1.nii.gz</span></code>, it uses default scale for all voxels.</li>
+<li>You can try different ranks, and different regularizations <code class="docutils literal"><span class="pre">lambdaSH</span></code> and <code class="docutils literal"><span class="pre">lambdaRA</span></code> around <img class="math" src="_images/math/286bf95983d478c294fad1ed6670ae4cc91f84dd.png" alt="1e-8"/>.</li>
+</ul>
+</div>
+<div class="section" id="l2-spfi-reconstruction">
+<h3><a class="toc-backref" href="#id24">L2-SPFI reconstruction</a><a class="headerlink" href="#l2-spfi-reconstruction" title="Permalink to this headline">¶</a></h3>
+<p>Besides DL-SPFI and L1-SPFI, you can also try L2-SPFI which uses least squares with L2 norm regularization <a class="reference internal" href="#cheng2010a" id="id8">[Cheng2010a]</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SphericalPolarFourierImaging</span> <span class="n">dwi</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">sh</span> <span class="mi">6</span> <span class="o">--</span><span class="n">ra</span> <span class="mi">2</span> <span class="o">--</span><span class="n">lambdaSH</span> <span class="mf">1e-9</span> <span class="o">--</span><span class="n">lambdaRA</span> <span class="mf">1e-9</span> <span class="o">--</span><span class="n">signal</span> <span class="n">signalSPF</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">radius</span> <span class="mf">0.015</span> <span class="o">--</span><span class="n">estimation</span> <span class="n">LS</span> <span class="o">--</span><span class="n">mdImage</span> <span class="n">D_sh4_ra1</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Without <code class="docutils literal"><span class="pre">--mdImage</span> <span class="pre">D_sh4_ra1.nii.gz</span></code>, it uses the default scale for all voxels based on the default mean diffusivity.</li>
+<li>You can try different ranks, and different regularizations <code class="docutils literal"><span class="pre">lambdaSH</span></code> and <code class="docutils literal"><span class="pre">lambdaRA</span></code> around <img class="math" src="_images/math/286bf95983d478c294fad1ed6670ae4cc91f84dd.png" alt="1e-8"/>.</li>
+<li>You may need to use lower ranks in L2-SPFI than L1-SPFI and DL-SPFI.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We encourage you to use DL-SPFI with adaptive scales other than L2-SPFI or L1-SPFI.</p>
+</div>
+</div>
+<div class="section" id="analytical-reconstruction-of-eap-and-odf">
+<h3><a class="toc-backref" href="#id25">Analytical reconstruction of EAP and ODF</a><a class="headerlink" href="#analytical-reconstruction-of-eap-and-odf" title="Permalink to this headline">¶</a></h3>
+<p>SPFI has analytical relationship between SPF coefficients and EAP profiles, ODFs.
+See <a class="reference internal" href="#cheng2010a" id="id9">[Cheng2010a]</a> and <a class="reference internal" href="#cheng2010b" id="id10">[Cheng2010b]</a>.
+You can use different methods (L2-SPFI, L1-SPFI or DL-SPFI) to reconstruct SPF coefficients,
+then you always can efficiently obtain the EAP profiles and ODFs from the SPF coefficients.
+But please set the scale in SPF basis correctly based the mean diffusivity used in SPF coefficients reconstruction, also set the ranks correctly.</p>
+<ul class="simple">
+<li>Analytically obtain EAP profiles and ODFs (using default scale based on default mean diffusivity).</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SPFToProfile</span> <span class="n">signalSPF</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mf">015.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">sh</span> <span class="mi">8</span> <span class="o">--</span><span class="n">ra</span> <span class="mi">4</span> <span class="o">--</span><span class="n">radius</span> <span class="mf">0.015</span> <span class="o">--</span><span class="n">fourier</span>
+<span class="n">SPFToODF</span> <span class="n">signalSPF</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">odf</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">sh</span> <span class="mi">8</span> <span class="o">--</span><span class="n">ra</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Analytically obtain EAP profiles and ODFs (using adaptive scale based on adaptive mean diffusivity).</li>
+</ul>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SPFToProfile signalSPF.nii.gz eap_r0.015.nii.gz --sh <span class="m">8</span> --ra <span class="m">4</span> --radius <span class="m">0</span>.015 --fourier --mdImage D_sh4_ra1.nii.gz
+SPFToODF signalSPF.nii.gz odf.nii.gz --sh <span class="m">8</span> --ra <span class="m">4</span> --mdImage D_sh4_ra1.nii.gz
+</pre></div>
+</div>
+<ul class="simple">
+<li>Visualization of EAP profiles and ODFs.</li>
+</ul>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>MeshFromSHCoefficients eap_r0.015.nii.gz -o eap_r0.015_vis.vtk --tessorder <span class="m">4</span> --scale 8e-6
+VTKPolyData.py --vtk eap_r0.015_vis.vtk --png synthetic_eap_r0.015.png --zoom <span class="m">1</span>.3
+MeshFromSHCoefficients odf.nii.gz -o odf_vis.vtk --tessorder <span class="m">4</span> --scale <span class="m">1</span>.5
+VTKPolyData.py --vtk odf_vis.vtk --png synthetic_odf.png --zoom <span class="m">1</span>.3
+</pre></div>
+</div>
+<div class="figure align-center" id="id16">
+<a class="reference internal image-reference" href="_images/synthetic_eap_r0.015.png"><img alt="synthetic_eap_r0.015.png" src="_images/synthetic_eap_r0.015.png" style="width: 480.0px; height: 480.0px;" /></a>
+<p class="caption"><span class="caption-text"><strong>eap_r0.015</strong></span></p>
+</div>
+<div class="figure align-center" id="id17">
+<a class="reference internal image-reference" href="_images/synthetic_odf.png"><img alt="synthetic_odf.png" src="_images/synthetic_odf.png" style="width: 480.0px; height: 480.0px;" /></a>
+<p class="caption"><span class="caption-text"><strong>odf</strong></span></p>
+</div>
+</div>
+<div class="section" id="analytical-reconstruction-of-scalar-maps">
+<h3><a class="toc-backref" href="#id26">Analytical reconstruction of scalar maps</a><a class="headerlink" href="#analytical-reconstruction-of-scalar-maps" title="Permalink to this headline">¶</a></h3>
+<p>We can analytically generate some scalar maps using the estimated SPF coefficients.
+See <a class="reference internal" href="#wu2007" id="id11">[Wu2007]</a>, <a class="reference internal" href="#cheng2010a" id="id12">[Cheng2010a]</a>, <a class="reference internal" href="#chengthesis2012" id="id13">[ChengThesis2012]</a>.</p>
+<ul class="simple">
+<li><strong>Return-To-Origin probability (RTO)</strong> is the EAP with <img class="math" src="_images/math/25f2430ba1c87922798f129f9cdeee9a2ebc04eb.png" alt="r=0"/>, i.e. <img class="math" src="_images/math/d2451d1ddc162f8887e2108f2ee862d749eb4e58.png" alt="P(0)"/>.</li>
+</ul>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SPFToScalarMap signalSPF.nii.gz rto.nii.gz --mapType RTO  --sh <span class="m">8</span> --ra <span class="m">4</span> --mdImage D_sh4_ra1.nii.gz
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>Mean Squared Displacement (MSD)</strong> is the variance of the probability, i.e. <img class="math" src="_images/math/b1d7828d3748ea3fe8f03f9fe113bf57a0433ac1.png" alt="\int_{\mathbb{R}^3} P(R) R^TR d R"/>.</li>
+</ul>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SPFToScalarMap signalSPF.nii.gz msd.nii.gz --mapType MSD  --sh <span class="m">8</span> --ra <span class="m">4</span> --mdImage D_sh4_ra1.nii.gz
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>Propagator Fractional Anisotropy (PFA)</strong> is a generalization of FA for non-Gaussian EAP.
+It is defined as the normalized L2 distance between the EAP to its nearest EAP. See <a class="reference internal" href="#chengthesis2012" id="id14">[ChengThesis2012]</a>.</li>
+</ul>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SPFToScalarMap signalSPF.nii.gz pfa.nii.gz --mapType PFA  --sh <span class="m">8</span> --ra <span class="m">4</span> --mdImage D_sh4_ra1.nii.gz
+</pre></div>
+</div>
+<ul class="simple">
+<li>From the above estimated EAP profiles and ODFs, you can also generate <strong>generalized FA (GFA)</strong>. See <a class="reference internal" href="#tuch2004" id="id15">[Tuch2004]</a>.</li>
+</ul>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SHCoefficientsToGFA eap_r0.015.nii.gz eap_r0.015_gfa.nii.gz
+SHCoefficientsToGFA odf.nii.gz odf_gfa.nii.gz
+</pre></div>
+</div>
+<ul class="simple">
+<li>We can visualize eap profile using scalar maps as background.
+<code class="docutils literal"><span class="pre">--image-range</span></code> is to control the contrast in visualization.
+If it is not given, it maps the minimal value to black and the maximal value to white.</li>
+</ul>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>VTKPolyData.py --vtk eap_r0.015_vis.vtk --image eap_r0.015_gfa.nii.gz --image-range <span class="m">0</span>,1 --png synthetic_eap_r0.015_withgfa.png --zoom <span class="m">1</span>.3
+</pre></div>
+</div>
+<div class="figure align-center" id="id18">
+<a class="reference internal image-reference" href="_images/synthetic_eap_r0.015_withgfa.png"><img alt="synthetic_eap_r0.015_withgfa.png" src="_images/synthetic_eap_r0.015_withgfa.png" style="width: 480.0px; height: 480.0px;" /></a>
+<p class="caption"><span class="caption-text"><strong>eap_r0.015</strong></span></p>
+</div>
+</div>
+</div>
+<div class="section" id="real-data-experiment-for-human-connectome-project">
+<h2><a class="toc-backref" href="#id27">Real data Experiment for Human Connectome Project</a><a class="headerlink" href="#real-data-experiment-for-human-connectome-project" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hcp-data">
+<h3><a class="toc-backref" href="#id28">HCP data</a><a class="headerlink" href="#hcp-data" title="Permalink to this headline">¶</a></h3>
+<p>We downloaded a preprocessed subject data (ID: 100307) from <a class="reference external" href="http://www.humanconnectome.org/documentation/Q3/">HCP data</a>.
+The data has three shells with b values of 1000, 2000, 3000 <img class="math" src="_images/math/b4135658c5b2507746b5e254a8217089d59841ec.png" alt="s/mm^2"/>, 90 samples per shell.
+It also contains 18 volumes with <code class="docutils literal"><span class="pre">b=0</span></code>, thus totally it has 288 volumes.
+Considering the data size is big <code class="docutils literal"><span class="pre">(145,</span> <span class="pre">174,</span> <span class="pre">145,</span> <span class="pre">288)</span></code>, we cropped only one slice for this tutorial.
+You can download it from <a class="reference external" href="https://www.dropbox.com/s/ct8hsbn8wfp1diw/HCP_100307_c88.zip?dl=0">this link</a>.</p>
+</div>
+<div class="section" id="preprocess-for-dmritool">
+<h3><a class="toc-backref" href="#id29">Preprocess for DMRITool</a><a class="headerlink" href="#preprocess-for-dmritool" title="Permalink to this headline">¶</a></h3>
+<p>The data has already preprocessed.
+Here we just use <a class="reference internal" href="commands/DWIPreprocess.html"><span class="doc">DWIPreprocess</span></a> to normalize the DWI data using the baseline image.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="n">b_raw</span><span class="o">.</span><span class="n">txt</span> <span class="n">grad_raw</span><span class="o">.</span><span class="n">txt</span> <span class="n">dwi_c88</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">&gt;</span> <span class="n">data_c88_raw</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">DWIPreprocess</span> <span class="n">data_c88_raw</span><span class="o">.</span><span class="n">txt</span>  <span class="n">data_c88_normalize</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">oEachShell</span> <span class="o">--</span><span class="n">bThreshold</span> <span class="mi">15</span> <span class="o">--</span><span class="n">mask</span> <span class="n">mask_c88</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>  <span class="o">--</span><span class="n">odwi</span> <span class="n">dwi_c88_normalize</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>  <span class="o">--</span><span class="n">ograd</span> <span class="n">grad_normalize</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">ob0Image</span> <span class="n">dwi_c88_b0</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The b values in the HCP data all larger than 0. There is no exact <code class="docutils literal"><span class="pre">b=0</span></code>. Thus we consider b values smaller than the <code class="docutils literal"><span class="pre">bThreshold</span></code> as <code class="docutils literal"><span class="pre">b=0</span></code>.</li>
+<li>The b values are not exactly equal 1000, 2000, or 3000. <a class="reference internal" href="commands/DWIPreprocess.html"><span class="doc">DWIPreprocess</span></a> can group b values and replace b values using the mean of the group.</li>
+<li>It outputs <code class="docutils literal"><span class="pre">data_c88_normalize.txt</span></code> which contains the b values, gradients and the normalized DWI data.</li>
+</ul>
+</div>
+<div class="section" id="dl-spfi-reconstruction-of-spf-coefficients">
+<h3><a class="toc-backref" href="#id30">DL-SPFI Reconstruction of SPF coefficients</a><a class="headerlink" href="#dl-spfi-reconstruction-of-spf-coefficients" title="Permalink to this headline">¶</a></h3>
+<p>Estimate the mean diffusivity first.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MeanDiffusivityEstimator</span> <span class="n">data_c88_normalize</span><span class="o">.</span><span class="n">txt</span> <span class="n">D_sh4_ra1</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">sh</span> <span class="mi">4</span> <span class="o">--</span><span class="n">ra</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Perform DL-SPFI to estimate the SPF coefficients.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SphericalPolarFourierImaging</span> <span class="n">data_c88_normalize</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">estimation</span> <span class="n">L1_DL</span> <span class="o">--</span><span class="n">sh</span> <span class="mi">8</span> <span class="o">--</span><span class="n">ra</span> <span class="mi">4</span> <span class="o">--</span><span class="n">lambdaL1</span> <span class="mf">1e-6</span>  <span class="o">--</span><span class="n">signal</span> <span class="n">signalSPF</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">solver</span> <span class="n">SPAMS</span> <span class="o">--</span><span class="n">mask</span> <span class="n">mask_c88</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">mdImage</span> <span class="n">D_sh4_ra1</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reconstruction-of-eaps">
+<h3><a class="toc-backref" href="#id31">Reconstruction of EAPs</a><a class="headerlink" href="#reconstruction-of-eaps" title="Permalink to this headline">¶</a></h3>
+<p>Obtain EAP profiles from the SPF coefficients, and obtain GFA of EAP profiles.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SPFToProfile</span> <span class="n">signalSPF</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mf">015.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>  <span class="o">--</span><span class="n">radius</span> <span class="mf">0.015</span> <span class="o">--</span><span class="n">ra</span> <span class="mi">4</span> <span class="o">--</span><span class="n">sh</span> <span class="mi">8</span> <span class="o">--</span><span class="n">mdImage</span> <span class="n">D_sh4_ra1</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">fourier</span>
+<span class="n">SHCoefficientsToGFA</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mf">015.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mi">015</span><span class="n">_gfa</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>Generate a coarse mesh (<code class="docutils literal"><span class="pre">--tessorder</span> <span class="pre">3</span></code>) for visualization the EAP profiles in a whole slice.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MeshFromSHCoefficients</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mf">015.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mi">015</span><span class="n">_visall</span><span class="o">.</span><span class="n">vtk</span> <span class="o">--</span><span class="n">tessorder</span> <span class="mi">3</span> <span class="o">--</span><span class="n">scale</span> <span class="mf">1e-5</span>
+</pre></div>
+</div>
+<p>Generate a fine mesh (<code class="docutils literal"><span class="pre">--tessorder</span> <span class="pre">4</span></code>) for visualization the EAP profiles in a ROI.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MeshFromSHCoefficients</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mf">015.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mi">015</span><span class="n">_vis</span><span class="o">.</span><span class="n">vtk</span> <span class="o">--</span><span class="n">tessorder</span> <span class="mi">4</span> <span class="o">--</span><span class="n">scale</span> <span class="mf">1e-5</span> <span class="o">--</span><span class="n">box</span> <span class="mi">80</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">90</span>
+</pre></div>
+</div>
+<p>You can use <a class="reference internal" href="commands/VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a> or <a class="reference external" href="http://www.paraview.org">paraview</a> to visualize the vtk files.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VTKPolyData</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">vtk</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mi">015</span><span class="n">_visall</span><span class="o">.</span><span class="n">vtk</span>
+<span class="n">VTKPolyData</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">vtk</span> <span class="n">eap_r0</span><span class="o">.</span><span class="mi">015</span><span class="n">_vis</span><span class="o">.</span><span class="n">vtk</span>
+</pre></div>
+</div>
+<p>You can also put scalar map like GFA map in the background.
+See the following results obtained by <a class="reference external" href="http://www.paraview.org">paraview</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_images/HCP_DL-SPFI_1e-6_eap_r0.015_whole.png"><img alt="HCP_eap_r0.015_whole" src="_images/HCP_DL-SPFI_1e-6_eap_r0.015_whole.png" style="width: 518.4px; height: 433.8px;" /></a></td>
+<td><a class="reference internal" href="_images/HCP_DL-SPFI_1e-6_eap_r0.015_ROI.png"><img alt="HCP_eap_r0.015_ROI" src="_images/HCP_DL-SPFI_1e-6_eap_r0.015_ROI.png" style="width: 400.4px; height: 405.3px;" /></a></td>
+</tr>
+<tr class="row-even"><td>eap_r0.015_visall.vtk</td>
+<td>eap_r0.015_vis.vtk</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reconstruction-of-scalar-maps">
+<h3><a class="toc-backref" href="#id32">Reconstruction of scalar maps</a><a class="headerlink" href="#reconstruction-of-scalar-maps" title="Permalink to this headline">¶</a></h3>
+<p>Analytical reconstruction of RTO, MSD and PFA maps.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SPFToScalarMap signalSPF.nii.gz rto.nii.gz --mapType RTO  --sh <span class="m">8</span> --ra <span class="m">4</span> --mdImage D_sh4_ra1.nii.gz
+SPFToScalarMap signalSPF.nii.gz msd.nii.gz --mapType MSD  --sh <span class="m">8</span> --ra <span class="m">4</span> --mdImage D_sh4_ra1.nii.gz
+SPFToScalarMap signalSPF.nii.gz pfa.nii.gz --mapType PFA  --sh <span class="m">8</span> --ra <span class="m">4</span> --mdImage D_sh4_ra1.nii.gz
+</pre></div>
+</div>
+<p>You can use many tools to visualize the 3D volume, e.g. <a class="reference internal" href="commands/VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a>.
+Here are pictures for the scalar maps I got by <code class="docutils literal"><span class="pre">fslview</span></code> in <a class="reference external" href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_images/HCP_DL-SPFI_1e-6_RTO.png"><img alt="HCP_RTO" src="_images/HCP_DL-SPFI_1e-6_RTO.png" style="width: 282.1px; height: 240.8px;" /></a></td>
+<td><a class="reference internal" href="_images/HCP_DL-SPFI_1e-6_MSD.png"><img alt="HCP_MSD" src="_images/HCP_DL-SPFI_1e-6_MSD.png" style="width: 282.1px; height: 240.8px;" /></a></td>
+<td><a class="reference internal" href="_images/HCP_DL-SPFI_1e-6_PFA.png"><img alt="HCP_PFA" src="_images/HCP_DL-SPFI_1e-6_PFA.png" style="width: 282.1px; height: 240.8px;" /></a></td>
+</tr>
+<tr class="row-even"><td>RTO map</td>
+<td>MSD map</td>
+<td>PFA map</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="assemlal2009" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Assemlal2009]</a></td><td>Haz-Edine Assemlal, David Tschumperle, Luc Brun,
+<a class="reference external" href="http://dx.doi.org/10.1016/j.media.2009.06.004">Efficient and robust computation of PDF features from diffusion MR signal</a>, Medical Image Analysis, vol 13, p. 715-729, 2009</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="tuch2004" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Tuch2004]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id15">2</a>)</em> David S. Tuch, <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/mrm.20279/full">Q-Ball Imaging</a>,  Magnetic Resonance in Medicine, vol 52, p. 1358-1372, 2004.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="wu2007" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[Wu2007]</a></td><td>Yu-Chien Wu, Andrew L. Alexanderb, <a class="reference external" href="http://www.ncbi.nlm.nih.gov/pubmed/17481920">Hybrid diffusion imaging</a>, NeuroImage, vol 36, p. 617-629, 2007.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cheng2010a" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Cheng2010a]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id8">2</a>, <a class="fn-backref" href="#id9">3</a>, <a class="fn-backref" href="#id12">4</a>)</em> Jian Cheng, Aurobrata Ghosh, Rachid Deriche, Tianzi Jiang,
+<a class="reference external" href="https://hal.inria.fr/inria-00496932/document">Model-free and Analytical EAP Reconstruction via Spherical Polar Fourier Diffusion MRI</a>,
+13th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI&#8216;10), Beijing, September 20-24, 2010</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cheng2010b" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Cheng2010b]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> Jian Cheng, Aurobrata Ghosh, Rachid Deriche, Tianzi Jiang,
+<a class="reference external" href="https://hal.archives-ouvertes.fr/docs/00/49/69/29/PDF/ODF_MICCAI2010.pdf">Model-free, regularized, fast, and robust analytical orientation distribution function estimation</a>,
+13th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI&#8216;10), Beijing, September 20-24, 2010</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cheng2011" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[Cheng2011]</a></td><td>Jian Cheng, Sylvain Merlet, Emmanuel Caruyer, Aurobrata Ghosh, Rachid Deriche, Tianzi Jiang,
+<a class="reference external" href="http://hal.cirad.fr/inria-00615434/document">Compressive Sensing Ensemble Average Propagator Estimation via L1 Spherical Polar Fourier Imaging</a>,
+MICCAI Workshop on Computational Diffusion MRI (CDMRI&#8216;11), Toronto, Canada, September, 2011</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="chengthesis2012" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[ChengThesis2012]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id13">2</a>, <a class="fn-backref" href="#id14">3</a>)</em> Jian Cheng, Estimation and Processing of Ensemble Average Propagator and Its Features in Diffusion MRI, Universite Nice Sophia Antipolis, 2012</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cheng2013" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[Cheng2013]</a></td><td>Jian Cheng, Tianzi Jiang, Rachid Deriche, Dinggang Shen, Pew-Thian Yap,
+<a class="reference external" href="https://hal.archives-ouvertes.fr/file/index/docid/824507/filename/DL_SPFI_MICCAI.pdf">Regularized Spherical Polar Fourier Diffusion MRI with Optimal Dictionary Learning</a>,
+16th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI&#8216;13), Nagoya, September 22-26, 2013</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_qspacesampling.html" class="btn btn-neutral float-right" title="Sampling in Q-Space" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_dwisimulation.html" class="btn btn-neutral" title="DWI data simulation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

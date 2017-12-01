@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="user guide of dmritool" name="description" />
+<meta content="Diffusion MRI, software, tool, dmritool, diffusionmritool, dmri, Spherical Polar Fourier Imaging, Spherical Polar Fourier, Sampling scheme, Uniform sampling, sphere, HARDI, Orientation Distribution Function, ODF, Ensemble Average Propagator, EAP, Diffusion Propagator, q-space, q space, visualization, spherical function, spherical harmonics" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DMRITool" href="index.html"/>
+        <link rel="next" title="Command List" href="commands/commandlist.html"/>
+        <link rel="prev" title="Sampling in Q-Space" href="tutorial_qspacesampling.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#d-image-format-and-conversion">4D image format and conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nifti-format">nifti format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-volume-image">Multi-Volume image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vectorimage">VectorImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conversion-between-multi-volume-image-and-vectorimage">Conversion between multi-volume image and VectorImage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dwi-data-input-format">DWI data input format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-file-format-for-dwi-data-simulation">Configuration file format for DWI data simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization-of-spherical-function-field">Visualization of spherical function field</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generate-and-visualize-vtk-files">Generate and visualize vtk files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization-using-paraview">Visualization using Paraview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commands/commandlist.html">Command List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/userguide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#d-image-format-and-conversion" id="id1">4D image format and conversion</a><ul>
+<li><a class="reference internal" href="#nifti-format" id="id2">nifti format</a></li>
+<li><a class="reference internal" href="#multi-volume-image" id="id3">Multi-Volume image</a></li>
+<li><a class="reference internal" href="#vectorimage" id="id4">VectorImage</a></li>
+<li><a class="reference internal" href="#conversion-between-multi-volume-image-and-vectorimage" id="id5">Conversion between multi-volume image and VectorImage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dwi-data-input-format" id="id6">DWI data input format</a></li>
+<li><a class="reference internal" href="#configuration-file-format-for-dwi-data-simulation" id="id7">Configuration file format for DWI data simulation</a></li>
+<li><a class="reference internal" href="#visualization-of-spherical-function-field" id="id8">Visualization of spherical function field</a><ul>
+<li><a class="reference internal" href="#generate-and-visualize-vtk-files" id="id9">Generate and visualize vtk files</a></li>
+<li><a class="reference internal" href="#visualization-using-paraview" id="id10">Visualization using Paraview</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="d-image-format-and-conversion">
+<h2><a class="toc-backref" href="#id1">4D image format and conversion</a><a class="headerlink" href="#d-image-format-and-conversion" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nifti-format">
+<h3><a class="toc-backref" href="#id2">nifti format</a><a class="headerlink" href="#nifti-format" title="Permalink to this headline">¶</a></h3>
+<p>Diffusion weighted image (DWI) data is a 4D image data with 3D spatial dimensions and 1D diffusion dimension determined by the <img class="math" src="_images/math/d047c04430c663f0694bd3116724909cb4c5d568.png" alt="\mathbf{q}"/> value.
+In medical image data processing, we normally use <a class="reference external" href="http://nifti.nimh.nih.gov/nifti-1">nifti</a> format to store the 4D image.
+.. See nifti header</p>
+</div>
+<div class="section" id="multi-volume-image">
+<h3><a class="toc-backref" href="#id3">Multi-Volume image</a><a class="headerlink" href="#multi-volume-image" title="Permalink to this headline">¶</a></h3>
+<p>The common way to store 4D image using nifti format is to sore different 3D volumes separately in memory.
+We call it as multi-volume image.
+<a class="reference external" href="http://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL</a> uses this way.
+When we use <a class="reference external" href="http://www.itk.org">ITK</a> to read this image format, we need to use <a class="reference external" href="http://www.itk.org/Doxygen/html/classitk_1_1Image.html">itk::Image&lt;double,4&gt;</a></p>
+<p>In nifti format, a multi-volume image with size <code class="docutils literal"><span class="pre">(64,64,20,120)</span></code> is stored as <code class="docutils literal"><span class="pre">dim[8]</span> <span class="pre">=</span> <span class="pre">4</span> <span class="pre">64</span> <span class="pre">64</span> <span class="pre">20</span> <span class="pre">120</span> <span class="pre">1</span> <span class="pre">1</span> <span class="pre">1</span></code>, where a scalar value is stored in each 4D voxel.
+See <a class="reference external" href="http://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/dim.html">dim description</a>.</p>
+</div>
+<div class="section" id="vectorimage">
+<h3><a class="toc-backref" href="#id4">VectorImage</a><a class="headerlink" href="#vectorimage" title="Permalink to this headline">¶</a></h3>
+<p>In <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a>, we mainly use VectorImage format e.g. <a class="reference external" href="http://www.itk.org/Doxygen/html/classitk_1_1VectorImage.html">ITK::VectorImage&lt;double,3&gt;</a> for data processing.
+In this format, the values for the same voxel is stored continuously in memory.
+We can still nifti format to store it.
+We use this format because it is more efficient for processing 4D image data.
+See <a class="reference external" href="http://www.itk.org/Doxygen44/html/itkVectorImageTest_8cxx-example.html">this example</a>.</p>
+<p>In nifti format, a vectorimage with size <code class="docutils literal"><span class="pre">(64,64,20,120)</span></code> is stored as <code class="docutils literal"><span class="pre">dim[8]</span> <span class="pre">=</span> <span class="pre">5</span> <span class="pre">64</span> <span class="pre">64</span> <span class="pre">20</span> <span class="pre">1</span> <span class="pre">120</span> <span class="pre">1</span> <span class="pre">1</span></code>, where a 120 dimensional vector is stored in each 3D voxel.
+See <a class="reference external" href="http://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/dim.html">dim description</a>.</p>
+</div>
+<div class="section" id="conversion-between-multi-volume-image-and-vectorimage">
+<h3><a class="toc-backref" href="#id5">Conversion between multi-volume image and VectorImage</a><a class="headerlink" href="#conversion-between-multi-volume-image-and-vectorimage" title="Permalink to this headline">¶</a></h3>
+<p>We provide two executables for conversions between these two image storages.</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">VectorTo4DImageConverter</span></code> is to convert a vectorimage to a multi-volume image.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VectorTo4DImageConverter</span>  <span class="n">vectorimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>  <span class="mi">4</span><span class="n">dmultivolumeimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">4DToVectorImageConverter</span></code> is to convert a multi-volume image to a vectorimage.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="n">DToVectorImageConverter</span>  <span class="mi">4</span><span class="n">dmultivolumeimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">vectorimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You can also use <a class="reference internal" href="commands/ImageInfo.html"><span class="doc">ImageInfo</span></a> to check the image header information</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ImageInfo</span> <span class="n">vectorimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">ImageInfo</span> <span class="mi">4</span><span class="n">dmultivolumeimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you installed <a class="reference external" href="http://sourceforge.net/projects/niftilib">niftilib</a>, you can try:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nifti_tool</span> <span class="o">-</span><span class="n">disp_hdr</span> <span class="o">-</span><span class="n">infiles</span> <span class="n">vectorimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">nifti_tool</span> <span class="o">-</span><span class="n">disp_hdr</span> <span class="o">-</span><span class="n">infiles</span> <span class="mi">4</span><span class="n">dmultivolumeimage</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="dwi-data-input-format">
+<h2><a class="toc-backref" href="#id6">DWI data input format</a><a class="headerlink" href="#dwi-data-input-format" title="Permalink to this headline">¶</a></h2>
+<p>DWI data is a 4D image data where the fourth dimension is determined by a gradient file and a set of b values.
+It is possible to put gradient file and b values into the image header,
+as is done in <a class="reference external" href="http://teem.sourceforge.net/nrrd/index.html">NRRD</a> format.
+Then the 3 files (e.g. image data file, gradient file, b values) becomes a single file.</p>
+<p>In <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a>, we choose to store the 3 files (e.g. image data file, gradient file, b values) separately,
+and the routines use a single text file which includes these 3 file names as input.
+The data reconstruction routines all rely on this input format.</p>
+<p>In this format, a 3 shell DWI data with b values of (1000,2000,3000) is stored with a single txt file (e.g. <code class="docutils literal"><span class="pre">data.txt</span></code>).
+This txt file can have two different types.</p>
+<p><strong>Type 1</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">******</span><span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">txt</span><span class="o">***********</span>
+<span class="mi">1000</span>  <span class="n">grad1</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi1</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="mi">2000</span>  <span class="n">grad2</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi2</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="mi">3000</span>  <span class="n">grad3</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi3</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="o">****************************</span>
+</pre></div>
+</div>
+<p>Each line is for a single shell data.
+The gradient file <code class="docutils literal"><span class="pre">grad1.txt</span></code> stores a <code class="docutils literal"><span class="pre">Nx3</span></code> matrix.
+If the dimension <code class="docutils literal"><span class="pre">N</span></code> in <code class="docutils literal"><span class="pre">grad1.txt</span></code> is smaller than the dimension <code class="docutils literal"><span class="pre">M</span></code> in <code class="docutils literal"><span class="pre">dwi1.nii.gz</span></code> (dimension <code class="docutils literal"><span class="pre">XxYxZxM</span></code>),
+the first <code class="docutils literal"><span class="pre">M-N</span></code> dimension in <code class="docutils literal"><span class="pre">dwi.nii.gz</span></code> is for b0 images.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">DWI data files (e.g. <code class="docutils literal"><span class="pre">dwi1.nii.gz</span></code>) can be a multi-volume image format or vectorimage format. Both formats are OK.</p>
+</div>
+<p>If you just want to use some DWI volumes among these <code class="docutils literal"><span class="pre">M</span></code> DWI volumes, you can optionally add a index file in each line to specifically the index of volumes you want to use</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">******</span><span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">txt</span><span class="o">**********************</span>
+<span class="mi">1000</span>  <span class="n">grad1</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi1</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">index1</span><span class="o">.</span><span class="n">txt</span>
+<span class="mi">2000</span>  <span class="n">grad2</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi2</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">index2</span><span class="o">.</span><span class="n">txt</span>
+<span class="mi">3000</span>  <span class="n">grad3</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi3</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">index3</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">***************************************</span>
+</pre></div>
+</div>
+<p>The index file shows the index requested for reading. It starts from 0.</p>
+<p><strong>Type 2</strong>: you can also specifically set all b values for all DWI volumes.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">******</span><span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">txt</span><span class="o">*********************</span>
+<span class="n">b1</span><span class="o">.</span><span class="n">txt</span>  <span class="n">grad1</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi1</span><span class="o">.</span><span class="n">nii</span> <span class="n">index1</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">b2</span><span class="o">.</span><span class="n">txt</span>  <span class="n">grad2</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi2</span><span class="o">.</span><span class="n">nii</span> <span class="n">index2</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">b3</span><span class="o">.</span><span class="n">txt</span>  <span class="n">grad3</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwi3</span><span class="o">.</span><span class="n">nii</span> <span class="n">index3</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">**************************************</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">b1.txt</span></code> and <code class="docutils literal"><span class="pre">grad1.txt</span></code> should have the same dimension. The index files are optional.
+You can also catenate all b value files (gradients, DWI data files) into one b value file (gradients, DWI data files).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">******</span><span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">txt</span><span class="o">******************************</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">txt</span>  <span class="n">gradall</span><span class="o">.</span><span class="n">txt</span>  <span class="n">dwiall</span><span class="o">.</span><span class="n">nii</span> <span class="n">indexall</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">***********************************************</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuration-file-format-for-dwi-data-simulation">
+<h2><a class="toc-backref" href="#id7">Configuration file format for DWI data simulation</a><a class="headerlink" href="#configuration-file-format-for-dwi-data-simulation" title="Permalink to this headline">¶</a></h2>
+<p id="dwiconfigurationfile">We provides <a class="reference internal" href="commands/DWISimulator.html"><span class="doc">DWISimulator</span></a> routine to generate DWI data from a customizable configuration file.
+See example codes in <code class="docutils literal"><span class="pre">Example/test.sh</span></code> and example configuration files in <code class="docutils literal"><span class="pre">Example</span></code> folder.</p>
+<p>The configuration file specially sets the mixture of tensor model or mixture of configuration model for each voxel.
+The following table explains the parameters in the configuration file</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">DimSize</th>
+<th class="head">output DWI image spatial size.</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ElementSpacing</td>
+<td>spatial spacing.</td>
+</tr>
+<tr class="row-odd"><td>Scale</td>
+<td>DWI image for <code class="docutils literal"><span class="pre">b=0</span></code>.</td>
+</tr>
+<tr class="row-even"><td>ModelType</td>
+<td>Symmetric tensor model, or cylinder model, spherical coordinate or Cartesian coordinate.</td>
+</tr>
+<tr class="row-odd"><td>DiffusionParameters</td>
+<td>First three numbers are for spatial position. The following numbers are respectively for each tensor/cylinder components. <br />
+For example, when <code class="docutils literal"><span class="pre">ModelType=SYMMETRICAL_TENSOR_IN_SPHERICAL_COORDS</span></code>, <br />
+<code class="docutils literal"><span class="pre">DiffusionParameters</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">3</span> <span class="pre">0</span> <span class="pre">90</span> <span class="pre">0</span> <span class="pre">0.0015</span> <span class="pre">0.0003</span> <span class="pre">0.5</span> <span class="pre">90</span> <span class="pre">60</span> <span class="pre">0.0015</span> <span class="pre">0.0003</span> <span class="pre">0.5</span></code> means in voxel <code class="docutils literal"><span class="pre">(3,3,0)</span></code>, <br />
+two tensors with eigenvalues <code class="docutils literal"><span class="pre">(0.0015,0.0003)</span></code>, partial volume weight <code class="docutils literal"><span class="pre">0.5</span></code>, spherical coordinates (90,0) and (90,60) respectively. <br />
+Thus crossing angle is <code class="docutils literal"><span class="pre">60</span></code> degree.</td>
+</tr>
+<tr class="row-even"><td>BackgroundDiffusionParameters</td>
+<td>diffusion parameters for all other voxels which are not specially set in <code class="docutils literal"><span class="pre">DiffusionParameters</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>RicianNoiseSigma</td>
+<td>Sigma for  Rician noise. Suggest to set it as 0, then use <a class="reference internal" href="commands/DWINoiseGenerator.html"><span class="doc">DWINoiseGenerator</span></a> to add noise to the noise-free DWI data.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="visualization-of-spherical-function-field">
+<h2><a class="toc-backref" href="#id8">Visualization of spherical function field</a><a class="headerlink" href="#visualization-of-spherical-function-field" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generate-and-visualize-vtk-files">
+<h3><a class="toc-backref" href="#id9">Generate and visualize vtk files</a><a class="headerlink" href="#generate-and-visualize-vtk-files" title="Permalink to this headline">¶</a></h3>
+<p>Both ODFs and EAP profile are spherical function fields, where in each voxel there is a spherical function (e.g. ODF, EAP profile with a fixed radius).
+The spherical function field can be represented using uniform samples of spherical functions or the Spherical Harmonics (SH) coefficients of spherical functions.</p>
+<p>We provides some routines to generate mesh files (.vtk format) from the SH coefficients or spherical function samples.
+Then these vtk files can be visualized in <a class="reference external" href="http://www.paraview.org">paraview</a>
+or using the routine <a class="reference internal" href="commands/vtkviewer.html"><span class="doc">vtkviewer</span></a>
+and <a class="reference internal" href="commands/VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a>.
+Please see <a class="reference internal" href="commands/commandlist.html#commandlist-visualization"><span class="std std-ref">the command list for visualization</span></a>.
+To use <a class="reference internal" href="commands/VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a>, you only need to build VTK with python wrapping.
+It does not need to build <a class="reference external" href="https://diffusionmritool.github.io">dmritool</a>.</p>
+</div>
+<div class="section" id="visualization-using-paraview">
+<h3><a class="toc-backref" href="#id10">Visualization using Paraview</a><a class="headerlink" href="#visualization-using-paraview" title="Permalink to this headline">¶</a></h3>
+<p>When using <a class="reference external" href="http://www.paraview.org">paraview</a>, it is possible to visualize these generated vtk files with a scalar map, e.g. the GFA map, as the background.
+<a class="reference external" href="http://www.paraview.org">Paraview</a> originally can visualize vtk files.
+For the GFA map which is in nifti format, paraview can also visualize it when the <code class="docutils literal"><span class="pre">AnalyzeNiftiIO</span></code> plugin is enabled.
+You can enable it by clicking <code class="docutils literal"><span class="pre">Tools</span></code> -&gt; <code class="docutils literal"><span class="pre">Manage</span> <span class="pre">Plugins</span></code> -&gt; <code class="docutils literal"><span class="pre">AnalyzeNiftiIO</span></code>.</p>
+<p>Note that it supports <code class="docutils literal"><span class="pre">.nii</span></code> file, but not <code class="docutils literal"><span class="pre">.nii.gz</span></code> file, and you may need to set the origin manually in paraview such that
+the gfa map can be visualized in the same coordinate as the EAP profile in vtk format.</p>
+<ul class="simple">
+<li>In the <code class="docutils literal"><span class="pre">properties</span></code> panel, when you click <code class="docutils literal"><span class="pre">toggle</span> <span class="pre">advanced</span> <span class="pre">properties</span></code>, it shows <code class="docutils literal"><span class="pre">Translation</span></code> and <code class="docutils literal"><span class="pre">Scale</span></code>.</li>
+<li>By setting <code class="docutils literal"><span class="pre">translation</span></code>, you can translate the image map to different position.</li>
+<li>By setting <code class="docutils literal"><span class="pre">scale</span></code>, you scale the axis. If you set <code class="docutils literal"><span class="pre">(-1,1,1)</span></code> for scale, it reverses the x-axis.</li>
+</ul>
+<p>You can also enable other useful plugins for paraview, e.g. <code class="docutils literal"><span class="pre">quadview</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="commands/commandlist.html" class="btn btn-neutral float-right" title="Command List" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_qspacesampling.html" class="btn btn-neutral" title="Sampling in Q-Space" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

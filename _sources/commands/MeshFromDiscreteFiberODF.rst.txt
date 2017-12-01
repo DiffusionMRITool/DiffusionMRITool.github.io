@@ -1,0 +1,190 @@
+MeshFromDiscreteFiberODF
+========================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     MeshFromDiscreteFiberODF  [--returnparameterfile <std::string>]
+                               [--processinformationaddress <std::string>]
+                               [--xml] [--echo] [--debug] [-p] [--st]
+                               [--nolighting] [--nonormal] [--zoom <double>]
+                               [--png <std::string>] [--bg
+                               <std::vector<double>>] [--angle
+                               <std::vector<double>>] [--size
+                               <std::vector<int>>] [--tau <double>]
+                               [--colorscheme <DIRECTION|MAGNITUDE>]
+                               [--nostretch] [--removenegative] [--basisType
+                               <TENSOR|CYLINDER>] [--basicshape <TETRAHEDRON
+                               |OCTAHEDRON|ICOSAHEDRON>] [--tessorder <int>]
+                               [--scale <double>] [--slice
+                               <std::vector<int>>] [--box <std::vector<int>>]
+                               [--flip <std::vector<int>>] [--pow <double>]
+                               [--iso] [--tensorISO <double>] [--tensor
+                               <std::vector<double>>] [--odfOrder <int>]
+                               [--outputType <DWI|EAP|ODF>] [--radius
+                               <double>] [--normalize <NONE|MIN_MAX|UNIT_MAX
+                               |UNIT_INTEGRAL>] [--orientations
+                               <std::string>] [--mask <std::string>] [-o
+                               <std::string>] [--] [--version] [-h]
+                               <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --st
+       Use single thread. (value: 0)
+  
+     --nolighting
+       Set LightingOff. (value: 0)
+  
+     --nonormal
+       Do not use vtkPolyDataNormals. (value: 0)
+  
+     --zoom <double>
+       zoom factor. Used when visualzing the vtk file.
+  
+     --png <std::string>
+       output png file. Used when visualzing the vtk file.
+  
+     --bg <std::vector<double>>
+       background color for the window (value: 0,0,0)
+  
+     --angle <std::vector<double>>
+       azimuth,elevation. Used when visualzing the vtk file. (value: 0.0,0.0)
+  
+     --size <std::vector<int>>
+       window size. Used when visualzing the vtk file. (value: 600,600)
+  
+     --tau <double>
+       Tau value. The default is calculated based on 4*pi*pi*tau=1. (value:
+       0.0253303)
+  
+     --colorscheme <DIRECTION|MAGNITUDE>
+       Color scheme. (value: DIRECTION)
+  
+     --nostretch
+       If it is set, the mesh in each voxel is a sphere and the values of the
+       spherical function are only for coloring. (value: 0)
+  
+     --removenegative
+       Remove negative values if set. (value: 0)
+  
+     --basisType <TENSOR|CYLINDER>
+       Type of basis. (value: TENSOR)
+  
+     --basicshape <TETRAHEDRON|OCTAHEDRON|ICOSAHEDRON>
+       Basic shape for subdivision. (value: ICOSAHEDRON)
+  
+     --tessorder <int>
+       Tessellation order. (value: 4)
+  
+     --scale <double>
+       Scale factor. (value: 1)
+  
+     --slice <std::vector<int>>
+       coordinates for coronal, sagittal and transverse views. When -1 is
+       used for x/y/z, then the voxel is visible in the x/y/z-axis. (value:
+       -1,-1,-1)
+  
+     --box <std::vector<int>>
+       only generate mesh from a given box (x0,x1,y0,y1,z0,z1). When -1 is
+       used, then x0/y0/z0 will be 0, x1/y1/z1 will be the maximal number in
+       the x/y/z-axis. (value: -1,-1,-1,-1,-1,-1)
+  
+     --flip <std::vector<int>>
+       Flip x/y/z-axis for spherical functions. 1 means flip, 0 means
+       no-flip. (value: 0,0,0)
+  
+     --pow <double>
+       Power factor. (value: 1)
+  
+     --iso
+       If set, use isotropic component. (value: 0)
+  
+     --tensorISO <double>
+       Isotropic component for tensor. If it is negative, do not use
+       isotropic component. (value: -1)
+  
+     --tensor <std::vector<double>>
+       Three eigenvalues for tensor basis. If two are given, then the last
+       two eigenvalues are the same. (value: 0.0017,0.0002,0.0002)
+  
+     --odfOrder <int>
+       Order for the ODF output. (value: 2)
+  
+     --outputType <DWI|EAP|ODF>
+       Type of output. (value: DWI)
+  
+     --radius <double>
+       Radius for DWI/EAP profile.         It is b value if outputType==DWI. 
+       It is r value if outputType==EAP or outputType==ODF. (value: -1)
+  
+     --normalize <NONE|MIN_MAX|UNIT_MAX|UNIT_INTEGRAL>
+       Perform normalization after removing negative values (if set); NONE:
+       No normalization; MIN_MAX: Min-max normalization; UNIT_MAX: Unit
+       maximum; UNIT_INTEGRATION: Unit integration. (value: NONE)
+  
+     --orientations <std::string>
+       text file which contains orientations. If it is not set, the output is
+       SH coefficients. If set, the output is EAP/DWI samples
+  
+     --mask <std::string>
+       Mask file.
+  
+     -o <std::string>,  --output <std::string>
+       Output vtk file. If it is not set, visualize the vtk file. (value: "")
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input file.
+  
+  
+     Description: Create a mesh (a spherical profile of DWI/EAP/ODF) from
+     discrete fiber ODF for visualization.
+  
+     Examples: 
+  
+     MeshFromDiscreteFiberODF dwi_bw.spr -o dwi_odf_vis.vtk --tessorder 4
+     --basisType TENSOR --tensor 0.0017,0.0002  --scale 1.5 --colorscheme
+     MAGNITUDE --outputType ODF --tensorISO 0.7e-3  --iso 
+  
+     MeshFromDiscreteFiberODF dwi_bw.spr --tessorder 4 --basisType TENSOR
+     --tensor 0.0017,0.0002  --scale 1.5 --colorscheme MAGNITUDE --outputType
+     ODF --tensorISO 0.7e-3  --iso
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

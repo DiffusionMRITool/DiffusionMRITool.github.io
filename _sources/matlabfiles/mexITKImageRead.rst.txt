@@ -1,0 +1,17 @@
+mexITKImageRead
+===============
+
+.. code-block:: none
+
+  % mexITKImageRead: read images stored as any format recognized by ITK
+  %
+  % Usage:
+  %   [image, origin, spacing] = mexITKImageRead('filename')
+  % or 
+  %   image = mexITKImageRead('filename')
+  %
+  % 'filename' is the path to an image readable by ITK
+  % 
+  % Copyright (c) 2013, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

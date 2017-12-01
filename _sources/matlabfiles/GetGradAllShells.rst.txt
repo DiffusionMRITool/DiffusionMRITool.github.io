@@ -1,0 +1,20 @@
+GetGradAllShells
+================
+
+.. code-block:: none
+
+  % Get Nx3 gradient table from gradients in all shells. 
+  %
+  % USAGE:
+  %    gradAll = GetGradAllShells(gradCell)
+  %
+  % INPUT
+  %    gradCell  :  a cell array with M gradient matrix from M shells.
+  %
+  %
+  % OUTPUT
+  %    gradAll   :  Nx3 gradient matrix from all M shells.
+  %
+  % Copyright (c) 2014, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

@@ -1,0 +1,58 @@
+CorrectBValues
+==============
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     CorrectBValues  [--returnparameterfile <std::string>]
+                     [--processinformationaddress <std::string>] [--xml]
+                     [--echo] [-t <double>] [--] [--version] [-h]
+                     <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     -t <double>,  -- <double>
+       b values whose distance is smallter the threshold will be considered
+       in the same shell. (value: 15)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Text file that contains b values.
+  
+     <std::string>
+       (required)  Output file with b values.
+  
+  
+     Description: group similar b values into several shells.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

@@ -1,0 +1,76 @@
+SHCoefficientsRotate
+====================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SHCoefficientsRotate  [--returnparameterfile <std::string>]
+                           [--processinformationaddress <std::string>]
+                           [--xml] [--echo] [--nt <int>] [--vFromTo
+                           <std::vector<double>>] [--] [--version] [-h]
+                           <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --nt <int>
+       Number of threads. If it not positive, then the default number for
+       multiple threads is used. (value: -1)
+  
+     --vFromTo <std::vector<double>>
+       Two 3D vector to determine the rotation matrix. It contains 6 float
+       numbers in Catesian format or 4 float numbers in spherical format.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Vector image that contains the SH coefficients.
+  
+     <std::string>
+       (required)  Vector image that will contain the rotated SH
+       coefficients.
+  
+  
+     Description: Spherical Harmonics Rotation. 
+  
+     Examples: 
+  
+     SHCoefficientsRotate odf.nii.gz odf_rotated.nii.gz --vFromTo 1,1,0,1,0,0
+     
+  
+     SHCoefficientsRotate odf.nii.gz odf_rotated.nii.gz --vFromTo 90,45,90,0 
+     
+  
+     Reference: 
+  
+     Jian Cheng, Peter J. Basser, 'Director Field Analysis (DFA): Exploring
+     Local White Matter Geometric Structure in diffusion MRI', Medical Image
+     Analysis, 2017.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+  

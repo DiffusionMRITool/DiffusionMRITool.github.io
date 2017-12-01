@@ -1,0 +1,121 @@
+OrientationsViewer
+==================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     OrientationsViewer  [--returnparameterfile <std::string>]
+                         [--processinformationaddress <std::string>] [--xml]
+                         [--echo] [--angle <std::vector<double>>] [--window
+                         <std::vector<double>>] [--combine] [--sphere]
+                         [--mesh] [--nopoints] [--pointType <VERTEX|SPHERE>]
+                         [--radiusSphere <double>] [--sizeVertex <double>]
+                         [--radiusFile <std::vector<std::string>>] ... 
+                         [--radius <std::vector<double>>] [--opaSphere
+                         <std::vector<double>>] [--opaMesh
+                         <std::vector<double>>] [--color
+                         <std::vector<double>>] [--bg <std::vector<double>>]
+                         [--nosym] [--png <std::string>] [--] [--version]
+                         [-h] <std::vector<std::string>> ...
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --angle <std::vector<double>>
+       azimuth and elevation for camera. (value: 0.0,0.0)
+  
+     --window <std::vector<double>>
+       window size. (value: 600,600)
+  
+     --combine
+       True: only show the combined shell from multiple shells. (value: 0)
+  
+     --sphere
+       True: show sphere. (value: 0)
+  
+     --mesh
+       True: show Delaunary mesh. (value: 0)
+  
+     --nopoints
+       True: do not show points. (value: 0)
+  
+     --pointType <VERTEX|SPHERE>
+       Type of points. Vertex or sphere. (value: SPHERE)
+  
+     --radiusSphere <double>
+       radius of sphere for points. (value: 0.04)
+  
+     --sizeVertex <double>
+       size of vertex for points. (value: 5)
+  
+     --radiusFile <std::vector<std::string>>  (accepted multiple times)
+       Input radius File. One radius for one point.
+  
+     --radius <std::vector<double>>
+       radius of the sphere. (value: 1.0)
+  
+     --opaSphere <std::vector<double>>
+       Opacity of the sphere. (value: 0.5)
+  
+     --opaMesh <std::vector<double>>
+       Opacity of the Delaunary mesh. (value: 1.0)
+  
+     --color <std::vector<double>>
+       color for each shell (value: 1,1,1)
+  
+     --bg <std::vector<double>>
+       background color for the window (value: 0,0,0)
+  
+     --nosym
+       False: add both input points and their antipodal symmetric points.
+       True: only add input points. (value: 0)
+  
+     --png <std::string>
+       Output png File.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::vector<std::string>>  (accepted multiple times)
+       Input Orientation File.
+  
+  
+     Description: Single and multi-shell orientations viewer.
+  
+     Examples: 
+  
+     OrientationsViewer grad1.txt --mesh 
+  
+     OrientationsViewer grad1.txt grad2.txt --combine --mesh 
+  
+     OrientationsViewer grad1.txt grad2.txt --combine --mesh --png
+     out.png
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

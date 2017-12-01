@@ -1,0 +1,87 @@
+SHCoefficientsFit
+=================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SHCoefficientsFit  [--returnparameterfile <std::string>]
+                        [--processinformationaddress <std::string>] [--xml]
+                        [--echo] [-v <int>] [-p] [--nt <int>] [--power
+                        <double>] [--mask <std::string>] [--lambda <double>]
+                        [--] [--version] [-h] <std::string> <std::string>
+                        <int> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     -v <int>,  --verbose <int>
+       Verbosity log level. Used for debug if >=2. (value: 1)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --nt <int>
+       Number of threads. If it not positive, then the default number for
+       multiple threads is used. (value: -1)
+  
+     --power <double>
+       Power argument for input spherical samples. (value: 1)
+  
+     --mask <std::string>
+       Mask image file.
+  
+     --lambda <double>
+       Lambda for Laplacian-Beltrami regularization. No regularization if
+       lambda=0. (value: 0)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Vector image that contains the sphericla function samples.
+  
+     <std::string>
+       (required)  Input orientation file.
+  
+     <int>
+       (required)  SH Rank for output SH coefficients. (value: -1)
+  
+     <std::string>
+       (required)  Vector image that will contain the SH coefficients.
+  
+  
+     Description: Spherical Harmonics fit from spherical function samples.
+  
+     Examples: 
+  
+     SHCoefficientsPower sphericalSamples.nii.gz grad.txt 8 sh.nii.gz 
+  
+     SHCoefficientsPower sphericalSamples.nii.gz grad.txt 8 sh.nii.gz --power
+     2.0
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+  

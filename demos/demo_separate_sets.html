@@ -1,0 +1,223 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Uniformly separate several subsets from a given set</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-08"><meta name="DC.source" content="demo_separate_sets.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Uniformly separate several subsets from a given set</h1><!--introduction--><p>This is a demo to uniformly separate two subsets from a given set by using Mixed Integer Linear Programming (MILP). It reproduces the experiment in the paper.</p><p>Reference:</p><p>1. "Single- and Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes",    Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, IEEE Transactions on Medical Imaging, 2017.</p><p>2. "Designing Single- and Multiple-Shell Sampling Schemes for Diffusion MRI Using Spherical Code",    Jian Cheng, Dinggang Shen, Pew-Thian Yap, MICCAI 2014.</p><p>Copyright (c) 2013, Jian Cheng (<a href="mailto:jian.cheng.1983@gmail.com">jian.cheng.1983@gmail.com</a>)</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Read two sets of uniform directions</a></li><li><a href="#2">Randomly mix these two sets</a></li><li><a href="#3">Extract two sets using MILP</a></li><li><a href="#4">Test the results</a></li></ul></div><h2>Read two sets of uniform directions<a name="1"></a></h2><pre class="codeinput">grad1 = ReadDirections([getenv(<span class="string">'HOME'</span>), <span class="string">'/.dmritool/Data/Tessellation/directions_t3.txt'</span>]);
+n1 = size(grad1, 1);
+
+grad2 = ReadDirections([getenv(<span class="string">'HOME'</span>), <span class="string">'/.dmritool/Data/ElectricRepulsion/Elec060.txt'</span>]);
+n2 = size(grad2, 1);
+
+<span class="comment">% Visualize the original two schemes. Different colors denote samples in different shells.</span>
+VisualizeMultiShellScheme(grad1, grad2);
+title([<span class="string">'Orignal two schemes'</span>]);
+</pre><img vspace="5" hspace="5" src="demo_separate_sets_01.png" alt=""> <h2>Randomly mix these two sets<a name="2"></a></h2><pre class="codeinput">index = randperm(n1+n2);
+
+gradAll = [grad1; grad2];
+gradAll = gradAll(index,:);
+
+<span class="comment">% Visualize the mixed two schemes.</span>
+VisualizeMultiShellScheme(gradAll);
+title([<span class="string">'Randomly mixed scheme'</span>]);
+</pre><img vspace="5" hspace="5" src="demo_separate_sets_02.png" alt=""> <h2>Extract two sets using MILP<a name="3"></a></h2><p>Now we want to seperate these two sets from the mixture.</p><pre class="codeinput">clear <span class="string">params</span> <span class="string">grbParams</span>
+<span class="comment">% set parameters</span>
+<span class="comment">% w=1 means we do not care about the combined shell with all samples. See the paper.</span>
+params.w=1;
+params.numSamples=[n1 n2];
+
+<span class="comment">% use default grb parameters</span>
+[gradCell, grb, indexMatrix]=OptimalSamplingMultiSubsetsFromSameSet(gradAll,params, []);
+</pre><pre class="codeoutput">MIPFocus = 1
+Academic license - for non-commercial use only
+Optimize a model with 1105 rows, 285 columns and 3855 nonzeros
+Model has 141 SOS constraints
+Variable types: 3 continuous, 282 integer (282 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+00]
+  Objective range  [5e-01, 5e-01]
+  Bounds range     [3e-02, 1e+00]
+  RHS range        [3e+00, 8e+01]
+Presolve added 9 rows and 0 columns
+Presolve removed 0 rows and 1 columns
+Presolve time: 0.02s
+Presolved: 1114 rows, 284 columns, 3477 nonzeros
+Variable types: 2 continuous, 282 integer (282 binary)
+Found heuristic solution: objective 0.0409562
+Found heuristic solution: objective 0.0816685
+
+Root relaxation: objective 3.139177e-01, 632 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.31392    0  282    0.08167    0.31392   284%     -    0s
+H    0     0                       0.2978894    0.31392  5.38%     -    0s
+H    0     0                       0.2978896    0.31392  5.38%     -    0s
+     0     0     cutoff    0         0.29789    0.29789  0.00%     -    0s
+
+Cutting planes:
+  Clique: 60
+  MIR: 2
+  StrongCG: 155
+  Zero half: 1
+
+Explored 1 nodes (933 simplex iterations) in 0.16 seconds
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.29789 0.297889 0.0816685 0.0409562 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.978895564717e-01, best bound 2.978895564717e-01, gap 0.0000%
+</pre><h2>Test the results<a name="4"></a></h2><p>covering radius comparison</p><pre class="codeinput">fprintf(<span class="string">'covering radius of set 1 = %f degree\n'</span>, CoveringRadius(grad1)*180/pi);
+fprintf(<span class="string">'covering radius of set 2 = %f degree\n'</span>, CoveringRadius(grad2)*180/pi);
+fprintf(<span class="string">'covering radius of extracted set 1 = %f degree\n'</span>, CoveringRadius(gradCell{1})*180/pi);
+fprintf(<span class="string">'covering radius of extracted set 2 = %f degree\n'</span>, CoveringRadius(gradCell{2})*180/pi);
+
+<span class="comment">% number of wrongly detected samples</span>
+fprintf(<span class="string">'the number of extracted directions not in set 1: %d\n'</span>, n1-sum(indexMatrix(index&lt;=n1,1)))
+fprintf(<span class="string">'the number of extracted directions not in set 2: %d\n'</span>, n2-sum(indexMatrix(index&gt;n1,2)))
+
+<span class="comment">% Visualize the separated two sets</span>
+VisualizeMultiShellScheme(gradCell{1}, gradCell{2});
+title([<span class="string">'Separated two schemes'</span>]);
+</pre><pre class="codeoutput">covering radius of set 1 = 15.858714 degree
+covering radius of set 2 = 18.276892 degree
+covering radius of extracted set 1 = 15.858714 degree
+covering radius of extracted set 2 = 18.276892 degree
+the number of extracted directions not in set 1: 0
+the number of extracted directions not in set 2: 0
+</pre><img vspace="5" hspace="5" src="demo_separate_sets_03.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Uniformly separate several subsets from a given set
+%
+% This is a demo to uniformly separate two subsets from a given set by 
+% using Mixed Integer Linear Programming (MILP). 
+% It reproduces the experiment in the paper. 
+%
+%
+% Reference:
+%   
+% 1. "Single- and Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes", 
+%    Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, IEEE Transactions on Medical Imaging, 2017.  
+%
+% 2. "Designing Single- and Multiple-Shell Sampling Schemes for Diffusion MRI Using Spherical Code", 
+%    Jian Cheng, Dinggang Shen, Pew-Thian Yap, MICCAI 2014.  
+%
+% Copyright (c) 2013, Jian Cheng (jian.cheng.1983@gmail.com)
+%
+
+%% Read two sets of uniform directions
+grad1 = ReadDirections([getenv('HOME'), '/.dmritool/Data/Tessellation/directions_t3.txt']);
+n1 = size(grad1, 1);
+
+grad2 = ReadDirections([getenv('HOME'), '/.dmritool/Data/ElectricRepulsion/Elec060.txt']);
+n2 = size(grad2, 1);
+
+% Visualize the original two schemes. Different colors denote samples in different shells.
+VisualizeMultiShellScheme(grad1, grad2);
+title(['Orignal two schemes']);
+
+%% Randomly mix these two sets
+index = randperm(n1+n2);
+
+gradAll = [grad1; grad2];
+gradAll = gradAll(index,:);
+
+% Visualize the mixed two schemes. 
+VisualizeMultiShellScheme(gradAll);
+title(['Randomly mixed scheme']);
+
+%% Extract two sets using MILP
+% Now we want to seperate these two sets from the mixture. 
+
+clear params grbParams
+% set parameters
+% w=1 means we do not care about the combined shell with all samples. See the paper. 
+params.w=1;
+params.numSamples=[n1 n2];
+
+% use default grb parameters
+[gradCell, grb, indexMatrix]=OptimalSamplingMultiSubsetsFromSameSet(gradAll,params, []);
+
+%% Test the results 
+% covering radius comparison
+fprintf('covering radius of set 1 = %f degree\n', CoveringRadius(grad1)*180/pi);
+fprintf('covering radius of set 2 = %f degree\n', CoveringRadius(grad2)*180/pi);
+fprintf('covering radius of extracted set 1 = %f degree\n', CoveringRadius(gradCell{1})*180/pi);
+fprintf('covering radius of extracted set 2 = %f degree\n', CoveringRadius(gradCell{2})*180/pi);
+
+% number of wrongly detected samples
+fprintf('the number of extracted directions not in set 1: %d\n', n1-sum(indexMatrix(index<=n1,1)))
+fprintf('the number of extracted directions not in set 2: %d\n', n2-sum(indexMatrix(index>n1,2)))
+
+% Visualize the separated two sets
+VisualizeMultiShellScheme(gradCell{1}, gradCell{2});
+title(['Separated two schemes']);
+
+
+##### SOURCE END #####
+--></body></html>

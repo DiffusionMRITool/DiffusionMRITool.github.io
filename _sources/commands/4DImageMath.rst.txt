@@ -1,0 +1,204 @@
+4DImageMath
+===========
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     4DImageMath  [--returnparameterfile <std::string>]
+                  [--processinformationaddress <std::string>] [--xml]
+                  [--echo] [--crop <std::vector<int>>] [--shred
+                  <std::vector<int>>] [--compose] [--dotproduct] [--amin]
+                  [--amax] [--sum] [--median] [--mean] [--norm <L2|L1|L0
+                  |INF>] [-a <x|y|z|t|0|1|2|3>] [--sqrt] [--square] [--log]
+                  [--exp] [--abs] [-f <std::string>] [--pow <std::string>]
+                  [--min <std::string>] [--max <std::string>] [--mul
+                  <std::string>] [--div <std::string>] [--sub <std::string>]
+                  [--add <std::string>] [-v <int>] [--nt <int>] [--outformat
+                  <NONE|4D|VECTOR>] [--box <std::vector<int>>] [-m
+                  <std::string>] [--] [--version] [-h]
+                  <std::vector<std::string>> ...
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --crop <std::vector<int>>
+       Crop image by 8 parameters (x0,x1,y0,y1,z0,z1,t0,t1). (value: -1,-1,-1
+       ,-1,-1,-1,-1,-1)
+  
+     --shred <std::vector<int>>
+       Shred vector elements along axis according to offset, chunk size, and
+       space specified by parameters 1 to 3. (value: 0,0,0)
+  
+     --compose
+       Compose images along axis (>=2 input images). (value: 0)
+  
+     --dotproduct
+       Dot product along axis (2 input images) (value: 0)
+  
+     --amin
+       minimal value along axis (value: 0)
+  
+     --amax
+       maximal value along axis (value: 0)
+  
+     --sum
+       Sum along axis (value: 0)
+  
+     --median
+       Median along axis (value: 0)
+  
+     --mean
+       Mean along axis (value: 0)
+  
+     --norm <L2|L1|L0|INF>
+       Calculate norm of vector along axis. (value: L2)
+  
+     -a <x|y|z|t|0|1|2|3>,  --axis <x|y|z|t|0|1|2|3>
+       Axis (x/y/z/t, i.e., 0/1/2/3).
+  
+     --sqrt
+       sqrt: square root, i.e., -f 'sqrt(x)' (value: 0)
+  
+     --square
+       square, i.e., -f 'x*x' (value: 0)
+  
+     --log
+       natural logarithm, i.e., -f 'log(x)' (value: 0)
+  
+     --exp
+       exponential, i.e., -f 'exp(x)' (value: 0)
+  
+     --abs
+       absolute value, i.e., -f 'abs(x)' (value: 0)
+  
+     -f <std::string>,  --func <std::string>
+       Perform functions on elements of the input images (one or more
+       inputs). Input images should have the same size, and it does not
+       change the size in the output image. 
+  
+       Note: it is slower (-f 'abs') than functions (--abs). 
+  
+       Example: cos(x)+3*x+abs(x)+2 +x^3 
+  
+       x[0]+x[1]*x[1]+3*x[2] // need >3 inputs 
+  
+       max(x[0],x[1],x[2])  // need >3 inputs 
+  
+       if (x>0.5) 1.0; else 0.0; // mask the input image using threshold 0.5
+  
+     --pow <std::string>
+       Pow image file or a constant.
+  
+     --min <std::string>
+       Take minimum of the input and the following image or constant.
+  
+     --max <std::string>
+       Take maximum of the input and the following image or constant.
+  
+     --mul <std::string>
+       Multiply image file or a constant.
+  
+     --div <std::string>
+       Divide image file or a constant.
+  
+     --sub <std::string>
+       Substract (minus) image file or a constant.
+  
+     --add <std::string>
+       Add image file or a constant.
+  
+     -v <int>,  --verbose <int>
+       Verbose level. 0: no output log. 1: normal log. 2: log for debug log.
+       3: log for large matrix or vectors. (value: 1)
+  
+     --nt <int>
+       Number of threads. If it not positive, then the default number for
+       multiple threads is used. (value: -1)
+  
+     --outformat <NONE|4D|VECTOR>
+       Output format. NONE: same as the input. 4D: itk 4D image, VECTOR: 3D
+       vector image. (value: NONE)
+  
+     --box <std::vector<int>>
+       only perform calculation in a given box (x0,x1,y0,y1,z0,z1). Set zero
+       out of the region. (value: -1,-1,-1,-1,-1,-1)
+  
+     -m <std::string>,  --mask <std::string>
+       Mask image file (3d or 4d image). Set zero out of the region.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::vector<std::string>>  (accepted multiple times)
+       Image list. At least two files (one or more input images, and one
+       output image)
+  
+  
+     Description: Perform math operators on 4D image (4D itk::Image or 3D
+     itk::VectorImage).
+  
+     Examples: 
+  
+     4DImageMath image1.nii.gz out.nii.gz -f 'cos(x)+3*x+sqrt(abs(x))+sqrt(2)
+     +x^3' -m mask.nii.gz  
+  
+     4DImageMath image1.nii.gz out.nii.gz -f 'if (x>0.5) 1.0; else 0.0;' -m
+     mask.nii.gz  
+  
+     4DImageMath image1.nii.gz out.nii.gz --abs -m mask.nii.gz  
+  
+     4DImageMath image1.nii.gz out.nii.gz --exp -m mask.nii.gz  
+  
+     4DImageMath image1.nii.gz out.nii.gz --add image2.nii.gz -m mask.nii.gz 
+     
+  
+     4DImageMath image1.nii.gz out.nii.gz --add 2.0 -m mask.nii.gz  
+  
+     4DImageMath image1.nii.gz image2.nii.gz out.nii.gz -f 'x[0]+x[1]' -m
+     mask.nii.gz   
+  
+     4DImageMath image1.nii.gz image2.nii.gz out.nii.gz -f 'x[0]^2+cos(x[1])'
+     -m mask.nii.gz    
+  
+     4DImageMath image1.nii.gz image2.nii.gz out.nii.gz --axis t --dotproduct
+     
+  
+     4DImageMath image1.nii.gz image2.nii.gz image3.nii.gz  out.nii.gz -f
+     'max(x[0],x[1],x[2]/2.0)' -m mask.nii.gz   
+  
+     4DImageMath image1.nii.gz out.nii.gz --axis t --mean -m mask.nii.gz   
+  
+     4DImageMath image1.nii.gz out.nii.gz --axis x --norm L2 -m mask.nii.gz  
+     
+  
+     4DImageMath image1.nii.gz image2.nii.gz image3.nii.gz  out.nii.gz 
+     --axis t --compose
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

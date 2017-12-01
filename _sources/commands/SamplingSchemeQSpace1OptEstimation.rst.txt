@@ -1,0 +1,94 @@
+SamplingSchemeQSpace1OptEstimation
+==================================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SamplingSchemeQSpace1OptEstimation  [--returnparameterfile
+                                         <std::string>]
+                                         [--processinformationaddress
+                                         <std::string>] [--xml] [--echo] [-v
+                                         <int>] [--weight <double>]
+                                         [--criteria <DISTANCE
+                                         |ELECTROSTATIC>] [--tessOrder <int>]
+                                         [--fineOrientations <std::string>]
+                                         [--initial
+                                         <std::vector<std::string>>] [--]
+                                         [--version] [-h] <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     -v <int>,  --verbose <int>
+       Verbose level. 0: no output log. 1: normal log. 2: large log. (value:
+       1)
+  
+     --weight <double>
+       Weight for single shell term, 1-weight for mutiple shell term. (value:
+       0.5)
+  
+     --criteria <DISTANCE|ELECTROSTATIC>
+       Criteria Type. (value: DISTANCE)
+  
+     --tessOrder <int>
+       Tessellation order for the fine orientations. (value: 7)
+  
+     --fineOrientations <std::string>
+       A given fine orientations. It overrides --tessOrder
+  
+     --initial <std::vector<std::string>>
+       A given single or multi-shell scheme (vector of file names) for an
+       intialization.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Output orientation file(s), single shell or multiple
+       shells.
+  
+  
+     Description: 1-Opt estimation for single and multiple shell sampling
+     scheme 
+  
+     Examples: 
+  
+     SamplingSchemeQSpace1OptEstimation grad_28x3_IMOC1Opt.txt --initial
+     grad_28x3_IMOC_shell1.txt,grad_28x3_IMOC_shell2.txt
+     ,grad_28x3_IMOC_shell3.txt --tessOrder 7 -v 2 
+  
+     Reference: 
+  
+     Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, 'Single- and
+     Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using
+     Spherical Codes', IEEE Transactions on Medical Imaging (TMI),
+     2017.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

@@ -1,0 +1,79 @@
+TextFileOperator
+================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     TextFileOperator  [--returnparameterfile <std::string>]
+                       [--processinformationaddress <std::string>] [--xml]
+                       [--echo] [--scale <double>] [--indexRow <std::string>]
+                       [--connectColumn <std::string>] [--connectRow
+                       <std::string>] [--extract <std::vector<int>>]
+                       [--transpose] [--info] [-o <std::string>] [--]
+                       [--version] [-h] <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --scale <double>
+       Scale value.
+  
+     --indexRow <std::string>
+       Index file to select rows.
+  
+     --connectColumn <std::string>
+       The file which is appended after all columns in theh input file.
+  
+     --connectRow <std::string>
+       The file which is appended after all rows in theh input file.
+  
+     --extract <std::vector<int>>
+       Extract submatrix based on 4 indices rowStart,rowEnd,columnStart
+       ,columnEnd
+  
+     --transpose
+       File transpose. (value: 0)
+  
+     --info
+       File information. (value: 0)
+  
+     -o <std::string>,  -- <std::string>
+       Output file.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input file.
+  
+  
+     Description: Operations for text files.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

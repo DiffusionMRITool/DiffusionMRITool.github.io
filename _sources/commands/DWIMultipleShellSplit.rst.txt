@@ -1,0 +1,91 @@
+DWIMultipleShellSplit
+=====================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     DWIMultipleShellSplit  [--returnparameterfile <std::string>]
+                            [--processinformationaddress <std::string>]
+                            [--xml] [--echo] [-v] [--threshold <double>]
+                            [--b0InEachShell] [--b0normalization] [--outb0
+                            <std::string>] [--outb <std::string>] [--outgrad
+                            <std::string>] [--ingrad <std::string>] [--mask
+                            <std::string>] [--] [--version] [-h]
+                            <std::string> <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     -v,  --
+       Verbose output. (value: 0)
+  
+     --threshold <double>
+       Threshold to determine b values for each shell (value: 2)
+  
+     --b0InEachShell
+       Set b0 image into each shell. (value: 0)
+  
+     --b0normalization
+       Normalization with respect to the non-diffusion-weighted reference
+       image. (value: 0)
+  
+     --outb0 <std::string>
+       Output (averaged) b0 image file. If no given, b0 image is put as the
+       first volume of each each.
+  
+     --outb <std::string>
+       Output b-Value file.
+  
+     --outgrad <std::string>
+       Output Gradient file for each shell.
+  
+     --ingrad <std::string>
+       Gradient file.
+  
+     --mask <std::string>
+       Mask file.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input DWI data file.
+  
+     <std::string>
+       (required)  b-Value file.
+  
+     <std::string>
+       (required)  Output split DWI data file for each shell.
+  
+  
+     Description: Split mutiple shell DWI data into several single shell
+     data.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

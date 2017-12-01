@@ -1,0 +1,159 @@
+SphericalPolarFourierImaging
+============================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SphericalPolarFourierImaging  [--returnparameterfile <std::string>]
+                                   [--processinformationaddress
+                                   <std::string>] [--xml] [--echo] [-v <int>]
+                                   [-p] [--nt <int>] [--md0 <double>] [--tau
+                                   <double>] [--mask <std::string>]
+                                   [--lambdaL1 <double>] [--minChange
+                                   <double>] [--maxIter <int>] [--solver
+                                   <FISTA_LS|SPAMS>] [--estimation <LS|L1_2
+                                   |L1_DL>] [--mdImage <std::string>]
+                                   [--scale <double>] [--radius <double>]
+                                   [--odfOrder <int>] [--lambdaRA <double>]
+                                   [--lambdaSH <double>] [--ra <int>] [--sh
+                                   <int>] [--signal <std::string>] [--odf
+                                   <std::string>] [--eapProfile
+                                   <std::string>] [--] [--version] [-h]
+                                   <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     -v <int>,  --verbose <int>
+       Verbose level. 0: no output log. 1: normal log. 2: log for debug log.
+       3: log for large matrix or vectors. (value: 1)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --nt <int>
+       Number of threads. If it not positive, then the default number for
+       multiple threads is used. (value: -1)
+  
+     --md0 <double>
+       Typical mean diffusivity (MD) value. (value: 0.0007)
+  
+     --tau <double>
+       Tau value. The default is calculated based on 4*pi*pi*tau=1. (value:
+       0.0253303)
+  
+     --mask <std::string>
+       Mask file.
+  
+     --lambdaL1 <double>
+       Regularization parameter for L1 optimization. (value: 1e-05)
+  
+     --minChange <double>
+       Minimal change percentage of the cost function and variable for l1
+       oprimization. (value: 0.0001)
+  
+     --maxIter <int>
+       Maximal number of iteration in L1 FISTA. (value: 1000)
+  
+     --solver <FISTA_LS|SPAMS>
+       Type of L1 solver. Use different L1 solver.         FISTA_LS: FISTA
+       using least square initialization.         SPAMS: use spams' weighted
+       lasso solver. (value: SPAMS)
+  
+     --estimation <LS|L1_2|L1_DL>
+       Type of solver.         LS means least square.         L1_2 means
+       Laplace-Beltrami weight (two regularization parameters lambdaSH and
+       lambdaRA);         L1_DL only use lambdaL1, because the learned
+       dictionary corresponses the regularization matrix. (value: LS)
+  
+     --mdImage <std::string>
+       Mean diffusivity Image for adaptive scale.
+  
+     --scale <double>
+       Scale for SPF basis. If it is negative, the default value based on
+       typical MD is used. (value: -1)
+  
+     --radius <double>
+       Radius for EAP profile. (value: 0.015)
+  
+     --odfOrder <int>
+       Order for the ODF output. (value: 2)
+  
+     --lambdaRA <double>
+       Regularization lambda for radial part. (value: 0)
+  
+     --lambdaSH <double>
+       Regularization lambda for spherical part. (value: 0)
+  
+     --ra <int>
+       Rank for radial basis. (value: 1)
+  
+     --sh <int>
+       Rank for SH basis. (value: 4)
+  
+     --signal <std::string>
+       Output Image File (SPF coefficients) with basis coefficients.
+  
+     --odf <std::string>
+       Output Image File (ODF) represented by SH basis.
+  
+     --eapProfile <std::string>
+       Output Image File (EAP profile) represented by SH basis.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Text file that contains b values, gradient orientations,
+       and DWI images.
+  
+  
+     Description: Spherical Polar Fourier Imaging (SPFI): estimate SPF
+     coefficients from DWI signals. 
+  
+     Examples: 
+  
+     SphericalPolarFourierImaging dwi.txt --sh 8 --ra 4 --signal
+     signalSPF.nii.gz --radius 0.015 --estimation L1_DL --lambdaL1 1e-6
+     --mdImage MD.nii.gz 
+  
+     Reference: 
+  
+     Jian Cheng, Aurobrata Ghosh, Rachid Deriche, Tianzi Jiang, 'Model-Free,
+     Regularized, Fast, and Robust Analytical Orientation Distribution
+     Function Estimation', Medical Image Computing and Computer-Assisted
+     Intervention (MICCAI'10), vol. 6361, pp. 648–656, sep, 2010.  
+  
+     Jian Cheng, Aurobrata Ghosh, Tianzi Jiang, Rachid Deriche, 'Model-free
+     and Analytical EAP Reconstruction via Spherical Polar Fourier Diffusion
+     MRI', Medical Image Computing and Computer-Assisted Intervention
+     (MICCAI'10), vol. 6361, pp. 590–597, sep, 2010.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

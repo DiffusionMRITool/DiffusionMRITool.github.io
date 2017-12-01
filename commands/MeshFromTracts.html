@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MeshFromTracts &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="DMRITool" href="../index.html"/>
+        <link rel="up" title="Command List" href="commandlist.html"/>
+        <link rel="next" title="OrientationsViewer" href="OrientationsViewer.html"/>
+        <link rel="prev" title="MeshFromTensors" href="MeshFromTensors.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="commandlist.html">Command List</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#dwiprocessing">DWIProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#diffusionmodels">DiffusionModels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#samplingscheme">SamplingScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#scripts">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#utilities">Utilities</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="commandlist.html#visualization">Visualization</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CombineVTKPolyData.py.html">CombineVTKPolyData.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromDiscreteFiberODF.html">MeshFromDiscreteFiberODF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromPeaks.html">MeshFromPeaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromSHCoefficients.html">MeshFromSHCoefficients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromSphericalFunctionTessellatedSamples.html">MeshFromSphericalFunctionTessellatedSamples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromTensors.html">MeshFromTensors</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MeshFromTracts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OrientationsViewer.html">OrientationsViewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RGBImageToVTKXMLImageConverter.html">RGBImageToVTKXMLImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKPolyData.py.html">VTKPolyData.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKPolyData_gui.py.html">VTKPolyData_gui.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKXMLImageToVectorImageConverter.html">VTKXMLImageToVectorImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VectorImageToVTKXMLImageConverter.html">VectorImageToVTKXMLImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vtkviewer.html">vtkviewer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="commandlist.html">Command List</a> &raquo;</li>
+        
+      <li>MeshFromTracts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/commands/MeshFromTracts.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="meshfromtracts">
+<h1>MeshFromTracts<a class="headerlink" href="#meshfromtracts" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none"><div class="highlight"><pre><span></span>USAGE:
+
+   MeshFromTracts  [--returnparameterfile &lt;std::string&gt;]
+                   [--processinformationaddress &lt;std::string&gt;] [--xml]
+                   [--echo] [--debug] [-p] [--nonormal] [--zoom &lt;double&gt;]
+                   [--png &lt;std::string&gt;] [--angle &lt;std::vector&lt;double&gt;&gt;]
+                   [--size &lt;std::vector&lt;int&gt;&gt;] [--flip &lt;std::vector&lt;int&gt;&gt;]
+                   [--scalarimage &lt;std::string&gt;] [--scalarrange
+                   &lt;std::vector&lt;double&gt;&gt;] [--radius &lt;double&gt;] [--color
+                   &lt;std::vector&lt;int&gt;&gt;] [--colorscheme &lt;FIXED|DIRECTION
+                   |MEAN_DIRECTION|END_POINTS|IMAGE|SCALARS|PROPERTY&gt;] [-o
+                   &lt;std::string&gt;] [--] [--version] [-h] &lt;std::string&gt;
+
+
+Where:
+
+   --returnparameterfile &lt;std::string&gt;
+     Filename in which to write simple return parameters (int, float,
+     int-vector, etc.) as opposed to bulk return parameters (image,
+     geometry, transform, measurement, table).
+
+   --processinformationaddress &lt;std::string&gt;
+     Address of a structure to store process information (progress, abort,
+     etc.). (value: 0)
+
+   --xml
+     Produce xml description of command line arguments (value: 0)
+
+   --echo
+     Echo the command line arguments (value: 0)
+
+   --debug
+     debug (value: 0)
+
+   -p,  --progress
+     show progress of processing (value: 0)
+
+   --nonormal
+     Do not use vtkPolyDataNormals. (value: 0)
+
+   --zoom &lt;double&gt;
+     zoom factor. Used when visualzing the vtk file.
+
+   --png &lt;std::string&gt;
+     output png file. Used when visualzing the vtk file.
+
+   --angle &lt;std::vector&lt;double&gt;&gt;
+     azimuth,elevation. Used when visualzing the vtk file. (value: 0.0,0.0)
+
+   --size &lt;std::vector&lt;int&gt;&gt;
+     window size. Used when visualzing the vtk file. (value: 600,600)
+
+   --flip &lt;std::vector&lt;int&gt;&gt;
+     Flip x/y/z-axis for spherical functions. 1 means flip, 0 means
+     no-flip. (value: 0,0,0)
+
+   --scalarimage &lt;std::string&gt;
+     Input file. (value: &quot;&quot;)
+
+   --scalarrange &lt;std::vector&lt;double&gt;&gt;
+     Range of scalar used for coloring. If they are -1.0, then use minimal
+     and maximal values. (value: -1.0,-1.0)
+
+   --radius &lt;double&gt;
+     Tube radius. If it is negative or zero, use lines instead of tubes.
+     (value: 0.2)
+
+   --color &lt;std::vector&lt;int&gt;&gt;
+     Use fixed color for peaks when --colorscheme FIXED is set. (value: 255
+     ,255,0)
+
+   --colorscheme &lt;FIXED|DIRECTION|MEAN_DIRECTION|END_POINTS|IMAGE|SCALARS
+      |PROPERTY&gt;
+     Color scheme. (value: DIRECTION)
+
+   -o &lt;std::string&gt;,  --output &lt;std::string&gt;
+     Output vtk file. If it is not set, visualize the vtk file. (value: &quot;&quot;)
+
+   --,  --ignore_rest
+     Ignores the rest of the labeled arguments following this flag.
+
+   --version
+     Displays version information and exits.
+
+   -h,  --help
+     Displays usage information and exits.
+
+   &lt;std::string&gt;
+     (required)  Input file.
+
+
+   Description: Create a mesh from fiber tracts for visualization.
+
+   Examples:
+
+   MeshFromTracts tracts.trk -o tracts_vis.vtk --colorscheme DIRECTION
+
+   MeshFromTracts tracts.trk -o tracts_vis.vtk --colorscheme DIRECTION
+   --radius 0.2
+
+   Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+
+   Acknowledgements: Thank you everyone.
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="OrientationsViewer.html" class="btn btn-neutral float-right" title="OrientationsViewer" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="MeshFromTensors.html" class="btn btn-neutral" title="MeshFromTensors" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

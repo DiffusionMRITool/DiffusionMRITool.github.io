@@ -1,0 +1,33 @@
+CoveringRadius
+==============
+
+.. code-block:: none
+
+  % Calculate the covering radius of the given samples. 
+  %
+  % USAGE:
+  %    radius = CoveringRadius(grad)
+  %    radius = CoveringRadius(grad, ind)
+  %
+  % INPUT
+  %    grad     :  Nx3 matrix, each row is a point in sphere.
+  %    ind      :  If it is given, calculate the minimal distance between 
+  %                the ind-th sample and the other samples in grad.
+  %
+  %
+  % OUTPUT
+  %    radius   :  covering radius, i.e., the minimal spherical distance between any two samples.
+  %
+  %
+  % References: 
+  %   1.  http://mathworld.wolfram.com/SphericalCode.html
+  %   2. "Single- and Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, IEEE Transactions on Medical Imaging, 2017.  
+  %   3. "Designing Single- and Multiple-Shell Sampling Schemes for Diffusion MRI Using Spherical Code", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, MICCAI 2014.  
+  %   4. "Novel single and multiple shell uniform sampling schemes for diffusion MRI using spherical codes", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, MICCAI 2015.  
+  %
+  % Copyright (c) 2014, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

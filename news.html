@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="news of dmritool" name="description" />
+<meta content="Diffusion MRI, software, tool, dmritool, diffusionmritool, dmri, Spherical Polar Fourier Imaging, Spherical Polar Fourier, Sampling scheme, Uniform sampling, sphere, HARDI, Orientation Distribution Function, ODF, Ensemble Average Propagator, EAP, Diffusion Propagator, q-space, q space, visualization, spherical function, spherical harmonics" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>News &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DMRITool" href="index.html"/>
+        <link rel="next" title="Building" href="building.html"/>
+        <link rel="prev" title="DMRITool’s documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/commandlist.html">Command List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>News</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/news.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="news">
+<h1>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#dmritool-now-uses-c-11" id="id1">2017-02-28: DMRITool now uses C++11</a></li>
+<li><a class="reference internal" href="#some-codes-on-sampling-scheme-design-are-released" id="id2">2015-06-18: Some codes on sampling scheme design are released</a></li>
+<li><a class="reference internal" href="#dmritool-is-using-github-pages" id="id3">2015-06-09: DMRITool is using github pages</a></li>
+<li><a class="reference internal" href="#version-0-1-1-is-released" id="id4">2015-03-09: Version 0.1.1 is released</a></li>
+<li><a class="reference internal" href="#dmritool-is-now-open-source" id="id5">2015-02-18: DMRITool is now open source</a></li>
+</ul>
+</div>
+<div class="section" id="dmritool-now-uses-c-11">
+<h2><a class="toc-backref" href="#id1">2017-02-28: DMRITool now uses C++11</a><a class="headerlink" href="#dmritool-now-uses-c-11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>We use C++11 in DMRITool now.<ul>
+<li>NDArray now is more efficient with C++11.</li>
+<li>The codes have to be built with gcc (&gt;= 4.8), ITK (&gt;= 4.9). Please check <a class="reference internal" href="building.html"><span class="doc">the building instruction</span></a>.</li>
+</ul>
+</li>
+<li>Some algorithms and demos on sampling scheme design are released.<ul>
+<li>Please check the <a class="reference internal" href="tutorial_qspacesampling.html"><span class="doc">updated tutorial on sampling scheme design</span></a>.</li>
+<li>1-Opt: <a class="reference internal" href="commands/SamplingSchemeQSpace1OptEstimation.html"><span class="doc">SamplingSchemeQSpace1OptEstimation</span></a>, a new greedy algorithm which refines a given initialization.
+It can fix a known issue of <a class="reference internal" href="commands/SamplingSchemeQSpaceIMOCEstimation.html"><span class="doc">IMOC</span></a> when the number of samples is large.
+See <a class="reference external" href="tutorial_qspacesampling.html#sampling-schemes-by-imoc-1-opt-cnlo">the tutorial</a>.</li>
+<li>CNLO: <a class="reference internal" href="matlabfiles/OptimalSamplingSingleSubset.html"><span class="doc">OptimalSamplingSingleShellCNLO</span></a> for single-shell scheme design.</li>
+<li>CNLO: <a class="reference internal" href="matlabfiles/OptimalSamplingMultiShellCNLO.html"><span class="doc">OptimalSamplingMultiShellCNLO</span></a> for multiple-shell scheme design.</li>
+<li>jointly use IMOC + 1-Opt + CNLO for sampling scheme design:<ul>
+<li><a class="reference external" href="demos/demo_singleshell_IMOC_1Opt_CNLO.html">demo for single shell scheme</a></li>
+<li><a class="reference external" href="demos/demo_mutishell_IMOC_1Opt_CNLO.html">demo for multiple shell scheme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="some-codes-on-sampling-scheme-design-are-released">
+<h2><a class="toc-backref" href="#id2">2015-06-18: Some codes on sampling scheme design are released</a><a class="headerlink" href="#some-codes-on-sampling-scheme-design-are-released" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Mixed Integer Linear Programming (MILP) for sampling scheme design is released in matlab. See folder <code class="docutils literal"><span class="pre">${DMRITOOL_SOURCE_DIR}/Matlab</span></code>.</li>
+<li>Iterative Maximum Overlap Construction (IMOC) for sampling scheme design is released in C++.
+See command <a class="reference internal" href="commands/SamplingSchemeQSpaceIMOCEstimation.html"><span class="doc">SamplingSchemeQSpaceIMOCEstimation</span></a>.</li>
+<li>Add <a class="reference internal" href="tutorial_qspacesampling.html"><span class="doc">a tutorial on sampling scheme design</span></a> with some demos.</li>
+<li>Use some scripts to generate the c++ executable list, matlab function list, run demos in tutorials, update dmritool website and doxygen.</li>
+<li>Add <a class="reference internal" href="commands/VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a> to visualize vtk files and save the visualization into png files. It can replace <a class="reference internal" href="commands/vtkviewer.html"><span class="doc">vtkviewer</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="dmritool-is-using-github-pages">
+<h2><a class="toc-backref" href="#id3">2015-06-09: DMRITool is using github pages</a><a class="headerlink" href="#dmritool-is-using-github-pages" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The homepage of <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a> is moving from <a class="reference external" href="http://dmritool.readthedocs.org/">readthedocs</a> to github pages,</li>
+<li>Using gh-pages, it is possible to automatically generate some documents, for example, <a class="reference internal" href="commands/commandlist.html"><span class="doc">the list of commands</span></a>.</li>
+<li>As required by a user, <a class="reference internal" href="commands/ComputeSHCoefficientsOfDWIFromSymmetricTensor.html"><span class="doc">ComputeSHCoefficientsOfDWIFromSymmetricTensor</span></a> is added to compute a fiber response function from a given symmetric tensor.</li>
+<li>Some tips using <a class="reference external" href="http://www.paraview.org">paraview</a> is added based on the <a class="reference external" href="http://www.nitrc.org/pipermail/dmritool-discussion/2015-March/000001.html">discussion</a></li>
+</ul>
+</div>
+<div class="section" id="version-0-1-1-is-released">
+<h2><a class="toc-backref" href="#id4">2015-03-09: Version 0.1.1 is released</a><a class="headerlink" href="#version-0-1-1-is-released" title="Permalink to this headline">¶</a></h2>
+<p>The version v0.1.1 is released.
+It is mainly a bug-fix release to make the building process better.</p>
+<ul class="simple">
+<li>We now use the <a class="reference external" href="http://www.nitrc.org/mailman/listinfo/dmritool-discussion">dmritool-discussion</a> mailing list by <a class="reference external" href="http://www.nitrc.org/projects/dmritool">nitrc</a>.</li>
+<li>The doxygen documentation can be found in the <a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">github page</a>.</li>
+</ul>
+</div>
+<div class="section" id="dmritool-is-now-open-source">
+<h2><a class="toc-backref" href="#id5">2015-02-18: DMRITool is now open source</a><a class="headerlink" href="#dmritool-is-now-open-source" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a> is released as an open source toolbox.
+The source code is in <a class="reference external" href="https://github.com/DiffusionMRITool/dmritool">github</a> and the documentation is in <a class="reference external" href="http://dmritool.readthedocs.org/">readthedocs</a>.</p>
+<p>The fist release (v0.1) includes:</p>
+<ul class="simple">
+<li>Spherical Polar Fourier Imaging. See <a class="reference internal" href="tutorial_spfi.html"><span class="doc">the SPFI tutorial</span></a>.</li>
+<li>DWI simulation. See <a class="reference internal" href="tutorial_dwisimulation.html"><span class="doc">the DWI data simulation tutotial</span></a>.</li>
+<li>Visualization of spherical function fields.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="building.html" class="btn btn-neutral float-right" title="Building" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="DMRITool’s documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

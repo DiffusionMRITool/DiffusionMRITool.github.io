@@ -1,0 +1,96 @@
+PrintImage
+==========
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     PrintImage  [--returnparameterfile <std::string>]
+                 [--processinformationaddress <std::string>] [--xml] [--echo]
+                 [--debug] [--tensorformat <9D|6D_UPPER|6D_LOWER
+                 |6D_DIAGONAL_FIRST|6D_EMBED>] [-p <0|1|2>] [-a] [-g
+                 <std::string>] [--power <double>] [--box <std::vector<int>>]
+                 [-m <std::string>] [-b <std::string>] [--] [--version] [-h]
+                 <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     --tensorformat <9D|6D_UPPER|6D_LOWER|6D_DIAGONAL_FIRST|6D_EMBED>
+       Print 9D tensor image from input 6D image. 
+  
+       UPPER_TRIANGULAR: [xx, xy, xz, yy, yz, zz], fsl format; 
+  
+       LOWER_TRIANGULAR: [xx, yx, yy, zx, zy, zz]; 
+  
+       EMBED6D: [xx, yy, zz, sqrt(2)*xy, sqrt(2)*xz, sqrt(2)*yz], embed 3x3
+       matrix into 6x1 vector; (value: 6D_UPPER)
+  
+     -p <0|1|2>,  --percentage <0|1|2>
+       0: do not show difference percentage; 1: show percentage of the diff
+       when -b is given; 2: show only the summary of percentage. (value: 0)
+  
+     -a,  --all
+       If set, print all voxels. Otherwise, print only non-zero voxels
+       (value: 0)
+  
+     -g <std::string>,  --grad <std::string>
+       Text file that contains the gradient orientations of the data. It is
+       to generate spherical function samples when the input image is SH
+       coefficients.
+  
+     --power <double>
+       Power argument. 1.0: original value on mesh, 2.0: pow 2, 0.5: sqrt.
+       (value: 1)
+  
+     --box <std::vector<int>>
+       only generate mesh from a given box (x0,x1,y0,y1,z0,z1). (value: -1,-1
+       ,-1,-1,-1,-1)
+  
+     -m <std::string>,  --mask <std::string>
+       Mask image file.
+  
+     -b <std::string>,  --baseline <std::string>
+       Input baseline image file (VectorImage or 4D image). If provided, show
+       the differnece between two images.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input image file (VectorImage or 4D image).
+  
+  
+     Description: print image (4D image, tensors, SH
+     coefficients).
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

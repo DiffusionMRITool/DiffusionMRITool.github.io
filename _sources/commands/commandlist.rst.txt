@@ -1,0 +1,227 @@
+
+============
+Command List
+============
+
+.. contents:: Table of Contents
+   :depth: 1
+   :local:
+
+
+
+.. _commandlist_DWIProcessing:
+
+DWIProcessing
+=============
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   CorrectBValues
+   DWIMultipleShellSplit
+   DWINoiseGenerator
+   DWIPreprocess
+   DWISimulator
+   DWISingleVoxelSimulator
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`CorrectBValues <CorrectBValues>`, "group similar b values into several shells."
+   :doc:`DWIMultipleShellSplit <DWIMultipleShellSplit>`, "Split mutiple shell DWI data into several single shell    data."
+   :doc:`DWINoiseGenerator <DWINoiseGenerator>`, "Add noise to a set of DWI data."
+   :doc:`DWIPreprocess <DWIPreprocess>`, "Read DWI images, gradients, b values, and output the formal    normalized formalt in a configuration file."
+   :doc:`DWISimulator <DWISimulator>`, "Simulate DWI data."
+   :doc:`DWISingleVoxelSimulator <DWISingleVoxelSimulator>`, "Simulate DWI data with fixed single voxel    configuration."
+
+
+.. _commandlist_DiffusionModels:
+
+DiffusionModels
+===============
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   ComputeSHCoefficientsOfDWIFromSymmetricTensor
+   MeanDiffusivityEstimator
+   ODFNormalization
+   SHCoefficientsFit
+   SHCoefficientsPower
+   SHCoefficientsRotate
+   SHCoefficientsToGFA
+   SHCoefficientsToSphericalFunctionSamples
+   SPFToODF
+   SPFToProfile
+   SPFToScalarMap
+   SphereTessellator
+   SphericalPolarFourierImaging
+   TensorFormatConverter
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`ComputeSHCoefficientsOfDWIFromSymmetricTensor <ComputeSHCoefficientsOfDWIFromSymmetricTensor>`, "Compute SH coefficients of DWI signal in DTI with symmetric    tensor (along z-axis). "
+   :doc:`MeanDiffusivityEstimator <MeanDiffusivityEstimator>`, "Estimate Mean Diffusivity in each voxel. "
+   :doc:`ODFNormalization <ODFNormalization>`, "Normalize ODF (VectorImage) represented by SH basis or    uniform spherical samples."
+   :doc:`SHCoefficientsFit <SHCoefficientsFit>`, "Spherical Harmonics fit from spherical function samples."
+   :doc:`SHCoefficientsPower <SHCoefficientsPower>`, "Power of a spherical function represented by SH basis."
+   :doc:`SHCoefficientsRotate <SHCoefficientsRotate>`, "Spherical Harmonics Rotation. "
+   :doc:`SHCoefficientsToGFA <SHCoefficientsToGFA>`, "calculate GFA from SH coefficients."
+   :doc:`SHCoefficientsToSphericalFunctionSamples <SHCoefficientsToSphericalFunctionSamples>`, "conversion from SH coefficients to spherical function    samples."
+   :doc:`SPFToODF <SPFToODF>`, "Convert SPF coefficients to ODFs (represented by SH basis    or discrete samples)."
+   :doc:`SPFToProfile <SPFToProfile>`, "Convert SPF coefficients to DWI/EAP profile (represented by    SH basis or discrete samples)."
+   :doc:`SPFToScalarMap <SPFToScalarMap>`, "Estimate scalar maps using SPFI. "
+   :doc:`SphereTessellator <SphereTessellator>`, "Tessellation of a sphere via subdivision of basic    polyhedrons."
+   :doc:`SphericalPolarFourierImaging <SphericalPolarFourierImaging>`, "Spherical Polar Fourier Imaging (SPFI): estimate SPF    coefficients from DWI signals. "
+   :doc:`TensorFormatConverter <TensorFormatConverter>`, "Convert different tensor storage formats."
+
+
+.. _commandlist_SamplingScheme:
+
+SamplingScheme
+==============
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   OrientationStatistics
+   SamplingSchemeDistance
+   SamplingSchemeQSpace1OptEstimation
+   SamplingSchemeQSpaceIMOCEstimation
+   SamplingSchemeQSpaceIncrementalEstimation
+   SamplingSchemeQSpaceRandomEstimation
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`OrientationStatistics <OrientationStatistics>`, "Get statistics information from a given orientation file.      Show the (min, max, mean, std) of the minimal angles of all samples.        Show electrostatic energy, spherical code cost function."
+   :doc:`SamplingSchemeDistance <SamplingSchemeDistance>`, "Calculate the distance (maximum of the minimal angles)    between two single shell sampling schemes. "
+   :doc:`SamplingSchemeQSpace1OptEstimation <SamplingSchemeQSpace1OptEstimation>`, "1-Opt estimation for single and multiple shell sampling    scheme "
+   :doc:`SamplingSchemeQSpaceIMOCEstimation <SamplingSchemeQSpaceIMOCEstimation>`, "Single and multi-shell sampling scheme estimation using    Iterative Maximum Overlap Construction (IMOC)."
+   :doc:`SamplingSchemeQSpaceIncrementalEstimation <SamplingSchemeQSpaceIncrementalEstimation>`, "Incrementatl estimation for single and multiple shell    sampling scheme. "
+   :doc:`SamplingSchemeQSpaceRandomEstimation <SamplingSchemeQSpaceRandomEstimation>`, "Random generator for multi-shell schemes."
+
+
+.. _commandlist_Scripts:
+
+Scripts
+=======
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   CombineVTKPolyData.py
+   ConvertGurobiSolToIndex.py
+   VTKPolyData.py
+   VTKPolyData_gui.py
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`CombineVTKPolyData.py <CombineVTKPolyData.py>`, "Combine several vtk files into one vtk file."
+   :doc:`ConvertGurobiSolToIndex.py <ConvertGurobiSolToIndex.py>`, "Covert .sol file (by gurobi) to index file for subsampling gradients. It is used for subsampling gradients by Mixed Integer Linear Programming (MILP)"
+   :doc:`VTKPolyData.py <VTKPolyData.py>`, "Render a list of VTK data  and (or) a nifti image, then view or save PNG or save WebGL. The code is modified from ITKExamples."
+   :doc:`VTKPolyData_gui.py <VTKPolyData_gui.py>`, "GUI for VTKPolyData.py."
+
+
+.. _commandlist_Utilities:
+
+Utilities
+=========
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   4DImageMath
+   4DToVectorImageConverter
+   ImageInfo
+   PrintImage
+   TextFileOperator
+   VectorImageNormalization
+   VectorTo4DImageConverter
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`4DImageMath <4DImageMath>`, "Perform math operators on 4D image (4D itk::Image or 3D    itk::VectorImage)."
+   :doc:`4DToVectorImageConverter <4DToVectorImageConverter>`, "Convert a 4D image to a vector image. "
+   :doc:`ImageInfo <ImageInfo>`, "Display image information."
+   :doc:`PrintImage <PrintImage>`, "print image (4D image, tensors, SH    coefficients)."
+   :doc:`TextFileOperator <TextFileOperator>`, "Operations for text files."
+   :doc:`VectorImageNormalization <VectorImageNormalization>`, "Normalize each voxel in a VectorImage or    SparseVectorImage."
+   :doc:`VectorTo4DImageConverter <VectorTo4DImageConverter>`, "Convert a vector image to a 4D image."
+
+
+.. _commandlist_Visualization:
+
+Visualization
+=============
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   CombineVTKPolyData.py
+   MeshFromDiscreteFiberODF
+   MeshFromPeaks
+   MeshFromSHCoefficients
+   MeshFromSphericalFunctionTessellatedSamples
+   MeshFromTensors
+   MeshFromTracts
+   OrientationsViewer
+   RGBImageToVTKXMLImageConverter
+   VTKPolyData.py
+   VTKPolyData_gui.py
+   VTKXMLImageToVectorImageConverter
+   VectorImageToVTKXMLImageConverter
+   vtkviewer
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`CombineVTKPolyData.py <CombineVTKPolyData.py>`, "Combine several vtk files into one vtk file."
+   :doc:`MeshFromDiscreteFiberODF <MeshFromDiscreteFiberODF>`, "Create a mesh (a spherical profile of DWI/EAP/ODF) from    discrete fiber ODF for visualization."
+   :doc:`MeshFromPeaks <MeshFromPeaks>`, "Create a mesh from peaks for visualization."
+   :doc:`MeshFromSHCoefficients <MeshFromSHCoefficients>`, "Create a mesh from spherical harmonics coefficients for    visualization."
+   :doc:`MeshFromSphericalFunctionTessellatedSamples <MeshFromSphericalFunctionTessellatedSamples>`, "Create a mesh from spherical samples using tessellation."
+   :doc:`MeshFromTensors <MeshFromTensors>`, "Create a mesh from tensors for visualization."
+   :doc:`MeshFromTracts <MeshFromTracts>`, "Create a mesh from fiber tracts for visualization."
+   :doc:`OrientationsViewer <OrientationsViewer>`, "Single and multi-shell orientations viewer."
+   :doc:`RGBImageToVTKXMLImageConverter <RGBImageToVTKXMLImageConverter>`, "Convert an ITK image to a VTK XML image."
+   :doc:`VTKPolyData.py <VTKPolyData.py>`, "Render a list of VTK data  and (or) a nifti image, then view or save PNG or save WebGL. The code is modified from ITKExamples."
+   :doc:`VTKPolyData_gui.py <VTKPolyData_gui.py>`, "GUI for VTKPolyData.py."
+   :doc:`VTKXMLImageToVectorImageConverter <VTKXMLImageToVectorImageConverter>`, "Convert a VTK XML image to an ITK image."
+   :doc:`VectorImageToVTKXMLImageConverter <VectorImageToVTKXMLImageConverter>`, "Convert an ITK image to a VTK XML image."
+   :doc:`vtkviewer <vtkviewer>`, "visualize vtk files."
+
+

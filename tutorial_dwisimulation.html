@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="tutorial on DWI data simulation" name="description" />
+<meta content="Diffusion MRI, software, tool, dmritool, diffusionmritool, dmri, Spherical Polar Fourier Imaging, Spherical Polar Fourier, Sampling scheme, Uniform sampling, sphere, HARDI, Orientation Distribution Function, ODF, Ensemble Average Propagator, EAP, Diffusion Propagator, q-space, q space, visualization, spherical function, spherical harmonics" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DWI data simulation &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DMRITool" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Spherical Polar Fourier Imaging" href="tutorial_spfi.html"/>
+        <link rel="prev" title="Tutorials" href="tutorials.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DWI data simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generate-dwi-data-from-a-configuration-file">Generate DWI data from a configuration file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_spfi.html">Spherical Polar Fourier Imaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_qspacesampling.html">Sampling in Q-Space</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/commandlist.html">Command List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>DWI data simulation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_dwisimulation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dwi-data-simulation">
+<h1>DWI data simulation<a class="headerlink" href="#dwi-data-simulation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="generate-dwi-data-from-a-configuration-file">
+<h2>Generate DWI data from a configuration file<a class="headerlink" href="#generate-dwi-data-from-a-configuration-file" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="dwisimulator"></span><p>We provides <a class="reference internal" href="commands/DWISimulator.html"><span class="doc">DWISimulator</span></a> routine to generate DWI data from a customizable configuration file.
+See example codes in <code class="docutils literal"><span class="pre">Example/test.sh</span></code> and example configuration files in <code class="docutils literal"><span class="pre">Example</span></code> folder.</p>
+<p>See <a class="reference internal" href="userguide.html#dwiconfigurationfile"><span class="std std-ref">userguide</span></a>.</p>
+<p>Generate data with 3 shells.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="o">=</span><span class="si">${</span><span class="nv">DMRITOOL_SOURCE_DIR</span><span class="si">}</span>/Examples
+
+<span class="nv">b</span><span class="o">=</span><span class="m">1000</span>,2000,3000
+DWISimulator <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/dwi_crossing.txt --outdwi dwi.nii.gz --outodf odfTrue.nii.gz --outeap eapTrue_r0.015.nii.gz --qorientations <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/Elec060.txt --bvalues <span class="si">${</span><span class="nv">b</span><span class="si">}</span> --rorientations <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/directions_t4.txt --rvalues <span class="m">0</span>.015 --noisesigma <span class="m">0</span>.0 --outb0 dwi_diagonal_b0.nii.gz --outputdwitype EACHSHELL
+</pre></div>
+</div>
+<ul class="simple">
+<li>It uses the same gradient file <code class="docutils literal"><span class="pre">${DMRITOOL_EXAMPLE_DIR}/Elec060.txt</span></code> for these three shells.</li>
+<li>If you want to use different gradient files in different shell, try to use <code class="docutils literal"><span class="pre">--bfile</span></code> to specifically set b values for each gradient direction.</li>
+<li>The routine will output a <code class="docutils literal"><span class="pre">dwi.txt</span></code> file (same name as <code class="docutils literal"><span class="pre">dwi.nii.gz</span></code>).
+The file contains three shells separately in three lines, because we set <code class="docutils literal"><span class="pre">--outputdwitype</span> <span class="pre">EACHSHELL</span></code>.
+<code class="docutils literal"><span class="pre">--outputdwitype</span> <span class="pre">4DALL</span></code> will generate one dwi data file, one gradient file and one b value file for all 180 DWI volumes.</li>
+</ul>
+<p>The ground truth of EAP profile field with radius <img class="math" src="_images/math/d20ab160f928319542bd10d0c2336df8358c96b9.png" alt="15 \mu m"/> is in <code class="docutils literal"><span class="pre">eapTrue_r0.015.nii.gz</span></code>, and
+the ground truth ODF file is <code class="docutils literal"><span class="pre">odfTrue.nii.gz</span></code>.
+The you can visualize the ground truth of EAP profiles and ODFs via <a class="reference internal" href="commands/vtkviewer.html"><span class="doc">vtkviewer</span></a>, <a class="reference internal" href="commands/VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a> or via <a class="reference external" href="http://www.paraview.org">Paraview</a>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>MeshFromSphericalFunctionTessellatedSamples eapTrue_r0.015.nii.gz -o eapTrue_r0.015_vis.vtk <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/directions_t4.txt  --scale 8e-6
+VTKPolyData.py --vtk eapTrue_r0.015_vis.vtk --png eapTrue_r0.015.png  --zoom <span class="m">1</span>.3
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/eapTrue_r0.015.png"><img alt="eapTrue_r0.015.png" src="_images/eapTrue_r0.015.png" style="width: 480.0px; height: 480.0px;" /></a>
+<p class="caption"><span class="caption-text"><strong>eapTrue_r0.015</strong></span></p>
+</div>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>MeshFromSphericalFunctionTessellatedSamples odfTrue.nii.gz -o odfTrue_vis.vtk <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/directions_t4.txt  --scale <span class="m">1</span>.5
+VTKPolyData.py --vtk odfTrue_vis.vtk --png odfTrue.png --zoom <span class="m">1</span>.3
+</pre></div>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/odfTrue.png"><img alt="odfTrue.png" src="_images/odfTrue.png" style="width: 480.0px; height: 480.0px;" /></a>
+<p class="caption"><span class="caption-text"><strong>odfTrue</strong></span></p>
+</div>
+<p>To obtain the ground truth of MSD map, RTO map, you can use:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span><span class="nv">b</span><span class="o">=</span><span class="m">1000</span>,2000,3000
+DWISimulator <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/dwi_crossing.txt --outdwi dwi.nii.gz --outodf odfTrue.nii.gz --outeap eapTrue_r0.015.nii.gz --outrto rtoTrue.nii.gz --outmsd msdTrue.nii.gz --qorientations <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/Elec060.txt --bvalues <span class="si">${</span><span class="nv">b</span><span class="si">}</span> --rorientations <span class="si">${</span><span class="nv">DMRITOOL_EXAMPLE_DIR</span><span class="si">}</span>/directions_t4.txt --rvalues <span class="m">0</span>.015 --noisesigma <span class="m">0</span>.0 --outb0 dwi_diagonal_b0.nii.gz --outputdwitype EACHSHELL
+</pre></div>
+</div>
+<p>You can also add noise to the noise-free dwi data.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>DWINoiseGenerator dwi_b1000.nii.gz  dwi_b1000_noise.nii.gz --snr <span class="m">25</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">--snr</span> <span class="pre">25</span></code> means variance of the noise is <code class="docutils literal"><span class="pre">S(0)/25</span></code>, if b0 image is not set by <code class="docutils literal"><span class="pre">--b0</span></code>, then <code class="docutils literal"><span class="pre">S(0)=1</span></code> is the default value.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_spfi.html" class="btn btn-neutral float-right" title="Spherical Polar Fourier Imaging" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorials.html" class="btn btn-neutral" title="Tutorials" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

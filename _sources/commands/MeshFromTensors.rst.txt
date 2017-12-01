@@ -1,0 +1,138 @@
+MeshFromTensors
+===============
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     MeshFromTensors  [--returnparameterfile <std::string>]
+                      [--processinformationaddress <std::string>] [--xml]
+                      [--echo] [--debug] [-p] [--nolighting] [--nonormal]
+                      [--zoom <double>] [--png <std::string>] [--bg
+                      <std::vector<double>>] [--angle <std::vector<double>>]
+                      [--size <std::vector<int>>] [--scale <double>] [--slice
+                      <std::vector<int>>] [--box <std::vector<int>>] [--flip
+                      <std::vector<int>>] [--scalarimage <std::string>]
+                      [--scalarrange <std::vector<double>>] [--resolution
+                      <double>] [--colorscheme <FA|MD|IMAGE|DIRECTION|NONE>]
+                      [--glyph <LINE|ARROW|DISK|CYLINDER|CUBE|ELLIPSOID
+                      |SUPERQUADRIC>] [-o <std::string>] [--] [--version]
+                      [-h] <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --nolighting
+       Set LightingOff. (value: 0)
+  
+     --nonormal
+       Do not use vtkPolyDataNormals. (value: 0)
+  
+     --zoom <double>
+       zoom factor. Used when visualzing the vtk file.
+  
+     --png <std::string>
+       output png file. Used when visualzing the vtk file.
+  
+     --bg <std::vector<double>>
+       background color for the window (value: 0,0,0)
+  
+     --angle <std::vector<double>>
+       azimuth,elevation. Used when visualzing the vtk file. (value: 0.0,0.0)
+  
+     --size <std::vector<int>>
+       window size. Used when visualzing the vtk file. (value: 600,600)
+  
+     --scale <double>
+       Scale factor: length of the peaks. (value: 1000)
+  
+     --slice <std::vector<int>>
+       coordinates for coronal, sagittal and transverse views. When -1 is
+       used for x/y/z, then the voxel is visible in the x/y/z-axis. (value:
+       -1,-1,-1)
+  
+     --box <std::vector<int>>
+       only generate mesh from a given box (x0,x1,y0,y1,z0,z1). When -1 is
+       used, then x0/y0/z0 will be 0, x1/y1/z1 will be the maximal number in
+       the x/y/z-axis. (value: -1,-1,-1,-1,-1,-1)
+  
+     --flip <std::vector<int>>
+       Flip x/y/z-axis for spherical functions. 1 means flip, 0 means
+       no-flip. (value: 0,0,0)
+  
+     --scalarimage <std::string>
+       Input file. (value: "")
+  
+     --scalarrange <std::vector<double>>
+       Range of scalar used for coloring. If they are -1.0, then use minimal
+       and maximal values. (value: -1.0,-1.0)
+  
+     --resolution <double>
+       Glyph resolution. (value: 10)
+  
+     --colorscheme <FA|MD|IMAGE|DIRECTION|NONE>
+       Color scheme. (value: DIRECTION)
+  
+     --glyph <LINE|ARROW|DISK|CYLINDER|CUBE|ELLIPSOID|SUPERQUADRIC>
+       Glyph type/ (value: ELLIPSOID)
+  
+     -o <std::string>,  --output <std::string>
+       Output vtk file. If it is not set, visualize the vtk file. (value: "")
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input file. It is 1) an image file with tensors,        
+       or 2) a .txt file with tensor elements (6 or 9 values) of a single
+       tensor;         or 3) 6 or 9 float numbers as tensor elements.        
+       If 6 elements, these 6 values should be [xx, xy, xz, yy, yz, zz]      
+       If 9 elements, these 9 values should be [xx, xy, xz, yx, yy, yz, xz,
+       yz, zz].
+  
+  
+     Description: Create a mesh from tensors for visualization.
+  
+     Examples: 
+  
+     MeshFromPeaks tensors.nii.gz -o tensors_vis.vtk --scale 1000  
+  
+     MeshFromPeaks tensors.nii.gz  --scale 1000 --slice -1,-1,25 
+  
+     MeshFromPeaks tensors.nii.gz  --scale 1000 --box 50,100,50,100,50,50 
+  
+     MeshFromTensors 2e-3,0,0,1e-3,0,1e-3
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

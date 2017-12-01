@@ -1,0 +1,21 @@
+CopyDefaultStructParams
+=======================
+
+.. code-block:: none
+
+  % Copy default parameter struct into a given user parameter struct
+  %
+  % USAGE:
+  %    paramReal = CopyDefaultStructParams(paramDefault, param)
+  %
+  % INPUT
+  %    paraDefault  :  Parameter struct with all default values.
+  %    param        :  The input parameter  
+  %
+  % INPUT
+  %    paramReal    :  Real parameter struct used in the following codes with a combination of paramDefault and param.
+  %                    The default values in paramDefault are overriden by param
+  %
+  % Copyright (c) 2014, Jian Cheng (jian.cheng.1983@gmail.com)
+  %
+  

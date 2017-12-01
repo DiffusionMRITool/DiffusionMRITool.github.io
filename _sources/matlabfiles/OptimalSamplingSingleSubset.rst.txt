@@ -1,0 +1,34 @@
+OptimalSamplingSingleSubset
+===========================
+
+.. code-block:: none
+
+  % get several subsets of gradients from a given gradient set, such that
+  % gradients in each subset are evenly distributed.
+  %
+  % USAGE:
+  %   [grad,grb_result] = OptimalSamplingSingleSubset(gradAll, param, grbParam)
+  %
+  % INPUT
+  %   gradAll            :  Nx3 gradient matrix, where each row is a point in sphere.
+  %   param.numSamples   :  the number of samples in the subset
+  %   param.ModelFile    :  string. If set, write the model into a file 
+  %
+  %   grbParam.start     :  a warm start if provided
+  %   grbParam.TimeLimit :  time limit to terminate the program
+  %   grbParam.MIPFocus  :  MIPFocus
+  %
+  % OUTPUT
+  %   grad               :  output gradient matrix with numSamples samples.
+  %   grb_result         :  output from GUROBI
+  %
+  %
+  % Reference:
+  %   1. "Single- and Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, IEEE Transactions on Medical Imaging, 2017.  
+  %   2. "Designing Single- and Multiple-Shell Sampling Schemes for Diffusion MRI Using Spherical Code", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, MICCAI 2014.  
+  %
+  % Copyright (c) 2013, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

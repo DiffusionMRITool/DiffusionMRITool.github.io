@@ -1,0 +1,92 @@
+MeanDiffusivityEstimator
+========================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     MeanDiffusivityEstimator  [--returnparameterfile <std::string>]
+                               [--processinformationaddress <std::string>]
+                               [--xml] [--echo] [--debug] [-p] [--nt <int>]
+                               [--mask <std::string>] [--ra <int>] [--sh
+                               <int>] [--] [--version] [-h] <std::string>
+                               <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --nt <int>
+       Number of threads. If it not positive, then the default number for
+       multiple threads is used. (value: -1)
+  
+     --mask <std::string>
+       Mask file.
+  
+     --ra <int>
+       Rank for radial basis. (value: 1)
+  
+     --sh <int>
+       Rank for SH basis. (value: 4)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Text file that contains b values, gradient orientations,
+       and DWI images.
+  
+     <std::string>
+       (required)  Output Image File where each voxel is a scalar MD value.
+  
+  
+     Description: Estimate Mean Diffusivity in each voxel. 
+  
+     Examples: 
+  
+     MeanDiffusivityEstimator dwi.txt D_sh4_ra1.nii.gz --sh 4 --ra 1 
+  
+     Reference: 
+  
+     Jian Cheng, Aurobrata Ghosh, Rachid Deriche, Tianzi Jiang, 'Model-Free,
+     Regularized, Fast, and Robust Analytical Orientation Distribution
+     Function Estimation', Medical Image Computing and Computer-Assisted
+     Intervention (MICCAI'10), vol. 6361, pp. 648–656, sep, 2010.  
+  
+     Jian Cheng, Aurobrata Ghosh, Tianzi Jiang, Rachid Deriche, 'Model-free
+     and Analytical EAP Reconstruction via Spherical Polar Fourier Diffusion
+     MRI', Medical Image Computing and Computer-Assisted Intervention
+     (MICCAI'10), vol. 6361, pp. 590–597, sep, 2010.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

@@ -1,0 +1,116 @@
+SPFToScalarMap
+==============
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     SPFToScalarMap  [--returnparameterfile <std::string>]
+                     [--processinformationaddress <std::string>] [--xml]
+                     [--echo] [--debug] [-p] [--md0 <double>] [--tau
+                     <double>] [--nt <int>] [--mask <std::string>] [--mapType
+                     <RTO|MSD|PFA>] [--mdImage <std::string>] [--scale
+                     <double>] [--ra <int>] [--sh <int>] [--] [--version]
+                     [-h] <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --md0 <double>
+       Typical MD value. (value: 0.0007)
+  
+     --tau <double>
+       Tau value. The default is calculated based on 4*pi*pi*tau=1. (value:
+       0.0253303)
+  
+     --nt <int>
+       Number of threads. If it not positive, then the default number for
+       multiple threads is used. (value: -1)
+  
+     --mask <std::string>
+       Mask file.
+  
+     --mapType <RTO|MSD|PFA>
+       Type of scalar maps. (value: RTO)
+  
+     --mdImage <std::string>
+       Mean diffusivity Image for adaptive scale.
+  
+     --scale <double>
+       Scale for SPF basis. If it is negative, the default value based on
+       typical MD is used. (value: -1)
+  
+     --ra <int>
+       Rank for radial basis. (value: 1)
+  
+     --sh <int>
+       Rank for SH basis. (value: 4)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input Image File represented by SPF basis.
+  
+     <std::string>
+       (required)  Output Image File (scalar map).
+  
+  
+     Description: Estimate scalar maps using SPFI. 
+  
+     Examples: 
+  
+     SPFToScalarMap signalSPF.nii.gz rto.nii.gz --mapType RTO  --sh 8 --ra 4
+     --mdImage D_sh4_ra1.nii.gz 
+  
+     SPFToScalarMap signalSPF.nii.gz msd.nii.gz --mapType MSD  --sh 8 --ra 4
+     --mdImage D_sh4_ra1.nii.gz 
+  
+     SPFToScalarMap signalSPF.nii.gz pfa.nii.gz --mapType PFA  --sh 8 --ra 4
+     --mdImage D_sh4_ra1.nii.gz 
+  
+     Reference: 
+  
+     Jian Cheng, Aurobrata Ghosh, Rachid Deriche, Tianzi Jiang, 'Model-Free,
+     Regularized, Fast, and Robust Analytical Orientation Distribution
+     Function Estimation', Medical Image Computing and Computer-Assisted
+     Intervention (MICCAI'10), vol. 6361, pp. 648–656, sep, 2010.  
+  
+     Jian Cheng, Aurobrata Ghosh, Tianzi Jiang, Rachid Deriche, 'Model-free
+     and Analytical EAP Reconstruction via Spherical Polar Fourier Diffusion
+     MRI', Medical Image Computing and Computer-Assisted Intervention
+     (MICCAI'10), vol. 6361, pp. 590–597, sep, 2010.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

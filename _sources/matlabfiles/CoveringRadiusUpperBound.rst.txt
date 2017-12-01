@@ -1,0 +1,29 @@
+CoveringRadiusUpperBound
+========================
+
+.. code-block:: none
+
+  % calculate the upper bound () of the minimal distance for a given number of points.  
+  % Note: for N antipodal symmetric samples, use CoveringRadiusUpperBound(2*N).
+  %
+  % USAGE:
+  %    ub = CoveringRadiusUpperBound(N)
+  %
+  % INPUT
+  %    N  :  an integer number.
+  %
+  %
+  % OUTPUT
+  %    up :  an upper bound (spherical distance in radian)
+  % 
+  % References: 
+  %   1.  http://mathworld.wolfram.com/SphericalCode.html
+  %   2. "Single- and Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, IEEE Transactions on Medical Imaging, 2017.  
+  %   3. "Designing Single- and Multiple-Shell Sampling Schemes for Diffusion MRI Using Spherical Code", 
+  %       Jian Cheng, Dinggang Shen, Pew-Thian Yap, MICCAI 2014.  
+  % 
+  %
+  % Copyright (c) 2014, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

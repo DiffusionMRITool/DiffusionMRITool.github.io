@@ -1,0 +1,56 @@
+VectorTo4DImageConverter
+========================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     VectorTo4DImageConverter  [--returnparameterfile <std::string>]
+                               [--processinformationaddress <std::string>]
+                               [--xml] [--echo] [--] [--version] [-h]
+                               <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input file.
+  
+     <std::string>
+       (required)  Output file.
+  
+  
+     Description: Convert a vector image to a 4D image.
+  
+     Examples: 
+  
+     VectorTo4DImageConverter vectorImage.nii.gz 4dImage.nii.gz
+  
+     Author(s): Pew-Thian Yap (ptyap@med.unc.edu)
+  
+  

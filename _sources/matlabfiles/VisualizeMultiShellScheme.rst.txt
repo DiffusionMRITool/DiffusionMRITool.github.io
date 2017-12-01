@@ -1,0 +1,18 @@
+VisualizeMultiShellScheme
+=========================
+
+.. code-block:: none
+
+  % visualize single or multiple shell schemes
+  %
+  % USAGE:
+  %   VisualizeMultiShellScheme(grad1)
+  %   VisualizeMultiShellScheme(grad1, grad2, grad3)
+  %
+  % INPUT
+  %   varargin :  One or more matrix for schemes in different shells. 
+  %               Each matrix has size N_ix3, N_i is the number of samples in the i-th shell.
+  %
+  % Copyright (c) 2014, Jian Cheng <jian.cheng.1983@gmail.com>
+  %
+  

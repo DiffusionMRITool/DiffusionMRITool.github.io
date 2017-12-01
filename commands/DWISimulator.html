@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DWISimulator &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="DMRITool" href="../index.html"/>
+        <link rel="up" title="Command List" href="commandlist.html"/>
+        <link rel="next" title="DWISingleVoxelSimulator" href="DWISingleVoxelSimulator.html"/>
+        <link rel="prev" title="DWIPreprocess" href="DWIPreprocess.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="commandlist.html">Command List</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="commandlist.html#dwiprocessing">DWIProcessing</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CorrectBValues.html">CorrectBValues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWIMultipleShellSplit.html">DWIMultipleShellSplit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWINoiseGenerator.html">DWINoiseGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWIPreprocess.html">DWIPreprocess</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">DWISimulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWISingleVoxelSimulator.html">DWISingleVoxelSimulator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#diffusionmodels">DiffusionModels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#samplingscheme">SamplingScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#scripts">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="commandlist.html">Command List</a> &raquo;</li>
+        
+      <li>DWISimulator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/commands/DWISimulator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dwisimulator">
+<h1>DWISimulator<a class="headerlink" href="#dwisimulator" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none"><div class="highlight"><pre><span></span>USAGE:
+
+   DWISimulator  [--returnparameterfile &lt;std::string&gt;]
+                 [--processinformationaddress &lt;std::string&gt;] [--xml]
+                 [--echo] [--debug] [--outputdwitype &lt;4D|4DALL|EACHSHELL&gt;]
+                 [--tau &lt;float&gt;] [--snr &lt;float&gt;] [--noisesigma &lt;float&gt;]
+                 [--bgdiffusionparams &lt;std::vector&lt;double&gt;&gt;]
+                 [--cylinderparams &lt;std::vector&lt;double&gt;&gt;] [--rvalues
+                 &lt;std::vector&lt;double&gt;&gt;] [--rfile &lt;std::string&gt;]
+                 [--rorientations &lt;std::string&gt;] [--bvalues
+                 &lt;std::vector&lt;double&gt;&gt;] [--bfile &lt;std::string&gt;]
+                 [--qorientations &lt;std::string&gt;] [--outb0 &lt;std::string&gt;]
+                 [--peaks &lt;int&gt;] [--peaktype &lt;XYZV|XYZ|NXYZV|NXYZ&gt;]
+                 [--outmsd &lt;std::string&gt;] [--outrto &lt;std::string&gt;]
+                 [--outpeak &lt;std::string&gt;] [--outeap &lt;std::string&gt;]
+                 [--outodf &lt;std::string&gt;] [--outdwi &lt;std::string&gt;] [--]
+                 [--version] [-h] &lt;std::string&gt;
+
+
+Where:
+
+   --returnparameterfile &lt;std::string&gt;
+     Filename in which to write simple return parameters (int, float,
+     int-vector, etc.) as opposed to bulk return parameters (image,
+     geometry, transform, measurement, table).
+
+   --processinformationaddress &lt;std::string&gt;
+     Address of a structure to store process information (progress, abort,
+     etc.). (value: 0)
+
+   --xml
+     Produce xml description of command line arguments (value: 0)
+
+   --echo
+     Echo the command line arguments (value: 0)
+
+   --debug
+     debug (value: 0)
+
+   --outputdwitype &lt;4D|4DALL|EACHSHELL&gt;
+     Output DWI type. 4D: only 4D dwi image. 4DALL: one 4D dwi image (with
+     all b values), gradient file and b values in a txt file. EACHSHELL:
+     several 4D DWI images (with different b values), gradient file and b
+     values in a txt file (value: 4DALL)
+
+   --tau &lt;float&gt;
+     Used for calculating q values from b values. The default value is set
+     so that 4*pi^2*tau=1. (value: 0.0253303)
+
+   --snr &lt;float&gt;
+     Signal-to-Noise Ratio (overrides parameter file value). Conflicts with
+     --noisesigma. (value: 0)
+
+   --noisesigma &lt;float&gt;
+     Noise level (overrides parameter file value). Conflicts with --snr.
+     (value: 0)
+
+   --bgdiffusionparams &lt;std::vector&lt;double&gt;&gt;
+     Background diffusion parameters; override parameters in parameter file
+
+   --cylinderparams &lt;std::vector&lt;double&gt;&gt;
+     Parameters in clinder model. (Length,radius,diffusivity) (value: 5.0
+     ,0.005,2.02e-3)
+
+   --rvalues &lt;std::vector&lt;double&gt;&gt;
+     R values for different shells. Each shell uses the same orientations
+     specified with --rgradients. Conflicts with --rfile.
+
+   --rfile &lt;std::string&gt;
+     Text file that contains the R values. The number of entries should be
+     consistent with the orientations specified with --rgradients.
+
+   --rorientations &lt;std::string&gt;
+     Text file that contains the orientations for sampling in the R-space.
+
+   --bvalues &lt;std::vector&lt;double&gt;&gt;
+     B values for different shells. Each shell uses the same orientations
+     specified with --qgradients. Conflicts with --bfile.
+
+   --bfile &lt;std::string&gt;
+     Text file that contains the B values. The number of entries should be
+     consistent with the orientations specified with --qgradient. Conflicts
+     with --bvalues.
+
+   --qorientations &lt;std::string&gt;
+     Text file that contains the gradient orientations of the data.
+
+   --outb0 &lt;std::string&gt;
+     Output B0 image.
+
+   --peaks &lt;int&gt;
+     Maximal number of peaks for output peak file. (value: 4)
+
+   --peaktype &lt;XYZV|XYZ|NXYZV|NXYZ&gt;
+     Peak Type. XYZV: peak direction vector (x,y,z) + peak magnitude v;
+     XYZ: peak direction vector; NXYZV: number of peaks + peak direction
+     vectors + peak magnitudes; NXYZ: number of peaks + peak direction
+     vectors. (value: XYZV)
+
+   --outmsd &lt;std::string&gt;
+     Scalar image that will contain the mean squared displacement (MSD)
+     probability map.
+
+   --outrto &lt;std::string&gt;
+     Scalar image that will contain the return-to-origin (RTO) probability
+     map.
+
+   --outpeak &lt;std::string&gt;
+     Vector image that will contain the ground truch of peaks.
+
+   --outeap &lt;std::string&gt;
+     Vector image that will contain the EAP field.
+
+   --outodf &lt;std::string&gt;
+     Vector image that will contain the ODF field.
+
+   --outdwi &lt;std::string&gt;
+     Vector image that will contain the DWI field.
+
+   --,  --ignore_rest
+     Ignores the rest of the labeled arguments following this flag.
+
+   --version
+     Displays version information and exits.
+
+   -h,  --help
+     Displays usage information and exits.
+
+   &lt;std::string&gt;
+     (required)  Text file that contains the diffusion parameters.
+
+
+   Description: Simulate DWI data.
+
+   Examples:
+
+   DWISimulator dwi_config.txt --outdwi dwi.nii.gz --outodf odfTrue.nii.gz
+   --outeap eapTrue_r0.015.nii.gz  --qorientations Elec060.txt --bvalues
+   1000,2000,3000 --rorientations directions_t4.txt --rvalues 0.015
+   --noisesigma 0.0 --outb0 dwi_diagonal_b0.nii.gz --outputdwitype
+   EACHSHELL
+
+   Author(s): Pew-Thian Yap (ptyap@med.unc.edu), Jian Cheng
+   (jian.cheng.1983@gmail.com)
+
+   Acknowledgements: Thank you everyone.
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="DWISingleVoxelSimulator.html" class="btn btn-neutral float-right" title="DWISingleVoxelSimulator" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="DWIPreprocess.html" class="btn btn-neutral" title="DWIPreprocess" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

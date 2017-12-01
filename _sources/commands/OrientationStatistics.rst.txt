@@ -1,0 +1,82 @@
+OrientationStatistics
+=====================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     OrientationStatistics  [--returnparameterfile <std::string>]
+                            [--processinformationaddress <std::string>]
+                            [--xml] [--echo] [--debug] [--combine] [--asym]
+                            [--order <double>] [--weight <double>] [--]
+                            [--version] [-h] <std::vector<std::string>> ...
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     --combine
+       If set, also show the statistics for the orientation combining all
+       input orientations. (value: 0)
+  
+     --asym
+       If set, the orientation is not antipodal symmetric (value: 0)
+  
+     --order <double>
+       order for the calculation of Electrostatic energy. (value: 2)
+  
+     --weight <double>
+       Weight for single shell term, 1-weight for mutiple shell term. (value:
+       0.5)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::vector<std::string>>  (accepted multiple times)
+       Input Orientation File.
+  
+  
+     Description: Get statistics information from a given orientation file.  
+     Show the (min, max, mean, std) of the minimal angles of all samples.    
+     Show electrostatic energy, spherical code cost function.
+  
+     Examples: 
+  
+     OrientationStatistics grad.txt  
+  
+     Reference: 
+  
+     Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser, 'Single- and
+     Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using
+     Spherical Codes', IEEE Transactions on Medical Imaging (TMI),
+     2017.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

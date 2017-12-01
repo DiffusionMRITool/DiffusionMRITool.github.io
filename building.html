@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="building of dmritool" name="description" />
+<meta content="Diffusion MRI, software, tool, dmritool, diffusionmritool, dmri, Spherical Polar Fourier Imaging, Spherical Polar Fourier, Sampling scheme, Uniform sampling, sphere, HARDI, Orientation Distribution Function, ODF, Ensemble Average Propagator, EAP, Diffusion Propagator, q-space, q space, visualization, spherical function, spherical harmonics" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DMRITool" href="index.html"/>
+        <link rel="next" title="Tutorials" href="tutorials.html"/>
+        <link rel="prev" title="News" href="news.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#matlab-codes">Matlab codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependent-packages">Dependent Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-packages">Required Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-packages">Optional Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-packages-included-in-dmritool">Third Party Packages (included in dmritool)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-souce-code">Build Souce Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux-and-mac">Linux and Mac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/commandlist.html">Command List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Building</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/building.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building">
+<h1>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#matlab-codes" id="id1">Matlab codes</a></li>
+<li><a class="reference internal" href="#dependent-packages" id="id2">Dependent Packages</a><ul>
+<li><a class="reference internal" href="#required-packages" id="id3">Required Packages</a></li>
+<li><a class="reference internal" href="#optional-packages" id="id4">Optional Packages</a></li>
+<li><a class="reference internal" href="#third-party-packages-included-in-dmritool" id="id5">Third Party Packages (included in dmritool)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#build-souce-code" id="id6">Build Souce Code</a><ul>
+<li><a class="reference internal" href="#linux-and-mac" id="id7">Linux and Mac</a></li>
+<li><a class="reference internal" href="#windows" id="id8">Windows</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<a class="reference external image-reference" href="https://travis-ci.org/DiffusionMRITool/dmritool"><img alt="https://travis-ci.org/DiffusionMRITool/dmritool.svg?branch=master" src="https://travis-ci.org/DiffusionMRITool/dmritool.svg?branch=master" /></a>
+<div class="section" id="matlab-codes">
+<h2><a class="toc-backref" href="#id1">Matlab codes</a><a class="headerlink" href="#matlab-codes" title="Permalink to this headline">¶</a></h2>
+<p>The codes in folder <code class="docutils literal"><span class="pre">${DMRITOOL_SOURCE_DIR}/Matlab</span></code> are purely in matlab.
+Thus you do not need to build c++ codes to run codes in that folder.
+The codes in folder <code class="docutils literal"><span class="pre">${DMRITOOL_SOURCE_DIR}/Wrapping/Matlab</span></code> are matlab mex files, which depend on the c++ codes.</p>
+<p>See <a class="reference internal" href="matlabfiles/matlabfunctions.html"><span class="doc">the matlab function list</span></a>,
+where these functions starting with mex prefix need to be built using cmake.</p>
+</div>
+<div class="section" id="dependent-packages">
+<h2><a class="toc-backref" href="#id2">Dependent Packages</a><a class="headerlink" href="#dependent-packages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-packages">
+<h3><a class="toc-backref" href="#id3">Required Packages</a><a class="headerlink" href="#required-packages" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cmake.org">CMake</a> (Version 2.8 or newer)</li>
+<li><a class="reference external" href="https://gcc.gnu.org">GCC</a> (4.8 or newer. DMRITool uses C++11, thus it cannot work for old gcc)</li>
+<li><a class="reference external" href="http://www.itk.org">Insight Toolkit</a> (ITK, version 4.9 or newer)</li>
+<li><a class="reference external" href="http://www.vtk.org">Visualization Toolkit</a> (VTK, version 6 or newer)</li>
+<li><a class="reference external" href="https://github.com/Slicer/SlicerExecutionModel">SlicerExecutionModel</a> (GenerateCLP, for command line interface):</li>
+<li><a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBLAS</a> + <a class="reference external" href="https://www.netlib.org/lapack">Lapack</a> or <a class="reference external" href="https://software.intel.com/en-us/intel-mkl">MKL</a> (at least one is required)</li>
+<li><a class="reference external" href="http://www.gnu.org/software/gsl">GNU Scientific Library</a> (GSL, for special functions)</li>
+</ul>
+</div>
+<div class="section" id="optional-packages">
+<h3><a class="toc-backref" href="#id4">Optional Packages</a><a class="headerlink" href="#optional-packages" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.qt-project.org">Qt</a>: needed for building <code class="docutils literal"><span class="pre">QTApplications</span></code>.</li>
+<li><a class="reference external" href="http://www.doxygen.org">Doxygen</a>: needed when building doxygen documents.</li>
+</ul>
+</div>
+<div class="section" id="third-party-packages-included-in-dmritool">
+<h3><a class="toc-backref" href="#id5">Third Party Packages (included in dmritool)</a><a class="headerlink" href="#third-party-packages-included-in-dmritool" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/google/googletest">GTest</a>: GTest can be automatically downloaded and built when building tests.</li>
+<li><a class="reference external" href="http://spams-devel.gforge.inria.fr">SPAMS</a>: included in <code class="docutils literal"><span class="pre">ThirdParty/Spams</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="build-souce-code">
+<h2><a class="toc-backref" href="#id6">Build Souce Code</a><a class="headerlink" href="#build-souce-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linux-and-mac">
+<h3><a class="toc-backref" href="#id7">Linux and Mac</a><a class="headerlink" href="#linux-and-mac" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">build/install <a class="reference external" href="http://www.cmake.org">CMake</a>, <a class="reference external" href="https://gcc.gnu.org">GCC</a>, <a class="reference external" href="http://git-scm.com">Git</a>, <a class="reference external" href="http://www.gnu.org/software/gsl">GSL</a>, <a class="reference external" href="http://www.vtk.org">VTK</a>, <a class="reference external" href="http://www.itk.org">ITK</a>, <a class="reference external" href="http://www.qt-project.org">Qt</a> (optional), <a class="reference external" href="http://www.doxygen.org">Doxygen</a> (optional).</p>
+</li>
+<li><p class="first">build/install <a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBlas</a> + <a class="reference external" href="https://www.netlib.org/lapack">Lapack</a> or <a class="reference external" href="https://software.intel.com/en-us/intel-mkl">MKL</a> .</p>
+<p><a class="reference external" href="https://software.intel.com/en-us/intel-mkl">MKL</a> is free for students, educators, academic researchers and open source contributors.
+See <a class="reference external" href="https://software.intel.com/en-us/qualify-for-free-software">the free download link</a>.
+<a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBlas</a> and <a class="reference external" href="https://www.netlib.org/lapack">Lapack</a> are always free and easy to use.</p>
+<p>If you choose <a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBlas</a> + <a class="reference external" href="https://www.netlib.org/lapack">Lapack</a>, you can use them from system repositories.
+In this case, you need to set environment variables correctly.
+See <a class="reference external" href="https://github.com/xianyi/OpenBLAS/wiki/faq#multi-threaded">FAQ of OpenBlas</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OPENBLAS_NUM_THREADS</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>We suggest that you build <a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBlas</a> from its source codes.
+Suggested building command for <a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBlas</a> used in <a class="reference external" href="https://diffusionmritool.github.io">dmritool</a> is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">xianyi</span><span class="o">/</span><span class="n">OpenBLAS</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">OpenBlas</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">v0</span><span class="o">.</span><span class="mf">2.13</span>
+<span class="n">make</span> <span class="n">BINARY</span><span class="o">=</span><span class="mi">64</span> <span class="n">USE_THREAD</span><span class="o">=</span><span class="mi">0</span> <span class="n">USE_OPENMP</span><span class="o">=</span><span class="mi">1</span> <span class="n">cc</span><span class="o">=</span><span class="n">gcc</span>  <span class="n">FC</span><span class="o">=</span><span class="n">gfortran</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">build <a class="reference external" href="https://github.com/Slicer/SlicerExecutionModel">SlicerExecutionModel</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Slicer</span><span class="o">/</span><span class="n">SlicerExecutionModel</span><span class="o">.</span><span class="n">git</span>
+<span class="n">mkdir</span> <span class="n">SlicerExecutionModel</span><span class="o">-</span><span class="n">build</span>
+<span class="n">cd</span> <span class="n">SlicerExecutionModel</span><span class="o">-</span><span class="n">build</span>
+<span class="n">ccmake</span> <span class="o">../</span><span class="n">SlicerExecutionModel</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">build <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a> source</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">DiffusionMRITool</span><span class="o">/</span><span class="n">dmritool</span>
+<span class="n">mkdir</span> <span class="n">dmritool</span><span class="o">-</span><span class="n">build</span>
+<span class="n">cd</span> <span class="n">dmritool</span><span class="o">-</span><span class="n">build</span>
+<span class="n">ccmake</span> <span class="o">../</span><span class="n">dmritool</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>When building <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a> with <code class="docutils literal"><span class="pre">ccmake</span></code>, <code class="docutils literal"><span class="pre">GenerateCLP_DIR</span></code> needs to be set as <code class="docutils literal"><span class="pre">SlicerExecutionModel-build/GenerateCLP</span></code>.</li>
+<li>The code uses <a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBlas</a> + <a class="reference external" href="https://www.netlib.org/lapack">Lapack</a> if <code class="docutils literal"><span class="pre">DMRITOOL_USE_MKL</span></code> is set <code class="docutils literal"><span class="pre">OFF</span></code>, it uses <a class="reference external" href="https://software.intel.com/en-us/intel-mkl">MKL</a> if <code class="docutils literal"><span class="pre">DMRITOOL_USE_MKL</span></code> is <code class="docutils literal"><span class="pre">ON</span></code>.</li>
+<li>If <code class="docutils literal"><span class="pre">DMRITOOL_USE_FASTLAPACK=ON</span></code>, then the codes use fast versions for SVD and eigen-decomposition,
+but it may have errors for <a class="reference external" href="https://github.com/xianyi/OpenBLAS">openblas</a>.
+You can check whether <code class="docutils literal"><span class="pre">utlVNLLapackGTest</span></code> and <code class="docutils literal"><span class="pre">utlVNLBlasGTest</span></code> can successfully pass.
+If these two tests do not passed, you may need to build <a class="reference external" href="https://github.com/xianyi/OpenBLAS">OpenBlas</a> manually or build <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a> with <code class="docutils literal"><span class="pre">DMRITOOL_USE_FASTLAPACK=OFF</span></code></li>
+<li>If you want to build <a class="reference external" href="http://www.mathworks.com">matlab</a> mex files, please set <code class="docutils literal"><span class="pre">DMRITOOL_WRAP_MATLAB=ON</span></code>.</li>
+<li>If <code class="docutils literal"><span class="pre">BUILD_TESTING</span></code> is set <code class="docutils literal"><span class="pre">ON</span></code>, some tests based on <a class="reference external" href="https://github.com/google/googletest">GTest</a> will be built.
+We suggest you set it <code class="docutils literal"><span class="pre">ON</span></code>. <a class="reference external" href="https://github.com/google/googletest">GTest</a> will be automatically downloaded and built if you do not have it in system.</li>
+<li><a class="reference external" href="http://www.qt-project.org">Qt</a> is needed if <code class="docutils literal"><span class="pre">BUILD_QT_APPLICATIONS</span></code> is set <code class="docutils literal"><span class="pre">ON</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">VERBOSITY_LEVEL</span></code> is used for debug. The default value is 0.
+If you set it as 1, the routines can provide more logging information and perform more condition checking,
+but it may make the built executables a little bit slower.</li>
+<li>If you use an old version of ITK (&lt;4.9), you may have to set <code class="docutils literal"><span class="pre">CMAKE_CXX_FLAGS=-fpermissive</span></code> to build the codes.
+That is <a class="reference external" href="https://itk.org/pipermail/insight-developers/2015-December/024705.html">a known issue of ITK with c++11 support</a>, which is solved after ITK 4.9.</li>
+</ul>
+</div></blockquote>
+<ol class="arabic" start="5">
+<li><p class="first">build <a class="reference external" href="http://www.doxygen.org">doxygen</a> document (optional)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">doxygen</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set environments.</p>
+</li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="first">You can add <code class="docutils literal"><span class="pre">dmritool-build/bin</span></code> into your <code class="docutils literal"><span class="pre">PATH</span></code> to use the binary executables easily.</p>
+</li>
+<li><p class="first">When <code class="docutils literal"><span class="pre">DMRITOOL_WRAP_MATLAB</span></code> is set <code class="docutils literal"><span class="pre">ON</span></code>, the built mex executables are in <code class="docutils literal"><span class="pre">dmritool-build/Wrapping/Matlab/bin</span></code>.
+Then to use these mex executables in matlab, you need to put the folder into matlab path.</p>
+</li>
+<li><p class="first">For matlab mex files, you also need to set <code class="docutils literal"><span class="pre">BLAS_VERSION</span></code> as the openblas lib or mkl lib.
+If you use <a class="reference external" href="https://software.intel.com/en-us/intel-mkl">mkl</a>, then set <code class="docutils literal"><span class="pre">blas_version</span></code> as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">BLAS_VERSION</span><span class="o">=</span><span class="s2">&quot;MKL_DIR/lib/intel64/libmkl_rt.so&quot;</span>
+</pre></div>
+</div>
+<p>If you use <a class="reference external" href="https://github.com/xianyi/OpenBLAS">openblas</a>, then set <code class="docutils literal"><span class="pre">blas_version</span></code> as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">BLAS_VERSION</span><span class="o">=</span><span class="s2">&quot;/usr/local/lib/libopenblas.so&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic" start="7">
+<li><p class="first">build tests (optional, but suggested)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Set <code class="docutils literal"><span class="pre">BUILD_TESTING</span></code> <code class="docutils literal"><span class="pre">ON</span></code> to build tests.</li>
+<li>Make sure all tests are successfully passed. Otherwise the routines may not run correctly.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="windows">
+<h3><a class="toc-backref" href="#id8">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>We did not test the building of <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a> in windows.
+You can try it by yourself.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="news.html" class="btn btn-neutral" title="News" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+MeshFromPeaks
+=============
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     MeshFromPeaks  [--returnparameterfile <std::string>]
+                    [--processinformationaddress <std::string>] [--xml]
+                    [--echo] [--debug] [-p] [--st] [--nolighting]
+                    [--nonormal] [--zoom <double>] [--png <std::string>]
+                    [--bg <std::vector<double>>] [--angle
+                    <std::vector<double>>] [--size <std::vector<int>>]
+                    [--scale <double>] [--slice <std::vector<int>>] [--box
+                    <std::vector<int>>] [--flip <std::vector<int>>] [--color
+                    <std::vector<int>>] [--maxnumber <int>] [--radius
+                    <double>] [--colorscheme <DIRECTION|FIXED>] [--type <XYZV
+                    |XYZ|NXYZV|NXYZ>] [-o <std::string>] [--] [--version]
+                    [-h] <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     -p,  --progress
+       show progress of processing (value: 0)
+  
+     --st
+       Use single thread. (value: 0)
+  
+     --nolighting
+       Set LightingOff. (value: 0)
+  
+     --nonormal
+       Do not use vtkPolyDataNormals. (value: 0)
+  
+     --zoom <double>
+       zoom factor. Used when visualzing the vtk file.
+  
+     --png <std::string>
+       output png file. Used when visualzing the vtk file.
+  
+     --bg <std::vector<double>>
+       background color for the window (value: 0,0,0)
+  
+     --angle <std::vector<double>>
+       azimuth,elevation. Used when visualzing the vtk file. (value: 0.0,0.0)
+  
+     --size <std::vector<int>>
+       window size. Used when visualzing the vtk file. (value: 600,600)
+  
+     --scale <double>
+       Scale factor: length of the peaks. (value: 1)
+  
+     --slice <std::vector<int>>
+       coordinates for coronal, sagittal and transverse views. When -1 is
+       used for x/y/z, then the voxel is visible in the x/y/z-axis. (value:
+       -1,-1,-1)
+  
+     --box <std::vector<int>>
+       only generate mesh from a given box (x0,x1,y0,y1,z0,z1). When -1 is
+       used, then x0/y0/z0 will be 0, x1/y1/z1 will be the maximal number in
+       the x/y/z-axis. (value: -1,-1,-1,-1,-1,-1)
+  
+     --flip <std::vector<int>>
+       Flip x/y/z-axis for spherical functions. 1 means flip, 0 means
+       no-flip. (value: 0,0,0)
+  
+     --color <std::vector<int>>
+       Use fixed color for peaks when --colorscheme FIXED is set. (value: 255
+       ,255,0)
+  
+     --maxnumber <int>
+       If it is positive, the given maximum number of peaks are used for
+       visualization (first several peaks). Otherwise, visualize all peaks.
+       (value: -1)
+  
+     --radius <double>
+       Tube radius. If it is negative or zero, use lines instead of tubes.
+       (value: 0.02)
+  
+     --colorscheme <DIRECTION|FIXED>
+       Color scheme. DIRECTION: r,g,b determined by direction. FIXED: fixed
+       color in --color. (value: FIXED)
+  
+     --type <XYZV|XYZ|NXYZV|NXYZ>
+       Peak Type. XYZV: peak direction vector (x,y,z) + peak magnitude v;
+       XYZ: peak direction vector; NXYZV: number of peaks + peak direction
+       vectors + peak magnitudes; NXYZ: number of peaks + peak direction
+       vectors. (value: XYZV)
+  
+     -o <std::string>,  --output <std::string>
+       Output vtk file. If it is not set, visualize the vtk file. (value: "")
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input file.
+  
+  
+     Description: Create a mesh from peaks for visualization.
+  
+     Examples: 
+  
+     MeshFromPeaks eap_r0.015_peaks.nii.gz -o eap_r0.015_peaks_vis.vtk
+     --scale 1.0  --color 255,255,0 --radius 0.05 
+  
+     MeshFromPeaks eap_r0.015_peaks.nii.gz --scale 1.0  --color 255,255,0
+     --radius 0.05 
+  
+     MeshFromPeaks eap_r0.015_peaks.nii.gz -o eap_r0.015_peaks_vis.vtk
+     --scale 1.0  --color 255,255,0 --radius -1.0 
+  
+     
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

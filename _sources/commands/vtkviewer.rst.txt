@@ -1,0 +1,33 @@
+vtkviewer
+=========
+
+.. code-block:: none
+
+  
+  Description: visualize vtk files.
+  
+  Useage:  
+    vtkviewer FILE [MORE FILES...]
+  
+  Supported File Formats:
+    *.vtk - VTK Legacy File
+    *.vtp - VTK Polygonal Data File
+    *.ply - Stanford Polygon File
+    *.obj - Wavefront Object file
+    *.stl - Stereolithography File
+    *.pdb - Protein Data Bank File
+    *.vtu - VTK Unstructured Grid Data File
+  Controls:
+    's' - surface
+    'w' - wireframe
+    'r' - reset and center camera
+    'ctrl-q' - quit
+    'ctrl-r' - toggle rotation
+    'ctrl-s' - toggle stereo mode
+    'ctrl-t' - change stereo type
+    'ctrl-p' - screenshot
+  
+  More Info:
+    https://github.com/HalCanary/vtkviewer
+  
+  

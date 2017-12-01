@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mexSphericalPolarFourierImaging &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="DMRITool" href="../index.html"/>
+        <link rel="up" title="Matlab Function List" href="matlabfunctions.html"/>
+        <link rel="next" title="mexGetSHBasisMatrix" href="mexGetSHBasisMatrix.html"/>
+        <link rel="prev" title="mexReadDWIList" href="mexReadDWIList.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commands/commandlist.html">Command List</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="matlabfunctions.html">Matlab Function List</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matlabfunctions.html#common">Common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlabfunctions.html#dwiprocessing">DWIProcessing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="matlabfunctions.html#diffusionmodels">DiffusionModels</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">mexSphericalPolarFourierImaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mexGetSHBasisMatrix.html">mexGetSHBasisMatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mexGetSamplesFromSPFCoefficients.html">mexGetSamplesFromSPFCoefficients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mexGetSPFBasisMatrix.html">mexGetSPFBasisMatrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="matlabfunctions.html#samplingscheme">SamplingScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlabfunctions.html#utils">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="matlabfunctions.html">Matlab Function List</a> &raquo;</li>
+        
+      <li>mexSphericalPolarFourierImaging</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/matlabfiles/mexSphericalPolarFourierImaging.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mexsphericalpolarfourierimaging">
+<h1>mexSphericalPolarFourierImaging<a class="headerlink" href="#mexsphericalpolarfourierimaging" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none"><div class="highlight"><pre><span></span>% mexSphericalPolarFourierImaging: estimate continuous DWI signal and EAP represented by coefficients of given basis.
+%
+% Usage:
+%   [signal] = mexSphericalPolarFourierImaging(dwi4DNoramlized, grad, bVec, params)
+%
+% Inputs:
+%   dwi4DNoramlized:       4D DWI data, normalized by b0 image;
+%   grad :                 orientation matrix where each row is an orientation (x,y,z), caresian format
+%   bVector:               b values in a vector, each row is a b value
+%
+%   params.MD0 :           Typical mean diffusivity (MD) value. The default value is 0.7e-3.
+%   params.tau :           Tau value. The default is calculated based on 4*pi*pi*tau=1.
+%   param.scale :          Scale value for the SPF basis in radial part, the default value is set by tau and MD0 and tau
+%   params.sh:             SH order
+%   params.ra:             order in radial part
+%   params.lambdaSH :      lambda in spherical part
+%   params.lambdaRA :      lambda in radial part
+%   params.lambdaL1 :      lambda for L1 solver
+%   params.odfOrder :      odf order
+%   params.radius   :      Radius for EAP profile.
+%   params.mdImage  :      Mean diffusivity Image for adaptive scale.
+%   params.estimation :    (LS, L1_2, L1_DL) LS: least square.
+%                          L1_2 means Laplace-Beltrami weight (two regularization parameters lambdaSH and lambdaRA);
+%                          L1_DL only use lambdaL1, because the learned dictionary corresponses the regularization matrix.
+%   params.solver   :      (FISTA_LS, SPAMS)
+%                          FISTA_LS: FISTA using least square initialization.
+%                          SPAMS (default): use spams&#39; weighted lasso solver.
+%   params.maxIter  :      Maximal number of iteration in L1 FISTA.
+%   params.minChange :     Minimal change percentage of the cost function and variable for l1 oprimization.
+%   params.mask :          Mask file. 2D or 3D matrix.
+%
+%   params.thread :        Number of thread. Default is -1, which means it is automatically determined.
+%   params.verbose :       Verbose level. 0: no output log. 1: normal log. 2: large log for debug.
+%
+% Outputs:
+%   signal:                coefficient under a given basis, 4D image
+%
+%
+% Reference:
+%  1. &quot;Model-Free, Regularized, Fast, and Robust Analytical Orientation Distribution Function Estimation&quot;,
+%     Jian Cheng, Aurobrata Ghosh, Rachid Deriche, Tianzi Jiang, Medical Image Computing and Computer-Assisted Intervention (MICCAI&#39;10), vol. 6361, pp. 648–656, sep, 2010.
+%  2. &quot;Model-free and Analytical EAP Reconstruction via Spherical Polar Fourier Diffusion MRI&quot;,
+%     Jian Cheng, Aurobrata Ghosh, Tianzi Jiang, Rachid Deriche, Medical Image Computing and Computer-Assisted Intervention (MICCAI&#39;10), vol. 6361, pp. 590–597, sep, 2010.
+%
+% Copyright (c) 2013, Jian Cheng &lt;jian.cheng.1983@gmail.com&gt;
+%
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mexGetSHBasisMatrix.html" class="btn btn-neutral float-right" title="mexGetSHBasisMatrix" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mexReadDWIList.html" class="btn btn-neutral" title="mexReadDWIList" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

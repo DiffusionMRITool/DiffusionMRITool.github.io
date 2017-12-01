@@ -1,0 +1,150 @@
+
+====================
+Matlab Function List
+====================
+
+.. contents:: Table of Contents
+   :depth: 1
+   :local:
+
+
+
+.. _matlabfunctions_Common:
+
+Common
+======
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mexITKImageWrite
+   mexITKImageRead
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`mexITKImageWrite <mexITKImageWrite>`, "write Matlab image matrix to any image format supported by ITK using itk::Image and itk::VectorImage."
+   :doc:`mexITKImageRead <mexITKImageRead>`, "read images stored as any format recognized by ITK"
+
+
+.. _matlabfunctions_DWIProcessing:
+
+DWIProcessing
+=============
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mexReadDWIList
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`mexReadDWIList <mexReadDWIList>`, "read dwi images, gradient files, and b values"
+
+
+.. _matlabfunctions_DiffusionModels:
+
+DiffusionModels
+===============
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   mexSphericalPolarFourierImaging
+   mexGetSHBasisMatrix
+   mexGetSamplesFromSPFCoefficients
+   mexGetSPFBasisMatrix
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`mexSphericalPolarFourierImaging <mexSphericalPolarFourierImaging>`, "estimate continuous DWI signal and EAP represented by coefficients of given basis."
+   :doc:`mexGetSHBasisMatrix <mexGetSHBasisMatrix>`, "get sh matrix based on given order and orientationMatrix"
+   :doc:`mexGetSamplesFromSPFCoefficients <mexGetSamplesFromSPFCoefficients>`, "get DWI or EAP samples (orignal samples or the SH coefficients) from given SPF coefficients"
+   :doc:`mexGetSPFBasisMatrix <mexGetSPFBasisMatrix>`, "get SPF basis matrix with given spherical and radial orders, orientationMatrix, bVector"
+
+
+.. _matlabfunctions_SamplingScheme:
+
+SamplingScheme
+==============
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   CartesianToSpherical
+   CoveringRadius
+   CoveringRadiusUpperBound
+   GetGradAllShells
+   OptimalSamplingMultiShellCNLO
+   OptimalSamplingMultiShellCNLO_singleRun
+   OptimalSamplingMultiSubsetsFromDifferentSets
+   OptimalSamplingMultiSubsetsFromSameSet
+   OptimalSamplingSingleShellCNLO
+   OptimalSamplingSingleSubset
+   ReadDirections
+   VisualizeMultiShellScheme
+   WriteDirections
+   mexReadGrad
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`CartesianToSpherical <CartesianToSpherical>`, "Convert x,y,z to theta, phi, r."
+   :doc:`CoveringRadius <CoveringRadius>`, "Calculate the covering radius of the given samples."
+   :doc:`CoveringRadiusUpperBound <CoveringRadiusUpperBound>`, "calculate the upper bound () of the minimal distance for a given number of points.    Note: for N antipodal symmetric samples, use CoveringRadiusUpperBound(2*N)."
+   :doc:`GetGradAllShells <GetGradAllShells>`, "Get Nx3 gradient table from gradients in all shells."
+   :doc:`OptimalSamplingMultiShellCNLO <OptimalSamplingMultiShellCNLO>`, "update gradients from an initial gradient set, such that the updated gradients are evenly distributed."
+   :doc:`OptimalSamplingMultiShellCNLO_singleRun <OptimalSamplingMultiShellCNLO_singleRun>`, "update gradients from an initial gradient set, such that the updated gradients are evenly distributed."
+   :doc:`OptimalSamplingMultiSubsetsFromDifferentSets <OptimalSamplingMultiSubsetsFromDifferentSets>`, "get K subsets of gradients from corresponding K given gradient sets, such that  gradients in each subset are evenly distributed."
+   :doc:`OptimalSamplingMultiSubsetsFromSameSet <OptimalSamplingMultiSubsetsFromSameSet>`, "get K subsets of gradients from one given gradient set, such that  gradients in each subset are evenly distributed."
+   :doc:`OptimalSamplingSingleShellCNLO <OptimalSamplingSingleShellCNLO>`, "update gradients from an initial gradient set, such that the updated gradients are evenly distributed."
+   :doc:`OptimalSamplingSingleSubset <OptimalSamplingSingleSubset>`, "get several subsets of gradients from a given gradient set, such that  gradients in each subset are evenly distributed."
+   :doc:`ReadDirections <ReadDirections>`, "read direction file into a matrix"
+   :doc:`VisualizeMultiShellScheme <VisualizeMultiShellScheme>`, "visualize single or multiple shell schemes"
+   :doc:`WriteDirections <WriteDirections>`, "Write gradient table to a file"
+   :doc:`mexReadGrad <mexReadGrad>`, "read gradient files into a matrix"
+
+
+.. _matlabfunctions_Utils:
+
+Utils
+=====
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   CopyDefaultStructParams
+
+
+
+.. csv-table::
+   :header: Command, Description
+   :widths: 20, 20
+
+   :doc:`CopyDefaultStructParams <CopyDefaultStructParams>`, "Copy default parameter struct into a given user parameter struct"
+
+

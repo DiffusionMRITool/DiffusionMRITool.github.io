@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta content="tutorial on sampling in q-space for diffusion MRI" name="description" />
+<meta content="Diffusion MRI, software, tool, dmritool, diffusionmritool, dmri, Spherical Polar Fourier Imaging, Spherical Polar Fourier, Sampling scheme, Uniform sampling, sphere, HARDI, Orientation Distribution Function, ODF, Ensemble Average Propagator, EAP, Diffusion Propagator, q-space, q space, visualization, spherical function, spherical harmonics" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sampling in Q-Space &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="DMRITool" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="User Guide" href="userguide.html"/>
+        <link rel="prev" title="Spherical Polar Fourier Imaging" href="tutorial_spfi.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">Building</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_dwisimulation.html">DWI data simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_spfi.html">Spherical Polar Fourier Imaging</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sampling in Q-Space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#objectives">Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#experiments">Experiments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#uniformly-select-samples-using-milp">Uniformly select samples using MILP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sampling-schems-by-imoc">Sampling schems by IMOC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sampling-schemes-by-imoc-1-opt-cnlo">Sampling Schemes by IMOC + 1-Opt + CNLO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#experiments-in-the-papers">Experiments in the papers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="userguide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands/commandlist.html">Command List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+        
+      <li>Sampling in Q-Space</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_qspacesampling.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sampling-in-q-space">
+<h1>Sampling in Q-Space<a class="headerlink" href="#sampling-in-q-space" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<span id="uniformsampling"></span><p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id14">Introduction</a><ul>
+<li><a class="reference internal" href="#objectives" id="id15">Objectives</a></li>
+<li><a class="reference internal" href="#methods" id="id16">Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments" id="id17">Experiments</a><ul>
+<li><a class="reference internal" href="#uniformly-select-samples-using-milp" id="id18">Uniformly select samples using MILP</a></li>
+<li><a class="reference internal" href="#sampling-schems-by-imoc" id="id19">Sampling schems by IMOC</a></li>
+<li><a class="reference internal" href="#sampling-schemes-by-imoc-1-opt-cnlo" id="id20">Sampling Schemes by IMOC + 1-Opt + CNLO</a></li>
+<li><a class="reference internal" href="#experiments-in-the-papers" id="id21">Experiments in the papers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id14">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="objectives">
+<h3><a class="toc-backref" href="#id15">Objectives</a><a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
+<p>A good data sampling scheme is important for diffusion MRI acquisition and reconstruction.
+Diffusion Weighted Imaging (DWI) data is normally acquired on single or multiple shells in 3D q-space.
+The samples in different shells are typically distributed uniformly,
+because they should be invariant to the orientation of structures within tissue, or the laboratory coordinate frame.
+These samples on single or multiple shells are better to be separated as far as possible.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="_images/grad_single.png"><img alt="single-shell scheme" src="_images/grad_single.png" style="width: 300.0px; height: 300.0px;" /></a></td>
+<td><a class="reference internal" href="_images/grad_3shells.png"><img alt="multi-shell scheme" src="_images/grad_3shells.png" style="width: 300.0px; height: 300.0px;" /></a></td>
+<td><a class="reference internal" href="_images/grad_3shells_combine.png"><img alt="multi-shell samples combined" src="_images/grad_3shells_combine.png" style="width: 300.0px; height: 300.0px;" /></a></td>
+</tr>
+<tr class="row-even"><td>single-shell scheme</td>
+<td>multi-shell scheme</td>
+<td>multi-shell scheme (combined for visualization)</td>
+</tr>
+</tbody>
+</table>
+<p>In this tutorial, we are interested in two categories of spherical sampling problems in diffusion MRI,
+the <strong>continuous</strong> category <code class="docutils literal"><span class="pre">P-C</span></code> and <strong>discrete</strong> category <code class="docutils literal"><span class="pre">P-D</span></code>.
+These two problem categories include the following application problems.</p>
+<ul class="simple">
+<li><strong>Single-shell continuous problem (P-C-S)</strong>.
+Given a number <img class="math" src="_images/math/9b87c4dc0de4067a0c891c46b6b402a316f9eb27.png" alt="K"/>, how to uniformly distribute <img class="math" src="_images/math/9b87c4dc0de4067a0c891c46b6b402a316f9eb27.png" alt="K"/> points in the sphere?
+The problem is for single shell sampling scheme design.</li>
+<li><strong>Multi-shell continuous problem (P-C-M)</strong>.
+Given <img class="math" src="_images/math/24ebdf60eeeae3f6afca1478252f82a053c78acc.png" alt="S"/> numbers <img class="math" src="_images/math/41b13940d31168c3808bdce2bd69513febe96e52.png" alt="\{K_s\}_{s=1}^S"/>, how to uniformly distribute these points in <img class="math" src="_images/math/24ebdf60eeeae3f6afca1478252f82a053c78acc.png" alt="S"/> shells, i.e. <img class="math" src="_images/math/4c938153d428b0047714cd11aa4d87922fdd3a57.png" alt="K_s"/> points in the <img class="math" src="_images/math/82482da18fea780c82319c8ecb3871ff8c5b4631.png" alt="s"/>-th shell,
+and meanwhile make all samples from all shells separated as far as possible?
+The problem is for multi-shell sampling scheme design.</li>
+<li><strong>Single subset from single set problem (P-D-SS)</strong>.
+Given <img class="math" src="_images/math/fa92040c394dbdc6dda058ff54d51cbb381d6f29.png" alt="N"/> known points <img class="math" src="_images/math/7bd507d6d7d1ab944da638889341a4c1b5701ade.png" alt="\{\uu_i\}_{i=1}^N"/> in sphere, how to uniformly select <img class="math" src="_images/math/9b87c4dc0de4067a0c891c46b6b402a316f9eb27.png" alt="K"/> sub-samples from these <img class="math" src="_images/math/fa92040c394dbdc6dda058ff54d51cbb381d6f29.png" alt="N"/> points?
+The problem is for reducing the number of samples in an existing single shell scheme.
+It is also related with P-C-S, because if discretizing the continuous sphere using many points,
+then solving P-D-SS is an approximation to solve P-C-S.</li>
+<li><strong>Multiple subsets from multiple sets problem (P-D-MM)</strong>.
+Given points <img class="math" src="_images/math/6734503bdde4c4066f3802c991ad882a63f423dd.png" alt="\{\uu_{i,s}\}, i=1,2,\dots,N_s, s=1,2,\dots,S"/>, for each shell, say the <img class="math" src="_images/math/82482da18fea780c82319c8ecb3871ff8c5b4631.png" alt="s"/>-th shell,
+how to uniformly select <img class="math" src="_images/math/4c938153d428b0047714cd11aa4d87922fdd3a57.png" alt="K_s"/> samples from the <img class="math" src="_images/math/db0019219a1e4fe0cff899c45fe6888bf253ace2.png" alt="N_s"/> samples,
+and meanwhile make all selected samples from all shells separated as far as possible?
+The problem is for reducing the number of samples in an existing multi-shell scheme.</li>
+<li><strong>Multiple subsets from single set problem (P-D-MS)</strong>.
+Given a single set of points <img class="math" src="_images/math/7bd507d6d7d1ab944da638889341a4c1b5701ade.png" alt="\{\uu_i\}_{i=1}^N"/> in sphere,
+how to uniformly select several subsets from these samples,
+and meanwhile make all selected samples from all shells separated as far as possible?
+It is related with P-C-M by discretizing the continuous sphere using many points.</li>
+<li><strong>Acquisition ordering problem (P-O)</strong>.
+Given a single or multiple shell scheme, how does one optimize the acquisition order of the samples,
+such that an interruption at any point of the acquisition can still yield a nearly uniform sampling scheme?</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Considering the diffusion signal is antipodal symmetric, the antipodal symmetric samples have the same role.
+Thus when we talk about <img class="math" src="_images/math/9b87c4dc0de4067a0c891c46b6b402a316f9eb27.png" alt="K"/> points in a sphere, we actually have <img class="math" src="_images/math/102c5623d162ddc7b338f39d691b02ae5508e13d.png" alt="2K"/> samples by adding the antipodal symmetric samples.</p>
+</div>
+</div>
+<div class="section" id="methods">
+<h3><a class="toc-backref" href="#id16">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<p>For P-C-S, <strong>Electrostatic Energy Minimization</strong> (EEM) by Jones et al <a class="reference internal" href="#jones1999" id="id1">[Jones1999]</a> is widely used to design the single shell uniform schemes.
+Some schemes by EEM have been collected in <a class="reference external" href="http://cmic.cs.ucl.ac.uk/camino">CAMINO</a>, which have been stored in <code class="docutils literal"><span class="pre">Data/ElectricRepulsion</span></code> folder in dmritool.</p>
+<p>Instead of using electrostatic energy, it is possible to directly maximize the distances between samples.
+For a set of samples <img class="math" src="_images/math/5b5bd7b80b3cc963dd84638fab6380e66f9dbf3e.png" alt="\{\uu_i\}_{i=1}^K"/> in sphere, the covering radius is defined as the minimal distance between samples, i.e.,</p>
+<div class="math">
+<p><img src="_images/math/1a0486fe19b58429e0d6a772b21cc2efbe9803ce.png" alt="d(\{\uu_i\}_{i=1}^K)= \min_{i\neq j} \arccos |\uu_i^T \uu_j|"/></p>
+</div><p>The <a class="reference external" href="http://mathworld.wolfram.com/SphericalCode.html">spherical code</a> formulation, or called spherical packing, is to
+<strong>maximize the minimal distance between samples</strong>, i.e.,</p>
+<div class="math">
+<p><img src="_images/math/b618081e7ef344665fe9bc3362abe6cfff07c7e8.png" alt="\max_{\{\uu_i \in \mathbb{S}^2 \}_{i=1}^K} d(\{\uu_i\}_{i=1}^K)"/></p>
+</div><p>This formulation to solve P-C-S is well studied in mathematics.
+<a class="reference internal" href="#toth1949" id="id2">[Toth1949]</a> gave an upper bound for the covering radius.
+<a class="reference internal" href="#conway1996" id="id3">[Conway1996]</a> proposed a way to solve the above optimization problem by iteratively approximating the above objective function.
+Dr. Sloane, one of the authors of <a class="reference internal" href="#conway1996" id="id4">[Conway1996]</a>, collected <a class="reference external" href="http://neilsloane.com/grass/dim3/">some best known solutions for P-C-S</a>.
+These schemes have been stored in <code class="docutils literal"><span class="pre">Data/Packing</span></code> folder in dmritool.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The schemes by SC formulation in <a class="reference external" href="http://neilsloane.com/grass/dim3/">Sloane&#8217;s collection</a> have larger covering radii than the schemes by EEM in <a class="reference external" href="http://cmic.cs.ucl.ac.uk/camino">CAMINO</a>.</p>
+</div>
+<p><a class="reference internal" href="#chengmiccai2014" id="id5">[ChengMICCAI2014]</a>, <a class="reference internal" href="#chengmiccai2015" id="id6">[ChengMICCAI2015]</a>, and <a class="reference internal" href="#chengtmi2017" id="id7">[ChengTMI2017]</a> generalized the SC formulation to multi-shell case by solving:</p>
+<div class="math">
+<p><img src="_images/math/b4fda68ada49b4d98540ef557a52643989a145ec.png" alt="\max_{\{\uu_{s,i} \in \mathbb{S}^2 \}} wS^{-1} \sum_{s=1}^{S}  d(\{\uu_{s,i}\}_{i=1}^{K_s})  + (1-w) d(\{\uu_{s,i}\}_{i=1,\dots,K_s; s=1,\dots, S}),"/></p>
+</div><p>where <img class="math" src="_images/math/f05f3eb551bccea80d3c1db3658cc6109330c67b.png" alt="w"/> is the weighting factor to balance the uniformity of each single shell and the global combined shell containing all samples.
+<a class="reference internal" href="#chengtmi2017" id="id8">[ChengTMI2017]</a> also proposed several methods for single and multi-shell sampling scheme design:</p>
+<ul class="simple">
+<li>a mixed integer linear programming (MILP) method to solve the discrete problems P-D-SS, P-D-MM, P-D-MS.</li>
+<li>an efficient greedy method called Iterative Maximum Overlap Construction (IMOC) to approximately solve the continuous problems P-C-S and P-C-M.</li>
+<li>a Constrained Non-Linear Optimization method (CNLO) to solve P-C-S and P-C-M using a given initialization which can be efficiently obtained by IMOC.</li>
+</ul>
+<p>MILP was implemented in matlab, thus you <strong>do not</strong> have to build the C++ codes.
+See the following matlab functions:</p>
+<ul class="simple">
+<li><a class="reference internal" href="matlabfiles/OptimalSamplingSingleSubset.html"><span class="doc">OptimalSamplingSingleSubset</span></a> is for P-D-SS.</li>
+<li><a class="reference internal" href="matlabfiles/OptimalSamplingMultiSubsetsFromSameSet.html"><span class="doc">OptimalSamplingMultiSubsetsFromSameSet</span></a> is for P-D-MS.</li>
+<li><a class="reference internal" href="matlabfiles/OptimalSamplingMultiSubsetsFromDifferentSets.html"><span class="doc">OptimalSamplingMultiSubsetsFromDifferentSets</span></a> is for P-D-MM.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="experiments">
+<h2><a class="toc-backref" href="#id17">Experiments</a><a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uniformly-select-samples-using-milp">
+<h3><a class="toc-backref" href="#id18">Uniformly select samples using MILP</a><a class="headerlink" href="#uniformly-select-samples-using-milp" title="Permalink to this headline">¶</a></h3>
+<p>We provide the following demos in matlab to demonstrate the effectiveness of MILP.</p>
+<ul class="simple">
+<li><a class="reference external" href="demos/demo_separate_sets.html">Uniformly separate two subsets (P-D-MS)</a></li>
+<li><a class="reference external" href="demos/demo_separate_t4_1shell.html">Uniformly select a subset from a set (P-D-SS)</a></li>
+<li><a class="reference external" href="demos/demo_separate_t4_28x3.html">Uniformly select several subsets from a set (P-D-MS)</a></li>
+<li>Uniformly sub-sampling for the multi-shell scheme in Human Connectome Project (P-D-MM)<ul>
+<li><a class="reference external" href="demos/demo_separate_HCPQ390x3_30x3.html">Extract a 30x3 scheme from the 90x3 scheme</a></li>
+<li><a class="reference external" href="demos/demo_separate_HCPQ390x3_45x3.html">Extract a 45x3 scheme from the 90x3 scheme</a></li>
+</ul>
+</li>
+</ul>
+<p>The codes can be found in <code class="docutils literal"><span class="pre">Matlab/Demos</span></code> folder in dmritool.
+To run these demos, you need to:</p>
+<ol class="arabic simple">
+<li>add <code class="docutils literal"><span class="pre">${DMRITOOL_SOURCE_DIR}/Matlab</span></code> folder in your matlab path.</li>
+<li>copy <code class="docutils literal"><span class="pre">${DMRITOOL_SOURCE_DIR}/Data</span></code> to <code class="docutils literal"><span class="pre">${HOME}/.dmritool/Data</span></code> if you did not build dmritool source codes.</li>
+<li>install <a class="reference external" href="http://www.gurobi.com">Gurobi</a>. Gurobi is academic free if you have an edu email account.</li>
+</ol>
+<p>To run the demo for subsampling of the HCP scheme, you can download the 3 shell scheme from <a class="reference external" href="https://www.dropbox.com/s/l4j8m0vf3wnihg2/HCP_Q3_grad.zip?dl=0">this link</a>.</p>
+<p>In the first demo, MILP converges within 1 second.
+However in the other demos, MILP can take a long time to finally stop in <a class="reference external" href="http://www.gurobi.com">gurobi</a>.
+We noticed that after 10 minutes the solutions by MILP for the discrete problems only improve less than 0.01%.
+Thus we stop the algorithm after 10 minutes.
+You can play the demos with different time limit.</p>
+</div>
+<div class="section" id="sampling-schems-by-imoc">
+<h3><a class="toc-backref" href="#id19">Sampling schems by IMOC</a><a class="headerlink" href="#sampling-schems-by-imoc" title="Permalink to this headline">¶</a></h3>
+<p>IMOC was implemented in C++.
+Thus you have to build C++ codes to run it.</p>
+<p>To generate a single shell scheme with 30 samples (P-C-S), you can run:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SamplingSchemeQSpaceIMOCEstimation grad_30_IMOC.txt --numberOfSamples <span class="m">30</span> --tessOrder <span class="m">7</span>
+OrientationStatistics  grad_30_IMOC_shell1.txt
+OrientationsViewer grad_30_IMOC_shell1.txt --mesh --png grad_30_IMOC.png
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/grad_30_IMOC.png"><img alt="grad_30_IMOC.png" src="_images/grad_30_IMOC.png" style="width: 360.0px; height: 360.0px;" /></a>
+</div>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">tessOrder</span></code> option is the order of sphere tessellation to discretize the continuous sphere.
+<a class="reference internal" href="#chengtmi2017" id="id9">[ChengTMI2017]</a> showed that with a finer sphere tessellation IMOC obtains a larger covering radius.
+However finer sphere tessellation takes longer time for IMOC.
+For <code class="docutils literal"><span class="pre">--tessOrder</span> <span class="pre">7</span></code>, which uses <code class="docutils literal"><span class="pre">20481</span></code> samples in the hemisphere, IMOC normally finishes in seconds.</li>
+<li><a class="reference internal" href="commands/OrientationStatistics.html"><span class="doc">OrientationStatistics</span></a>  is to show the covering radius of the estimated scheme.</li>
+<li><a class="reference internal" href="commands/OrientationsViewer.html"><span class="doc">OrientationsViewer</span></a> is to visualize the obtained schemes.
+With <code class="docutils literal"><span class="pre">--png</span></code> option, it writes the visualization in a png image.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The single shell schemes by IMOC have larger covering radii than the schemes by EEM in <a class="reference external" href="http://cmic.cs.ucl.ac.uk/camino">CAMINO</a>.
+With finer sphere tessellation, IMOC schemes approximately have the similar covering radii with the schemes in <a class="reference external" href="http://neilsloane.com/grass/dim3/">Sloane&#8217;s collection</a>
+Please see the experiments in <a class="reference internal" href="#chengtmi2017" id="id10">[ChengTMI2017]</a> and <a class="reference external" href="https://github.com/DiffusionMRITool/dmritool-MultiShellSampling">this repository</a>.</p>
+</div>
+<p>To generate a 3 shell scheme with 28 samples per shell (P-C-M), you can run:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SamplingSchemeQSpaceIMOCEstimation grad_28x3_IMOC.txt --numberOfSamples <span class="m">28</span>,28,28 --tessOrder <span class="m">7</span>
+OrientationStatistics  grad_28x3_IMOC_shell1.txt grad_28x3_IMOC_shell2.txt grad_28x3_IMOC_shell3.txt --combine
+OrientationsViewer grad_28x3_IMOC_shell1.txt grad_28x3_IMOC_shell2.txt grad_28x3_IMOC_shell3.txt --combine --mesh --png grad_28x3_IMOC.png
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/grad_28x3_IMOC.png"><img alt="grad_28x3_IMOC.png" src="_images/grad_28x3_IMOC.png" style="width: 360.0px; height: 360.0px;" /></a>
+</div>
+<p>The three colors denote samples in 3 shells.</p>
+</div>
+<div class="section" id="sampling-schemes-by-imoc-1-opt-cnlo">
+<h3><a class="toc-backref" href="#id20">Sampling Schemes by IMOC + 1-Opt + CNLO</a><a class="headerlink" href="#sampling-schemes-by-imoc-1-opt-cnlo" title="Permalink to this headline">¶</a></h3>
+<p>IMOC is used to quickly obtain an acceptable sampling scheme.
+The results by IMOC can be refined by using 1-Opt and CNLO.</p>
+<p>1-Opt is a greedy algorithm which at each iteration moves one best sample as far as possible to all other samples.
+1-Opt can be used to refine any initialized sampling scheme.
+However, schemes by IMOC are suggested as the initialization of 1-Opt due to good performance.</p>
+<p>IMOC requires a discretization of the continuous sphere, which may result in a hole area in sphere due to the error accumulation when the number of samples is large.
+For example, we can use IMOC to generate a 3 shell scheme with 90 samples per shell (P-C-M):</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SamplingSchemeQSpaceIMOCEstimation grad_90x3_IMOC.txt --numberOfSamples <span class="m">90</span>,90,90 --tessOrder <span class="m">7</span>
+OrientationStatistics  grad_90x3_IMOC_shell1.txt grad_90x3_IMOC_shell2.txt grad_90x3_IMOC_shell3.txt --combine
+OrientationsViewer grad_90x3_IMOC_shell1.txt grad_90x3_IMOC_shell2.txt grad_90x3_IMOC_shell3.txt --combine --mesh --angle -10,-45 --png grad_90x3_IMOC.png
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/grad_90x3_IMOC.png"><img alt="grad_90x3_IMOC.png" src="_images/grad_90x3_IMOC.png" style="width: 360.0px; height: 360.0px;" /></a>
+</div>
+<p>See there is a hole area without any sample.
+This can be fixed by using 1-Opt:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>SamplingSchemeQSpace1OptEstimation grad_90x3_IMOC1Opt.txt --initial grad_90x3_IMOC_shell1.txt,grad_90x3_IMOC_shell2.txt,grad_90x3_IMOC_shell3.txt --tessOrder <span class="m">7</span> -v <span class="m">2</span>
+OrientationStatistics grad_90x3_IMOC1Opt_shell1.txt grad_90x3_IMOC1Opt_shell2.txt grad_90x3_IMOC1Opt_shell3.txt --combine
+OrientationsViewer grad_90x3_IMOC1Opt_shell1.txt grad_90x3_IMOC1Opt_shell2.txt grad_90x3_IMOC1Opt_shell3.txt --combine  --mesh --angle -10,-45 --png grad_90x3_IMOC1Opt.png
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/grad_90x3_IMOC1Opt.png"><img alt="grad_90x3_IMOC1Opt.png" src="_images/grad_90x3_IMOC1Opt.png" style="width: 360.0px; height: 360.0px;" /></a>
+</div>
+<p>The scheme by IMOC + 1-Opt can be refined by using CNLO.
+We provide 2 matlab demos to demonstrate IMOC + 1-Opt + CNLO for P-C-S and P-C-M, respectively:</p>
+<ul class="simple">
+<li><a class="reference external" href="demos/demo_singleshell_IMOC_1Opt_CNLO.html">Generate a single-shell sampling scheme by using IMOC + 1-Opt + CNLO (P-C-S)</a></li>
+<li><a class="reference external" href="demos/demo_mutishell_IMOC_1Opt_CNLO.html">Generate a multi-shell sampling scheme by using IMOC + 1-Opt + CNLO (P-C-M)</a></li>
+</ul>
+</div>
+<div class="section" id="experiments-in-the-papers">
+<h3><a class="toc-backref" href="#id21">Experiments in the papers</a><a class="headerlink" href="#experiments-in-the-papers" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/DiffusionMRITool/dmritool-MultiShellSampling">This repository</a> has some results and codes
+to reproduce the results showed in the papers <a class="reference internal" href="#chengmiccai2014" id="id11">[ChengMICCAI2014]</a>, <a class="reference internal" href="#chengmiccai2015" id="id12">[ChengMICCAI2015]</a>, and <a class="reference internal" href="#chengtmi2017" id="id13">[ChengTMI2017]</a>.
+To run the demos, you need to download matlab codes in <a class="reference external" href="https://diffusionmritool.github.io">DMRITool</a>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">DiffusionMRITool</span><span class="o">/</span><span class="n">dmritool</span><span class="o">-</span><span class="n">MultiShellSampling</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">DiffusionMRITool</span><span class="o">/</span><span class="n">dmritool</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Then add <code class="docutils literal"><span class="pre">dmritool/Matlab</span></code> folder into the matlab path.</p>
+<table class="docutils citation" frame="void" id="jones1999" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Jones1999]</a></td><td>DK Jones, MA Horsfield, A Simmons,
+<a class="reference external" href="http://www.ncbi.nlm.nih.gov/pubmed/10467296">Optimal strategies for measuring diffusion in anisotropic systems by magnetic resonance imaging</a>, Magnetic Resonance in Medicine, 1999</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="toth1949" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[Toth1949]</a></td><td>L.F. Toth, On the densest packing of spherical caps, The American Mathematical Monthly 1949.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="conway1996" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Conway1996]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> J. H. Conway, R. H. Hardin and N. J. A. Sloane,
+<a class="reference external" href="http://neilsloane.com/doc/grass.pdf">Packing Lines, Planes, etc., Packings in Grassmannian Spaces</a>, Experimental Mathematics, 1996.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="chengmiccai2014" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[ChengMICCAI2014]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> Jian Cheng, Dinggang Shen, Pew-Thian Yap,
+<a class="reference external" href="https://hal.archives-ouvertes.fr/hal-01011897/file/sampling_MICCAI2014.pdf">Designing Single- and Multiple-Shell Sampling Schemes for Diffusion MRI Using Spherical Code</a>, MICCAI 2014.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="chengmiccai2015" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[ChengMICCAI2015]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser,
+<a class="reference external" href="https://hal.archives-ouvertes.fr/hal-01154774/file/sampling_MICCAI2015.pdf">Novel Single and Multiple Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes</a>, MICCAI 2015.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="chengtmi2017" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[ChengTMI2017]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id8">2</a>, <a class="fn-backref" href="#id9">3</a>, <a class="fn-backref" href="#id10">4</a>, <a class="fn-backref" href="#id13">5</a>)</em> Jian Cheng, Dinggang Shen, Pew-Thian Yap, Peter J. Basser,
+<a class="reference external" href="https://arxiv.org/pdf/1706.06682.pdf">Single- and Multiple-Shell Uniform Sampling Schemes for Diffusion MRI Using Spherical Codes</a>, IEEE Transactions on Medical Imaging (TMI), 2017.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="userguide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_spfi.html" class="btn btn-neutral" title="Spherical Polar Fourier Imaging" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Command List &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="DMRITool" href="../index.html"/>
+        <link rel="next" title="CorrectBValues" href="CorrectBValues.html"/>
+        <link rel="prev" title="User Guide" href="../userguide.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command List</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dwiprocessing">DWIProcessing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CorrectBValues.html">CorrectBValues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWIMultipleShellSplit.html">DWIMultipleShellSplit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWINoiseGenerator.html">DWINoiseGenerator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWIPreprocess.html">DWIPreprocess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWISimulator.html">DWISimulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DWISingleVoxelSimulator.html">DWISingleVoxelSimulator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#diffusionmodels">DiffusionModels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ComputeSHCoefficientsOfDWIFromSymmetricTensor.html">ComputeSHCoefficientsOfDWIFromSymmetricTensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeanDiffusivityEstimator.html">MeanDiffusivityEstimator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ODFNormalization.html">ODFNormalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SHCoefficientsFit.html">SHCoefficientsFit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SHCoefficientsPower.html">SHCoefficientsPower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SHCoefficientsRotate.html">SHCoefficientsRotate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SHCoefficientsToGFA.html">SHCoefficientsToGFA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SHCoefficientsToSphericalFunctionSamples.html">SHCoefficientsToSphericalFunctionSamples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPFToODF.html">SPFToODF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPFToProfile.html">SPFToProfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPFToScalarMap.html">SPFToScalarMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SphereTessellator.html">SphereTessellator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SphericalPolarFourierImaging.html">SphericalPolarFourierImaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TensorFormatConverter.html">TensorFormatConverter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#samplingscheme">SamplingScheme</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="OrientationStatistics.html">OrientationStatistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SamplingSchemeDistance.html">SamplingSchemeDistance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SamplingSchemeQSpace1OptEstimation.html">SamplingSchemeQSpace1OptEstimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SamplingSchemeQSpaceIMOCEstimation.html">SamplingSchemeQSpaceIMOCEstimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SamplingSchemeQSpaceIncrementalEstimation.html">SamplingSchemeQSpaceIncrementalEstimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SamplingSchemeQSpaceRandomEstimation.html">SamplingSchemeQSpaceRandomEstimation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scripts">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CombineVTKPolyData.py.html">CombineVTKPolyData.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConvertGurobiSolToIndex.py.html">ConvertGurobiSolToIndex.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKPolyData.py.html">VTKPolyData.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKPolyData_gui.py.html">VTKPolyData_gui.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="4DImageMath.html">4DImageMath</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4DToVectorImageConverter.html">4DToVectorImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ImageInfo.html">ImageInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PrintImage.html">PrintImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TextFileOperator.html">TextFileOperator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VectorImageNormalization.html">VectorImageNormalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VectorTo4DImageConverter.html">VectorTo4DImageConverter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization">Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CombineVTKPolyData.py.html">CombineVTKPolyData.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromDiscreteFiberODF.html">MeshFromDiscreteFiberODF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromPeaks.html">MeshFromPeaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromSHCoefficients.html">MeshFromSHCoefficients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromSphericalFunctionTessellatedSamples.html">MeshFromSphericalFunctionTessellatedSamples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromTensors.html">MeshFromTensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MeshFromTracts.html">MeshFromTracts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OrientationsViewer.html">OrientationsViewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RGBImageToVTKXMLImageConverter.html">RGBImageToVTKXMLImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKPolyData.py.html">VTKPolyData.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKPolyData_gui.py.html">VTKPolyData_gui.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VTKXMLImageToVectorImageConverter.html">VTKXMLImageToVectorImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VectorImageToVTKXMLImageConverter.html">VectorImageToVTKXMLImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vtkviewer.html">vtkviewer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Command List</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/commands/commandlist.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-list">
+<h1>Command List<a class="headerlink" href="#command-list" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#dwiprocessing" id="id1">DWIProcessing</a></li>
+<li><a class="reference internal" href="#diffusionmodels" id="id2">DiffusionModels</a></li>
+<li><a class="reference internal" href="#samplingscheme" id="id3">SamplingScheme</a></li>
+<li><a class="reference internal" href="#scripts" id="id4">Scripts</a></li>
+<li><a class="reference internal" href="#utilities" id="id5">Utilities</a></li>
+<li><a class="reference internal" href="#visualization" id="id6">Visualization</a></li>
+</ul>
+</div>
+<div class="section" id="dwiprocessing">
+<span id="commandlist-dwiprocessing"></span><h2><a class="toc-backref" href="#id1">DWIProcessing</a><a class="headerlink" href="#dwiprocessing" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="CorrectBValues.html"><span class="doc">CorrectBValues</span></a></td>
+<td>group similar b values into several shells.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="DWIMultipleShellSplit.html"><span class="doc">DWIMultipleShellSplit</span></a></td>
+<td>Split mutiple shell DWI data into several single shell    data.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="DWINoiseGenerator.html"><span class="doc">DWINoiseGenerator</span></a></td>
+<td>Add noise to a set of DWI data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="DWIPreprocess.html"><span class="doc">DWIPreprocess</span></a></td>
+<td>Read DWI images, gradients, b values, and output the formal    normalized formalt in a configuration file.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="DWISimulator.html"><span class="doc">DWISimulator</span></a></td>
+<td>Simulate DWI data.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="DWISingleVoxelSimulator.html"><span class="doc">DWISingleVoxelSimulator</span></a></td>
+<td>Simulate DWI data with fixed single voxel    configuration.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="diffusionmodels">
+<span id="commandlist-diffusionmodels"></span><h2><a class="toc-backref" href="#id2">DiffusionModels</a><a class="headerlink" href="#diffusionmodels" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="ComputeSHCoefficientsOfDWIFromSymmetricTensor.html"><span class="doc">ComputeSHCoefficientsOfDWIFromSymmetricTensor</span></a></td>
+<td>Compute SH coefficients of DWI signal in DTI with symmetric    tensor (along z-axis).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="MeanDiffusivityEstimator.html"><span class="doc">MeanDiffusivityEstimator</span></a></td>
+<td>Estimate Mean Diffusivity in each voxel.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="ODFNormalization.html"><span class="doc">ODFNormalization</span></a></td>
+<td>Normalize ODF (VectorImage) represented by SH basis or    uniform spherical samples.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SHCoefficientsFit.html"><span class="doc">SHCoefficientsFit</span></a></td>
+<td>Spherical Harmonics fit from spherical function samples.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SHCoefficientsPower.html"><span class="doc">SHCoefficientsPower</span></a></td>
+<td>Power of a spherical function represented by SH basis.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SHCoefficientsRotate.html"><span class="doc">SHCoefficientsRotate</span></a></td>
+<td>Spherical Harmonics Rotation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SHCoefficientsToGFA.html"><span class="doc">SHCoefficientsToGFA</span></a></td>
+<td>calculate GFA from SH coefficients.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SHCoefficientsToSphericalFunctionSamples.html"><span class="doc">SHCoefficientsToSphericalFunctionSamples</span></a></td>
+<td>conversion from SH coefficients to spherical function    samples.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SPFToODF.html"><span class="doc">SPFToODF</span></a></td>
+<td>Convert SPF coefficients to ODFs (represented by SH basis    or discrete samples).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SPFToProfile.html"><span class="doc">SPFToProfile</span></a></td>
+<td>Convert SPF coefficients to DWI/EAP profile (represented by    SH basis or discrete samples).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SPFToScalarMap.html"><span class="doc">SPFToScalarMap</span></a></td>
+<td>Estimate scalar maps using SPFI.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SphereTessellator.html"><span class="doc">SphereTessellator</span></a></td>
+<td>Tessellation of a sphere via subdivision of basic    polyhedrons.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SphericalPolarFourierImaging.html"><span class="doc">SphericalPolarFourierImaging</span></a></td>
+<td>Spherical Polar Fourier Imaging (SPFI): estimate SPF    coefficients from DWI signals.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="TensorFormatConverter.html"><span class="doc">TensorFormatConverter</span></a></td>
+<td>Convert different tensor storage formats.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="samplingscheme">
+<span id="commandlist-samplingscheme"></span><h2><a class="toc-backref" href="#id3">SamplingScheme</a><a class="headerlink" href="#samplingscheme" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="OrientationStatistics.html"><span class="doc">OrientationStatistics</span></a></td>
+<td>Get statistics information from a given orientation file.      Show the (min, max, mean, std) of the minimal angles of all samples.        Show electrostatic energy, spherical code cost function.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SamplingSchemeDistance.html"><span class="doc">SamplingSchemeDistance</span></a></td>
+<td>Calculate the distance (maximum of the minimal angles)    between two single shell sampling schemes.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SamplingSchemeQSpace1OptEstimation.html"><span class="doc">SamplingSchemeQSpace1OptEstimation</span></a></td>
+<td>1-Opt estimation for single and multiple shell sampling    scheme</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SamplingSchemeQSpaceIMOCEstimation.html"><span class="doc">SamplingSchemeQSpaceIMOCEstimation</span></a></td>
+<td>Single and multi-shell sampling scheme estimation using    Iterative Maximum Overlap Construction (IMOC).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="SamplingSchemeQSpaceIncrementalEstimation.html"><span class="doc">SamplingSchemeQSpaceIncrementalEstimation</span></a></td>
+<td>Incrementatl estimation for single and multiple shell    sampling scheme.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="SamplingSchemeQSpaceRandomEstimation.html"><span class="doc">SamplingSchemeQSpaceRandomEstimation</span></a></td>
+<td>Random generator for multi-shell schemes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scripts">
+<span id="commandlist-scripts"></span><h2><a class="toc-backref" href="#id4">Scripts</a><a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="CombineVTKPolyData.py.html"><span class="doc">CombineVTKPolyData.py</span></a></td>
+<td>Combine several vtk files into one vtk file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="ConvertGurobiSolToIndex.py.html"><span class="doc">ConvertGurobiSolToIndex.py</span></a></td>
+<td>Covert .sol file (by gurobi) to index file for subsampling gradients. It is used for subsampling gradients by Mixed Integer Linear Programming (MILP)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a></td>
+<td>Render a list of VTK data  and (or) a nifti image, then view or save PNG or save WebGL. The code is modified from ITKExamples.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="VTKPolyData_gui.py.html"><span class="doc">VTKPolyData_gui.py</span></a></td>
+<td>GUI for VTKPolyData.py.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="utilities">
+<span id="commandlist-utilities"></span><h2><a class="toc-backref" href="#id5">Utilities</a><a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="4DImageMath.html"><span class="doc">4DImageMath</span></a></td>
+<td>Perform math operators on 4D image (4D itk::Image or 3D    itk::VectorImage).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="4DToVectorImageConverter.html"><span class="doc">4DToVectorImageConverter</span></a></td>
+<td>Convert a 4D image to a vector image.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="ImageInfo.html"><span class="doc">ImageInfo</span></a></td>
+<td>Display image information.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="PrintImage.html"><span class="doc">PrintImage</span></a></td>
+<td>print image (4D image, tensors, SH    coefficients).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="TextFileOperator.html"><span class="doc">TextFileOperator</span></a></td>
+<td>Operations for text files.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="VectorImageNormalization.html"><span class="doc">VectorImageNormalization</span></a></td>
+<td>Normalize each voxel in a VectorImage or    SparseVectorImage.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="VectorTo4DImageConverter.html"><span class="doc">VectorTo4DImageConverter</span></a></td>
+<td>Convert a vector image to a 4D image.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="visualization">
+<span id="commandlist-visualization"></span><h2><a class="toc-backref" href="#id6">Visualization</a><a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="CombineVTKPolyData.py.html"><span class="doc">CombineVTKPolyData.py</span></a></td>
+<td>Combine several vtk files into one vtk file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="MeshFromDiscreteFiberODF.html"><span class="doc">MeshFromDiscreteFiberODF</span></a></td>
+<td>Create a mesh (a spherical profile of DWI/EAP/ODF) from    discrete fiber ODF for visualization.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="MeshFromPeaks.html"><span class="doc">MeshFromPeaks</span></a></td>
+<td>Create a mesh from peaks for visualization.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="MeshFromSHCoefficients.html"><span class="doc">MeshFromSHCoefficients</span></a></td>
+<td>Create a mesh from spherical harmonics coefficients for    visualization.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="MeshFromSphericalFunctionTessellatedSamples.html"><span class="doc">MeshFromSphericalFunctionTessellatedSamples</span></a></td>
+<td>Create a mesh from spherical samples using tessellation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="MeshFromTensors.html"><span class="doc">MeshFromTensors</span></a></td>
+<td>Create a mesh from tensors for visualization.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="MeshFromTracts.html"><span class="doc">MeshFromTracts</span></a></td>
+<td>Create a mesh from fiber tracts for visualization.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="OrientationsViewer.html"><span class="doc">OrientationsViewer</span></a></td>
+<td>Single and multi-shell orientations viewer.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="RGBImageToVTKXMLImageConverter.html"><span class="doc">RGBImageToVTKXMLImageConverter</span></a></td>
+<td>Convert an ITK image to a VTK XML image.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="VTKPolyData.py.html"><span class="doc">VTKPolyData.py</span></a></td>
+<td>Render a list of VTK data  and (or) a nifti image, then view or save PNG or save WebGL. The code is modified from ITKExamples.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="VTKPolyData_gui.py.html"><span class="doc">VTKPolyData_gui.py</span></a></td>
+<td>GUI for VTKPolyData.py.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="VTKXMLImageToVectorImageConverter.html"><span class="doc">VTKXMLImageToVectorImageConverter</span></a></td>
+<td>Convert a VTK XML image to an ITK image.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="VectorImageToVTKXMLImageConverter.html"><span class="doc">VectorImageToVTKXMLImageConverter</span></a></td>
+<td>Convert an ITK image to a VTK XML image.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="vtkviewer.html"><span class="doc">vtkviewer</span></a></td>
+<td>visualize vtk files.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="CorrectBValues.html" class="btn btn-neutral float-right" title="CorrectBValues" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../userguide.html" class="btn btn-neutral" title="User Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

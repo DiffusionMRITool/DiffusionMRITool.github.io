@@ -1,0 +1,89 @@
+ComputeSHCoefficientsOfDWIFromSymmetricTensor
+=============================================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     ComputeSHCoefficientsOfDWIFromSymmetricTensor  [--returnparameterfile
+                                          <std::string>]
+                                          [--processinformationaddress
+                                          <std::string>] [--xml] [--echo]
+                                          [--nob] [--allsh] [--sh <int>]
+                                          [--bvalues <std::vector<double>>]
+                                          [--famd <std::vector<double>>]
+                                          [--eigenvalues
+                                          <std::vector<double>>] [--output
+                                          <std::string>] [--] [--version]
+                                          [-h]
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --nob
+       If it is set, only print SH coefficients without b values. (value: 0)
+  
+     --allsh
+       If it is set, output all coefficients including zeros for c_{l,m},
+       m!=0. If not set, output only c_{l,0} (value: 0)
+  
+     --sh <int>
+       SH order. (value: 8)
+  
+     --bvalues <std::vector<double>>
+       B value.
+  
+     --famd <std::vector<double>>
+       FA and Mean Diffusivity (MD) for symmetric tensor.
+  
+     --eigenvalues <std::vector<double>>
+       Two eigenvalues for symmetric tensor.
+  
+     --output <std::string>
+       Output SH coefficients into the file. If not set, output to screen.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+  
+     Description: Compute SH coefficients of DWI signal in DTI with symmetric
+     tensor (along z-axis). 
+  
+     Examples: 
+  
+     ComputeSHCoefficientsOfDWIFromSymmetricTensor --sh 4 --bvalues 1000
+     --famd 0.9,0.7e-3 
+  
+     ComputeSHCoefficientsOfDWIFromSymmetricTensor --sh 4 --bvalues 1000
+     --famd 0.9,0.7e-3 --nob 
+  
+     ComputeSHCoefficientsOfDWIFromSymmetricTensor --sh 4 --bvalues 1000
+     --eigenvalues 1.7e-3,0.3e-3
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

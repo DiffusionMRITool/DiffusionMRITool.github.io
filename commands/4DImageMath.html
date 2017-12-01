@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4DImageMath &mdash; DMRITool</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/linux-icon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="DMRITool" href="../index.html"/>
+        <link rel="up" title="Command List" href="commandlist.html"/>
+        <link rel="next" title="4DToVectorImageConverter" href="4DToVectorImageConverter.html"/>
+        <link rel="prev" title="VTKPolyData_gui.py" href="VTKPolyData_gui.py.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DMRITool
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1.1-139-g860d86b4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building.html">Building</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userguide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="commandlist.html">Command List</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#dwiprocessing">DWIProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#diffusionmodels">DiffusionModels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#samplingscheme">SamplingScheme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#scripts">Scripts</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="commandlist.html#utilities">Utilities</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4DImageMath</a></li>
+<li class="toctree-l3"><a class="reference internal" href="4DToVectorImageConverter.html">4DToVectorImageConverter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ImageInfo.html">ImageInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PrintImage.html">PrintImage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TextFileOperator.html">TextFileOperator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VectorImageNormalization.html">VectorImageNormalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VectorTo4DImageConverter.html">VectorTo4DImageConverter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commandlist.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../matlabfiles/matlabfunctions.html">Matlab Function List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://diffusionmritool.github.io/dmritool-doxygen">Doxygen Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codemodules.html">Code Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DMRITool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="commandlist.html">Command List</a> &raquo;</li>
+        
+      <li>4DImageMath</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/commands/4DImageMath.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dimagemath">
+<h1>4DImageMath<a class="headerlink" href="#dimagemath" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none"><div class="highlight"><pre><span></span>USAGE:
+
+   4DImageMath  [--returnparameterfile &lt;std::string&gt;]
+                [--processinformationaddress &lt;std::string&gt;] [--xml]
+                [--echo] [--crop &lt;std::vector&lt;int&gt;&gt;] [--shred
+                &lt;std::vector&lt;int&gt;&gt;] [--compose] [--dotproduct] [--amin]
+                [--amax] [--sum] [--median] [--mean] [--norm &lt;L2|L1|L0
+                |INF&gt;] [-a &lt;x|y|z|t|0|1|2|3&gt;] [--sqrt] [--square] [--log]
+                [--exp] [--abs] [-f &lt;std::string&gt;] [--pow &lt;std::string&gt;]
+                [--min &lt;std::string&gt;] [--max &lt;std::string&gt;] [--mul
+                &lt;std::string&gt;] [--div &lt;std::string&gt;] [--sub &lt;std::string&gt;]
+                [--add &lt;std::string&gt;] [-v &lt;int&gt;] [--nt &lt;int&gt;] [--outformat
+                &lt;NONE|4D|VECTOR&gt;] [--box &lt;std::vector&lt;int&gt;&gt;] [-m
+                &lt;std::string&gt;] [--] [--version] [-h]
+                &lt;std::vector&lt;std::string&gt;&gt; ...
+
+
+Where:
+
+   --returnparameterfile &lt;std::string&gt;
+     Filename in which to write simple return parameters (int, float,
+     int-vector, etc.) as opposed to bulk return parameters (image,
+     geometry, transform, measurement, table).
+
+   --processinformationaddress &lt;std::string&gt;
+     Address of a structure to store process information (progress, abort,
+     etc.). (value: 0)
+
+   --xml
+     Produce xml description of command line arguments (value: 0)
+
+   --echo
+     Echo the command line arguments (value: 0)
+
+   --crop &lt;std::vector&lt;int&gt;&gt;
+     Crop image by 8 parameters (x0,x1,y0,y1,z0,z1,t0,t1). (value: -1,-1,-1
+     ,-1,-1,-1,-1,-1)
+
+   --shred &lt;std::vector&lt;int&gt;&gt;
+     Shred vector elements along axis according to offset, chunk size, and
+     space specified by parameters 1 to 3. (value: 0,0,0)
+
+   --compose
+     Compose images along axis (&gt;=2 input images). (value: 0)
+
+   --dotproduct
+     Dot product along axis (2 input images) (value: 0)
+
+   --amin
+     minimal value along axis (value: 0)
+
+   --amax
+     maximal value along axis (value: 0)
+
+   --sum
+     Sum along axis (value: 0)
+
+   --median
+     Median along axis (value: 0)
+
+   --mean
+     Mean along axis (value: 0)
+
+   --norm &lt;L2|L1|L0|INF&gt;
+     Calculate norm of vector along axis. (value: L2)
+
+   -a &lt;x|y|z|t|0|1|2|3&gt;,  --axis &lt;x|y|z|t|0|1|2|3&gt;
+     Axis (x/y/z/t, i.e., 0/1/2/3).
+
+   --sqrt
+     sqrt: square root, i.e., -f &#39;sqrt(x)&#39; (value: 0)
+
+   --square
+     square, i.e., -f &#39;x*x&#39; (value: 0)
+
+   --log
+     natural logarithm, i.e., -f &#39;log(x)&#39; (value: 0)
+
+   --exp
+     exponential, i.e., -f &#39;exp(x)&#39; (value: 0)
+
+   --abs
+     absolute value, i.e., -f &#39;abs(x)&#39; (value: 0)
+
+   -f &lt;std::string&gt;,  --func &lt;std::string&gt;
+     Perform functions on elements of the input images (one or more
+     inputs). Input images should have the same size, and it does not
+     change the size in the output image.
+
+     Note: it is slower (-f &#39;abs&#39;) than functions (--abs).
+
+     Example: cos(x)+3*x+abs(x)+2 +x^3
+
+     x[0]+x[1]*x[1]+3*x[2] // need &gt;3 inputs
+
+     max(x[0],x[1],x[2])  // need &gt;3 inputs
+
+     if (x&gt;0.5) 1.0; else 0.0; // mask the input image using threshold 0.5
+
+   --pow &lt;std::string&gt;
+     Pow image file or a constant.
+
+   --min &lt;std::string&gt;
+     Take minimum of the input and the following image or constant.
+
+   --max &lt;std::string&gt;
+     Take maximum of the input and the following image or constant.
+
+   --mul &lt;std::string&gt;
+     Multiply image file or a constant.
+
+   --div &lt;std::string&gt;
+     Divide image file or a constant.
+
+   --sub &lt;std::string&gt;
+     Substract (minus) image file or a constant.
+
+   --add &lt;std::string&gt;
+     Add image file or a constant.
+
+   -v &lt;int&gt;,  --verbose &lt;int&gt;
+     Verbose level. 0: no output log. 1: normal log. 2: log for debug log.
+     3: log for large matrix or vectors. (value: 1)
+
+   --nt &lt;int&gt;
+     Number of threads. If it not positive, then the default number for
+     multiple threads is used. (value: -1)
+
+   --outformat &lt;NONE|4D|VECTOR&gt;
+     Output format. NONE: same as the input. 4D: itk 4D image, VECTOR: 3D
+     vector image. (value: NONE)
+
+   --box &lt;std::vector&lt;int&gt;&gt;
+     only perform calculation in a given box (x0,x1,y0,y1,z0,z1). Set zero
+     out of the region. (value: -1,-1,-1,-1,-1,-1)
+
+   -m &lt;std::string&gt;,  --mask &lt;std::string&gt;
+     Mask image file (3d or 4d image). Set zero out of the region.
+
+   --,  --ignore_rest
+     Ignores the rest of the labeled arguments following this flag.
+
+   --version
+     Displays version information and exits.
+
+   -h,  --help
+     Displays usage information and exits.
+
+   &lt;std::vector&lt;std::string&gt;&gt;  (accepted multiple times)
+     Image list. At least two files (one or more input images, and one
+     output image)
+
+
+   Description: Perform math operators on 4D image (4D itk::Image or 3D
+   itk::VectorImage).
+
+   Examples:
+
+   4DImageMath image1.nii.gz out.nii.gz -f &#39;cos(x)+3*x+sqrt(abs(x))+sqrt(2)
+   +x^3&#39; -m mask.nii.gz
+
+   4DImageMath image1.nii.gz out.nii.gz -f &#39;if (x&gt;0.5) 1.0; else 0.0;&#39; -m
+   mask.nii.gz
+
+   4DImageMath image1.nii.gz out.nii.gz --abs -m mask.nii.gz
+
+   4DImageMath image1.nii.gz out.nii.gz --exp -m mask.nii.gz
+
+   4DImageMath image1.nii.gz out.nii.gz --add image2.nii.gz -m mask.nii.gz
+
+
+   4DImageMath image1.nii.gz out.nii.gz --add 2.0 -m mask.nii.gz
+
+   4DImageMath image1.nii.gz image2.nii.gz out.nii.gz -f &#39;x[0]+x[1]&#39; -m
+   mask.nii.gz
+
+   4DImageMath image1.nii.gz image2.nii.gz out.nii.gz -f &#39;x[0]^2+cos(x[1])&#39;
+   -m mask.nii.gz
+
+   4DImageMath image1.nii.gz image2.nii.gz out.nii.gz --axis t --dotproduct
+
+
+   4DImageMath image1.nii.gz image2.nii.gz image3.nii.gz  out.nii.gz -f
+   &#39;max(x[0],x[1],x[2]/2.0)&#39; -m mask.nii.gz
+
+   4DImageMath image1.nii.gz out.nii.gz --axis t --mean -m mask.nii.gz
+
+   4DImageMath image1.nii.gz out.nii.gz --axis x --norm L2 -m mask.nii.gz
+
+
+   4DImageMath image1.nii.gz image2.nii.gz image3.nii.gz  out.nii.gz
+   --axis t --compose
+
+   Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+
+   Acknowledgements: Thank you everyone.
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="4DToVectorImageConverter.html" class="btn btn-neutral float-right" title="4DToVectorImageConverter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="VTKPolyData_gui.py.html" class="btn btn-neutral" title="VTKPolyData_gui.py" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright DMRITool developers &lt;dmritool-discussion@www.nitrc.org&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'v0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<a href="https://github.com/DiffusionMRITool/dmritool"><img style="position: absolute; top: 0; right: 0; border: 0; width: 150px; height: 150px;" 
+  src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" 
+  alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60718632-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=11048608; 
+var sc_invisible=0; 
+var sc_security="4e279a87"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web counter"
+href="http://statcounter.com/free-hit-counter/"
+target="_blank"><img class="statcounter"
+src="//c.statcounter.com/11048608/0/4e279a87/0/" alt="web
+counter"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<!-- <a href="http://statcounter.com/p11048608/?guest=1">View My -->
+<!-- Stats</a> -->
+
+
+
+</body>
+</html>

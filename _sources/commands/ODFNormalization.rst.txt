@@ -1,0 +1,59 @@
+ODFNormalization
+================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     ODFNormalization  [--returnparameterfile <std::string>]
+                       [--processinformationaddress <std::string>] [--xml]
+                       [--echo] [--type <SH|SAMPLE>] [--] [--version] [-h]
+                       <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --type <SH|SAMPLE>
+       Type of input ODF. SH: spherical harmonic coefficients. SAMPLE:
+       uniform spherical samples. (value: SH)
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Input image file.
+  
+     <std::string>
+       (required)  Input output file.
+  
+  
+     Description: Normalize ODF (VectorImage) represented by SH basis or
+     uniform spherical samples.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

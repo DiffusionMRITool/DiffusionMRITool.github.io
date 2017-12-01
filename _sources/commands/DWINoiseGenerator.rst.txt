@@ -1,0 +1,75 @@
+DWINoiseGenerator
+=================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     DWINoiseGenerator  [--returnparameterfile <std::string>]
+                        [--processinformationaddress <std::string>] [--xml]
+                        [--echo] [--snr <double>] [--noisesigma <double>]
+                        [--noisetype <GAUSSIAN|RICIAN>] [--mask
+                        <std::string>] [--b0 <std::string>] [--] [--version]
+                        [-h] <std::string> <std::string>
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --snr <double>
+       Sigma is defined as 1/SNR.
+  
+     --noisesigma <double>
+       Sigma value denoting noise level.
+  
+     --noisetype <GAUSSIAN|RICIAN>
+       Noise type. (value: RICIAN)
+  
+     --mask <std::string>
+       3D mask image.
+  
+     --b0 <std::string>
+       3D image that contains DWI data S(0) with b=0. If it is not set, we
+       assume S(0)=1.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+     <std::string>
+       (required)  Vector image that contains the DWI data.
+  
+     <std::string>
+       (required)  Vector image that will contain the DWI data with noise.
+  
+  
+     Description: Add noise to a set of DWI data.
+  
+     Examples: 
+  
+     DWINoiseGenerator dwi_b1000.nii.gz  dwi_b1000_noise.nii.gz --snr
+     25
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+  

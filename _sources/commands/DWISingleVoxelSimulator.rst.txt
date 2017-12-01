@@ -1,0 +1,162 @@
+DWISingleVoxelSimulator
+=======================
+
+.. code-block:: none
+
+  
+  USAGE: 
+  
+     DWISingleVoxelSimulator  [--returnparameterfile <std::string>]
+                              [--processinformationaddress <std::string>]
+                              [--xml] [--echo] [--debug] [--elecnumber <int>]
+                              [--tessorder <int>] [--randomtype <FIXED
+                              |UNIFORM>] [--outputdwitype <4D|4DALL
+                              |EACHSHELL>] [--peaks <int>] [--tau <float>]
+                              [--snr <float>] [--noisesigma <float>]
+                              [--b0scale <float>] [--rvalues
+                              <std::vector<double>>] [--rfile <std::string>]
+                              [--rorientations <std::string>] [--bvalues
+                              <std::vector<double>>] [--bfile <std::string>]
+                              [--qorientations <std::string>] [--outb0
+                              <std::string>] [--peaktype <XYZV|XYZ|NXYZV
+                              |NXYZ>] [--outmsd <std::string>] [--outrto
+                              <std::string>] [--outpeak <std::string>]
+                              [--outeap <std::string>] [--outodf
+                              <std::string>] [--outdwi <std::string>] [--size
+                              <std::vector<int>>] [--modeltype
+                              <TENSOR_CARTESIAN|TENSOR_SPHERICAL
+                              |CYLINDER_SPHERICAL>] [--params
+                              <std::vector<double>>] [--] [--version] [-h]
+  
+  
+  Where: 
+  
+     --returnparameterfile <std::string>
+       Filename in which to write simple return parameters (int, float,
+       int-vector, etc.) as opposed to bulk return parameters (image,
+       geometry, transform, measurement, table).
+  
+     --processinformationaddress <std::string>
+       Address of a structure to store process information (progress, abort,
+       etc.). (value: 0)
+  
+     --xml
+       Produce xml description of command line arguments (value: 0)
+  
+     --echo
+       Echo the command line arguments (value: 0)
+  
+     --debug
+       debug (value: 0)
+  
+     --elecnumber <int>
+       Number of stored gradient by electrostatic energy minimization.
+       (value: -1)
+  
+     --tessorder <int>
+       Tessellation order for UNIFORM random type. (value: -1)
+  
+     --randomtype <FIXED|UNIFORM>
+       Random Type to rotate the given diffusion parameter in voxels. If
+       UNIFORM is used, then the uniform orientation is randomly generated or
+       from --tessorder or --elecnumber if one of them is set. (value:
+       FIXED)
+  
+     --outputdwitype <4D|4DALL|EACHSHELL>
+       Output DWI type. (value: 4DALL)
+  
+     --peaks <int>
+       Maximal number of peaks for output peak file. (value: 4)
+  
+     --tau <float>
+       Used for calculating q values from b values. The default value is set
+       so that 4*pi^2*tau=1. (value: 0.0253303)
+  
+     --snr <float>
+       Signal-to-Noise Ratio. Conflicts with noisesigma. (value: 0)
+  
+     --noisesigma <float>
+       Noise level. Conflicts with snr. (value: 0)
+  
+     --b0scale <float>
+       The value of b0 image. (value: 1)
+  
+     --rvalues <std::vector<double>>
+       R values for different shells. Each shell uses the same orientations
+       specified with rgradients. Conflicts with rfile.
+  
+     --rfile <std::string>
+       Text file that contains the R values. The number of entries should be
+       consistent with the orientations specified with rgradients.
+  
+     --rorientations <std::string>
+       Text file that contains the orientations for sampling in the R-space.
+  
+     --bvalues <std::vector<double>>
+       B values for different shells. Each shell uses the same orientations
+       specified with qgradients. Conflicts with bfile.
+  
+     --bfile <std::string>
+       Text file that contains the B values. The number of entries should be
+       consistent with the orientations specified with qgradient. Conflicts
+       with bvalues.
+  
+     --qorientations <std::string>
+       Text file that contains the gradient orientations of the data.
+  
+     --outb0 <std::string>
+       Output B0 image.
+  
+     --peaktype <XYZV|XYZ|NXYZV|NXYZ>
+       Peak Type. XYZV: peak direction vector (x,y,z) + peak magnitude v;
+       XYZ: peak direction vector; NXYZV: number of peaks + peak direction
+       vectors + peak magnitudes; NXYZ: number of peaks + peak direction
+       vectors. (value: XYZV)
+  
+     --outmsd <std::string>
+       Scalar image that will contain the mean squared displacement (MSD)
+       probability map.
+  
+     --outrto <std::string>
+       Scalar image that will contain the return-to-origin (RTO) probability
+       map.
+  
+     --outpeak <std::string>
+       Vector image that will contain the ground truch of peaks.
+  
+     --outeap <std::string>
+       Vector image that will contain the EAP field.
+  
+     --outodf <std::string>
+       Vector image that will contain the ODF field.
+  
+     --outdwi <std::string>
+       Vector image that will contain the DWI field.
+  
+     --size <std::vector<int>>
+       Image size. (value: 1,1,1)
+  
+     --modeltype <TENSOR_CARTESIAN|TENSOR_SPHERICAL|CYLINDER_SPHERICAL>
+       Type of input diffusion parameters. (value: TENSOR_SPHERICAL)
+  
+     --params <std::vector<double>>
+       diffusion parameters.
+  
+     --,  --ignore_rest
+       Ignores the rest of the labeled arguments following this flag.
+  
+     --version
+       Displays version information and exits.
+  
+     -h,  --help
+       Displays usage information and exits.
+  
+  
+     Description: Simulate DWI data with fixed single voxel
+     configuration.
+  
+     Author(s): Jian Cheng (jian.cheng.1983@gmail.com)
+  
+     Acknowledgements: Thank you everyone.
+  
+  

@@ -1,0 +1,11 @@
+VTKPolyData_gui.py
+==================
+
+.. code-block:: none
+
+  
+  Description: GUI for VTKPolyData.py.
+  
+  Copyright (c) 2015-2017 the dmritool contributors.
+  For more information, see https://diffusionmritool.github.io
+  
